@@ -1,0 +1,120 @@
+body {
+  margin-top: 30px;
+  margin-left: 30px;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.header {
+  display: flex;
+}
+.center {
+  display: block;
+  justify-content: space-between;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+  border: 1px solid #2bae66ff;
+  box-shadow: 3px 3px 3px 3px rgb(217, 244, 217);
+  height: 300px;
+  width: 600px;
+  border-radius: 10px;
+}
+.center input {
+  border-radius: 8px;
+}
+.center label {
+  margin-top: 30px;
+}
+input:valid {
+  border: 2px solid rgb(15, 232, 15);
+}
+input:invalid {
+  border: 2px solid red;
+}
+.btn {
+  font-size: 30px;
+  /* width: 300px; */
+  margin-top: 20px;
+  background-color: #2bae66ff;
+  color: white;
+  border: none;
+  box-shadow: 2px 2px 2px rgb(217, 244, 217);
+  border-radius: 5px;
+}
+button:hover {
+  color: #2bae66ff;
+  background-color: whitesmoke;
+}
+.form {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.head {
+  display: flex;
+  align-content: center;
+  width: 1000px;
+  margin-left: 250px;
+  color: #2bae66ff;
+}
+.head h1 {
+  text-decoration: 2px solid #2bae66ff;
+}
+.head img {
+  height: 80px;
+}
+.update {
+  display: flex;
+}
+.update button {
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  border: 2px solid #2bae66ff;
+  margin-left: 20px;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #2bae66ff;
+}
+/* .form {
+  width: 200px;
+  margin-top: 150px;
+  margin-left: 500px;
+} */
+.form input {
+  font-size: 25px;
+  color: #2bae66ff;
+  background-color: white;
+  border: 1.5px solid #2bae66ff;
+}
+.form label {
+  color: white;
+}
+.sign button {
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  margin-left: 500px;
+  margin-top: 100px;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #2bae66ff;
+  border: 1.5px solid #2bae66ff;
+}
+.day-type {
+  margin-left: 70%;
+  margin-top: 100px;
+}
+.day-type input {
+  width: 330px;
+  font-size: 20px;
+  color: #2bae66ff;
+  border: 2px solid #2bae66ff;
+}
+.day-type h4 {
+  color: #2bae66ff;
+}

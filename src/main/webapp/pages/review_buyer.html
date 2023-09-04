@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../assets/CSS/index-1.css" />
+    <link rel="stylesheet" href="../assets/CSS/head.css" />
+    <link rel="stylesheet" href="../assets/CSS/review.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- <link rel="stylesheet" href="./assets/details.js" /> -->
+  </head>
+  <body>
+    <header>
+      <div>
+        <img src="../assets/image/RISHIMARKET (1).png" alt="logo" width="50%" />
+      </div>
+      <div class="head">
+        <p onclick="home()">Home</p>
+        <p onclick="about()">About us</p>
+        <div class="dropdown">
+          <p class="dropbtn">Register</p>
+          <div class="dropdown-content">
+            <a onclick="buy_sign()">as Buyer</a>
+            <a onclick="sell_sign()">as Seller</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <p class="dropbtn">Log in</p>
+          <div class="dropdown-content">
+            <a onclick="buy_login()">as Buyer</a>
+            <a onclick="sell_login()">as Seller</a>
+          </div>
+        </div>
+        <!-- <p onclick="customer()">Log In</p> -->
+      </div>
+      <div>
+        <img src="../assets/image/profile.png" alt="profile" width="100px" />
+      </div>
+    </header>
+
+    <section class="topic">
+      <!-- <button class="different">Buyer Review</button> -->
+      <button onclick="seller()">Go to Seller Review</button>
+    </section>
+
+    <form id="form" class="enter_comment">
+      <!-- <nav>
+        <input id="name" type="text" placeholder="Enter Your Name" />
+      </nav> -->
+      <!-- <nav> -->
+      <textarea
+        name="Comment"
+        id="comment"
+        cols="30"
+        rows="10"
+        placeholder="Write Your Valuable Comment here........."
+        required
+      ></textarea>
+      <!-- </nav> -->
+      <!-- <nav> -->
+      <button id="submit" type="submit" value="submit">Add Command</button>
+      <!-- </nav> -->
+    </form>
+    <main id="form" class="full_comment">
+      <section class="others_comment"></section>
+    </main>
+
+    <footer id="foot">
+      <div class="foot-img">
+        <img src="../assets/image/logo (2).png" alt="logo" width="130px" />
+      </div>
+      <div class="foot-1">
+        <h4>Contact us</h4>
+        <ul>
+          <i
+            class="fa fa-phone"
+            style="font-size: 24px; color: rgb(49, 49, 176)"
+          ></i>
+          9876543210
+        </ul>
+        <ul>
+          <i
+            class="fa fa-envelope"
+            style="font-size: 24px; color: rgb(245, 11, 11)"
+          ></i>
+          Rishi-market@agri.com
+        </ul>
+        <ul>
+          <i class="fa fa-whatsapp" style="font-size: 24px; color: green"></i>
+          8967452301
+        </ul>
+        <ul>
+          <i class="fa fa-home" style="font-size: 24px; color: green"></i>
+          Rishi office, Global Infocity,<br />
+          Perungudi, Chennai 600096
+        </ul>
+      </div>
+      <div class="foot-2">
+        <h4>Follow us on</h4>
+        <div class="follow">
+          <ul>
+            <i
+              class="fa fa-youtube-play"
+              style="font-size: 24px; color: rgb(254, 4, 4)"
+            ></i>
+            You Tube
+          </ul>
+          <ul class="fb">
+            <i
+              class="fa fa-facebook-f"
+              style="font-size: 24px; color: blue"
+            ></i>
+            Face book
+          </ul>
+          <ul>
+            <i
+              class="fa fa-twitter"
+              style="font-size: 24px; color: skyblue"
+            ></i>
+            Twitter
+          </ul>
+          <ul>
+            <i class="fa fa-instagram" style="font-size: 24px; color: red"></i>
+            Instagram
+          </ul>
+        </div>
+      </div>
+      <div class="foot-3">
+        <h4>Help & Info</h4>
+        <ul>
+          Customer service
+        </ul>
+        <ul></ul>
+        <ul>
+          Privacy Policy
+        </ul>
+        <ul>
+          Terms and Conditions
+        </ul>
+        <ul onclick="leader_board()">
+          Leader Board
+        </ul>
+      </div>
+    </footer>
+    <nav class="copyright">
+      @ copyright 2022 RISHI AGRI MARKET | All rights reserved
+    </nav>
+
+    <script src="/assets/JavaScript/review_buyer.js"></script>
+  </body>
+</html>

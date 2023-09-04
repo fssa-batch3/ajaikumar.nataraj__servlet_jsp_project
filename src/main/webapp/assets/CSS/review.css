@@ -1,0 +1,93 @@
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.full_comment {
+  margin-top: 100px;
+  width: 1440px;
+}
+.full_comment section {
+  margin-top: 100px;
+}
+
+.topic {
+  margin-top: 150px;
+}
+.own_comment {
+  display: flex;
+  margin-left: 470px;
+  width: 1000px;
+  height: 300px;
+  border: none;
+  box-shadow: 3px 3px 3px 3px rgb(137, 216, 137);
+  border-radius: 10px;
+  /* margin-left: 450px; */
+}
+.enter_comment {
+  margin-top: 50px;
+  justify-content: center;
+}
+input {
+  font-size: 30px;
+}
+.other_comment {
+  display: flex;
+  margin-left: 20px;
+  width: 1000px;
+  height: 300px;
+  border: none;
+  box-shadow: 3px 3px 3px 3px rgb(137, 216, 137);
+  border-radius: 10px;
+}
+.text_div {
+  display: flex;
+}
+p {
+  font-size: 30px;
+  margin-top: 00px;
+}
+.profile {
+  margin-top: 00px;
+  margin-left: 8px;
+}
+textarea {
+  font-size: 30px;
+  width: 890px;
+  height: 130px;
+  border: none;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px rgb(137, 216, 137);
+  border-radius: 10px;
+}
+.name_time {
+  display: flex;
+}
+.button {
+  display: flex;
+  justify-content: space-around;
+}
+.button img {
+  width: 38px;
+}
+button {
+  font-size: 30px;
+  width: 300px;
+  height: 50px;
+  background-color: #2bae66ff;
+  color: white;
+  border-radius: 5px;
+  border: #2bae66ff;
+}
+.different {
+  color: #2bae66ff;
+  background-color: white;
+}
+button:hover {
+  color: #2bae66ff;
+  background-color: white;
+}
+/* .thumbs_up img:hover {
+    background-color: #2bae66ff;
+  }
+  .thumbs_down img:hover {
+    background-color: red;
+  } */

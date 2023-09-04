@@ -1,0 +1,135 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+  /* background-color: rgb(227, 241, 233); */
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+input:valid {
+  border: 2px solid rgb(15, 232, 15);
+}
+input:invalid {
+  border: 2px solid red;
+}
+textarea:valid {
+  border: 2px solid rgb(15, 232, 15);
+}
+textarea:invalid {
+  border: 2px solid red;
+}
+
+.body {
+  font-size: 30px;
+  color: black;
+}
+.head {
+  text-align: center;
+}
+
+.sub {
+  margin-top: 20px;
+}
+
+.form {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  border: 1px solid #2bae66ff;
+  box-shadow: 3px 3px 3px 3px rgb(217, 244, 217);
+  width: 950px;
+  height: 600px;
+  margin-top: 50px;
+  border-radius: 6px;
+}
+
+.form input {
+  font-size: 30px;
+  border-radius: 6px;
+}
+textarea {
+  font-size: 30px;
+  width: 370px;
+  border-radius: 6px;
+  height: 100px;
+}
+.full {
+  justify-content: center;
+}
+.log {
+  margin-top: 30px;
+}
+
+button {
+  font-size: 30px;
+  border-radius: 5px;
+  width: 200px;
+  color: #2bae66ff;
+  background-color: aliceblue;
+  border: 1px solid #2bae66ff;
+}
+button:hover {
+  background-color: #2bae66ff;
+  color: aliceblue;
+}
+h1 {
+  font-size: 33px;
+  /* display: flex; */
+  color: seagreen;
+}
+button:hover {
+  scale: 1.1;
+}
+
+/* for password eye symbol */
+form i {
+  margin-left: -30px;
+  cursor: pointer;
+}
+/* Media query*/
+@media screen and (max-width: 600px) {
+  * {
+    font-size: 25px;
+    margin-left: -50px;
+  }
+  .head img {
+    margin-left: 80px;
+    width: 80px;
+  }
+  .form input {
+    font-size: 20px;
+  }
+  .h {
+    margin-top: -110px;
+    margin-left: 50px;
+  }
+  .fs {
+    margin-left: -345px;
+    width: 500px;
+    height: 500px;
+  }
+  .form {
+    margin-left: 40px;
+    margin-top: 120px;
+  }
+  .center {
+    width: 300px;
+  }
+  .sub {
+    margin-left: 100px;
+  }
+  .log {
+    margin-left: -50px;
+  }
+  p {
+    margin: 0px;
+    margin-left: -170px;
+  }
+  button {
+    font-size: 20px;
+    width: 150px;
+  }
+}

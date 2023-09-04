@@ -1,0 +1,73 @@
+.header {
+  display: flex;
+  font-size: 40px;
+  background-color: rgb(191, 227, 191);
+  height: 100px;
+  width: 100%;
+  border-radius: 50px;
+  position: fixed;
+}
+body {
+  background-color: rgb(191, 227, 191);
+}
+.header button {
+  border-radius: 50px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.hol {
+  text-align: center;
+  width: 1200px;
+  color: #2bae66ff;
+  margin-top: 25px;
+}
+.side-bar {
+  position: fixed;
+  height: 300px;
+  width: 280px;
+  background-color: #2bae66ff;
+  margin-left: -10px;
+  color: white;
+  margin-top: 130px;
+  font-size: 30px;
+  border-radius: 40px;
+}
+.side-bar h3 {
+  margin-left: 10px;
+}
+.table {
+  font-size: 35px;
+  margin-top: 150px;
+  margin-bottom: 100px;
+  margin-left: 300px;
+  border: solid 1px blue;
+  overflow: scroll;
+}
+.table tr td {
+  border: 1px solid blue;
+}
+.table button {
+  font-size: 20px;
+  color: blue;
+  width: 120px;
+  height: 40px;
+  border-radius: 50px;
+}
+.f-btn {
+  background-color: rgb(191, 227, 191);
+  top: 803px;
+  position: fixed;
+  margin-left: -10px;
+  width: 100%;
+  height: 90px;
+  text-align: center;
+}
+.f-btn button {
+  margin-top: 20px;
+  width: 250px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #2bae66ff;
+  color: blue;
+  font-size: 25px;
+}

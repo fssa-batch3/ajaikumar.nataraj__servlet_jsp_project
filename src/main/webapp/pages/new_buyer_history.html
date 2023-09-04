@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/CSS/new_buyer.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="head">
+      <div class="logo">
+        <img src="../assets/image/logo.png" alt="logo" width="80px" />
+      </div>
+      <div>
+        <input disabled class="pro" type="text" id="profile" />
+      </div>
+      <div class="name">
+        <p onclick="pro()" id="newimg"></p>
+      </div>
+    </header>
+
+    <!-- <section class="sideBar">
+      <input type="checkbox" value="All" />All
+      <input type="checkbox" value="Fruits" />Fruits
+      <input type="checkbox" value="Vegetables" />Vegetables
+      <input type="checkbox" value="Cereals & Grains" />Cereals & Grains
+      <input type="checkbox" value="Tea & Coffee" />Tea & Coffee
+    </section> -->
+    <section class="sideBar">
+      <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
+        >&#9776; open</span
+      >
+    </section>
+
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <nav>
+        <input class="check" type="checkbox" value="All" />
+        <label class="label" for="all">All</label>
+      </nav>
+      <nav>
+        <input class="check" type="checkbox" value="Fruits" />
+        <label class="label" for="fruit">Fruits</label>
+      </nav>
+      <nav>
+        <input class="check" type="checkbox" value="Vegetables" />
+        <label class="label" for="Vegetable">Vegetables</label>
+      </nav>
+      <nav>
+        <input class="check" type="checkbox" value="Cereals & Grains" />
+        <label class="label" for="grain">Cereals & Grains</label>
+      </nav>
+      <nav>
+        <input class="check" type="checkbox" value="Tea & Coffee" />
+        <label class="label" for="tea">Tea & Coffee</label>
+      </nav>
+    </div>
+
+    <div class="card">
+      <!-- <img src="../assets/image/apple.jpg" alt="" width="250px" />
+      <input disabled type="text" placeholder="name" />
+      <input disabled type="text" placeholder="price" />
+      <input disabled type="text" placeholder="available qty" /> -->
+    </div>
+
+    <script>
+      // code for side bar
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+
+      let buyer_info = JSON.parse(localStorage.getItem("newBuyerInfo"));
+      console.log(buyer_info);
+
+      let login_id = JSON.parse(localStorage.getItem("buyer_logIn"));
+      console.log(login_id);
+
+      const get_obj = buyer_info.find((e) => e.Email === login_id);
+      console.log(get_obj);
+
+      const word = get_obj["FullName"];
+      const firstLetter = word.charAt(0);
+      console.log(firstLetter);
+
+      let newimage = document.getElementById("newimg");
+      newimage.innerText = firstLetter;
+
+      const profile = get_obj["FullName"];
+      const name = document.getElementById("profile");
+      name.value = profile;
+      console.log(name);
+
+      let Data = JSON.parse(localStorage.getItem("newSellerProducts"));
+
+      // create card
+      for (let j = 0; j < Data.length; j++) {
+        if (Data[j]["userId"] == get_obj["id"]) {
+          let div_card = document.createElement("div");
+          div_card.setAttribute("class", "card_div");
+          div_card.setAttribute("type", "button");
+          div_card.setAttribute("id", "form");
+
+          let image = document.createElement("img");
+          image.setAttribute("src", Data[j]["Url"]);
+          image.setAttribute("alt", "image");
+          image.setAttribute("id", "pUrl");
+          image.setAttribute("width", "150px");
+          div_card.append(image);
+
+          let fruit_name = document.createElement("input");
+          fruit_name.setAttribute("value", " " + Data[j]["Name"]);
+          fruit_name.setAttribute("id", "pName");
+          fruit_name.setAttribute("disabled", " ");
+          div_card.append(fruit_name);
+
+          let rupees = document.createElement("input");
+          rupees.setAttribute(
+            "value",
+            "Price/kg :" + " ₹ " + Data[j]["Price"] + " /kg"
+          );
+          rupees.setAttribute("id", "pPrice");
+          rupees.setAttribute("type", "text");
+          rupees.setAttribute("disabled", "");
+          div_card.append(rupees);
+
+          let qty = document.createElement("input");
+          qty.setAttribute(
+            "value",
+            "Avl. Qty : " + " " + Data[j]["Qty"] + " kg"
+          );
+          qty.setAttribute("id", "Qty");
+          qty.setAttribute("type", "text");
+          qty.setAttribute("disabled", "");
+          div_card.append(qty);
+
+          // let button = document.createElement("button");
+          // button.innerText = "Add Cart";
+          // button.setAttribute("id", "submit");
+          // button.setAttribute("value", "submit");
+          // button.setAttribute("id", Data[j]["ProductId"]);
+          // button.setAttribute("onclick", "addProduct(this.id)");
+          // div_card.append(button);
+
+          // url params code for passing the selected product details
+          let info = document.createElement("a");
+          info.innerText = "more info -->";
+          info.setAttribute(
+            "href",
+            "./detail.html?ProductId=" + Data[j]["ProductId"]
+          );
+          div_card.append(info);
+
+          document.querySelector(".card").append(div_card);
+        }
+      }
+
+      function pro() {
+        window.location.href = "/pages/profile_buy.html";
+      }
+    </script>
+  </body>
+</html>

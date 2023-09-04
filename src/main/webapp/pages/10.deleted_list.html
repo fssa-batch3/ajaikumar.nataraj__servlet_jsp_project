@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/history.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img
+          src="../assets/image/arrowback.png"
+          alt="arrow"
+          onclick="back()"
+          style="
+            border-radius: 50px;
+            padding: 10px 10px 10px 10px;
+            background-color: #2bae66ff;
+          "
+        />
+      </nav>
+      <nav>
+        <img
+          src="../assets/image/RISHIMARKET (1).png"
+          alt="logo"
+          width="100px"
+        />
+      </nav>
+      <nav><h2>Your Deleted items history</h2></nav>
+      <nav>
+        <img
+          src="../assets/image/profile.png"
+          alt="profile"
+          width="80px"
+          onclick="profile()"
+        />
+      </nav>
+    </header>
+
+    <main class="card_main">
+      <!-- <section class="card_div">
+        <input type="image" />
+        <input type="text" />
+        <input type="number" />
+        <input type="number" />
+      </section> -->
+    </main>
+
+    <script>
+      // JSON
+      let Card = JSON.parse(localStorage.getItem("deleted_list"));
+      console.log(Card);
+
+      const detail = JSON.parse(localStorage.getItem("deleted_list"));
+
+      // Card creating by using JavaScript
+      for (let i = 0; i < Card.length; i++) {
+        let findDetail = detail.find(function (event) {
+          let id = event["ProductId"];
+          if (Card[i]["ProductId"] == id) {
+            return true;
+          }
+        });
+        let id = JSON.parse(localStorage.getItem("user_info"));
+        console.log(id);
+
+        let login_id = JSON.parse(localStorage.getItem("logIn"));
+        console.log(login_id);
+
+        const get_obj = id.find((e) => e.Email === login_id);
+        console.log(get_obj);
+
+        if (get_obj.id == Card[i].userId) {
+          let div_card = document.createElement("div");
+          div_card.setAttribute("class", "card_div");
+          div_card.setAttribute("type", "button");
+          div_card.setAttribute("id", "div");
+
+          let image = document.createElement("img");
+          image.setAttribute("src", Card[i]["Url"]);
+          image.setAttribute("alt", "image");
+          image.setAttribute("id", "pUrl");
+          div_card.append(image);
+
+          let fruit_name = document.createElement("input");
+          fruit_name.setAttribute("value", Card[i]["Name"]);
+          fruit_name.setAttribute("id", "pName");
+          div_card.append(fruit_name);
+
+          let rupees = document.createElement("input");
+          rupees.setAttribute("value", Card[i]["Price"] + " /kg");
+          rupees.setAttribute("id", "pPrice");
+          rupees.setAttribute("type", "text");
+          div_card.append(rupees);
+
+          let input_value = document.createElement("input");
+          input_value.setAttribute("value", Card[i]["Qty"] + " kg");
+          input_value.setAttribute("width", "10px");
+          input_value.setAttribute("id", "pQty");
+          div_card.append(input_value);
+
+          document.querySelector(".card_main").append(div_card);
+        }
+      }
+      function back() {
+        window.location.href = "/pages/10.a.history.html";
+      }
+      function profile() {
+        window.location.href = "/pages/profile.html";
+      }
+    </script>
+  </body>
+</html>

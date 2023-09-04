@@ -1,0 +1,78 @@
+body {
+  font-size: 25px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #2bae66ff;
+  /* background-color: rgb(191, 227, 191); */
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px;
+  color: white;
+  height: 80px;
+}
+.topic {
+  color: #2bae66ff;
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+}
+.contact {
+  background-color: #2bae66ff;
+  height: 20px;
+  font-size: 15px;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+}
+.contact p {
+  margin-top: 2px;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  background-color: #2bae66ff;
+}
+button {
+  font-size: 25px;
+  border-radius: 10px;
+}
+.btn {
+  color: #2bae66ff;
+}
+.btn button {
+  background-color: #2bae66ff;
+  color: white;
+  border: none;
+  width: 300px;
+  height: 50px;
+}
+.btn button:hover {
+  background-color: whitesmoke;
+  color: #2bae66ff;
+  box-shadow: 1px 1px 1px 1px #2bae66ff;
+}
+
+/*media query*/
+
+@media screen and (max-width: 600px) {
+  img {
+    width: 190px;
+  }
+  .logo img {
+    width: 100px;
+  }
+  .btn button {
+    width: 130px;
+  }
+}

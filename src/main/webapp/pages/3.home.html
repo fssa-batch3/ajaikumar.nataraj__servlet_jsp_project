@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../assets/CSS/3-home.css" />
+    <title>Document</title>
+  </head>
+
+  <body class="body">
+    <div class="header">
+      <header class="head">
+        <div class="logo">
+          <img src="../assets/image/logo.png" alt="logo" width="100px" />
+        </div>
+        <input type="text" id="profile" onclick="profile()" />
+        <img
+          onclick="profile()"
+          src="../assets/image/profile.png"
+          alt="profile"
+          width="100px"
+        />
+      </header>
+    </div>
+
+    <div class="com-btn">
+      <nav class="com-btn_nav1">
+        <img src="../assets/image/select_buying.png" alt="buyer" />
+        <button type="button" onclick="buyer()">Buyer</button>
+      </nav>
+      <nav class="com-btn_nav2">
+        <img src="../assets/image/sell_online.png" alt="farmer" />
+        <button type="button" onclick="farmer()">Vendor</button>
+      </nav>
+      <!-- <nav>
+        <img src="" alt="wholebuyer" />
+        <button type="button" onclick="wholebuyer()">Whole sale Buyer</button>
+      </nav> -->
+    </div>
+
+    <script>
+      const oneUser = JSON.parse(localStorage.getItem("logIn"));
+
+      const user_info = JSON.parse(localStorage.getItem("user_info"));
+      let select_user = user_info.find(function (event) {
+        let customerEmail = event["Email"];
+        if (user_info == customerEmail) {
+          return true;
+        } else if (oneUser == customerEmail) {
+          return true;
+        }
+      });
+
+      const name = document.getElementById("profile");
+
+      name.value = select_user["FullName"];
+
+      function buyer() {
+        window.location.href = "/pages/4.index.html";
+      }
+      function farmer() {
+        window.location.href = "/pages/10.upload.html";
+      }
+      function wholebuyer() {
+        window.location.href = "/pages/15.hotel-index.html";
+      }
+      function profile() {
+        window.location.href = "/pages/profile.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/14-product-bill.css" />
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+    <div>
+      <div>
+        <img src="../assets/image/tick.gif" alt="tick" width="250px" />
+        <p>Your Products Uploaded Successfully</p>
+        <p>Your Products will be pickup within 2 to 5 days</p>
+        <p>
+          The Amount will be credit to your account within 2 days after pickup
+        </p>
+      </div>
+      <div class="btn">
+        <!-- <img src="../assets/image/download.png" alt="download" width="250px" /> -->
+        <p>
+          <button onclick="sell()">Sell more</button>
+        </p>
+      </div>
+    </div>
+    <script>
+      let id = JSON.parse(localStorage.getItem("user_info"));
+      console.log(id);
+
+      let login_id = JSON.parse(localStorage.getItem("logIn"));
+      console.log(login_id);
+
+      const get_obj = id.find((e) => e.Email === login_id);
+      console.log(get_obj);
+
+      const word = get_obj["FullName"];
+      const firstLetter = word.charAt(0);
+      console.log(firstLetter);
+
+      let newimage = document.getElementById("newimg");
+      newimage.innerText = firstLetter;
+
+      function profile() {
+        window.location.href = "/pages/profile.html";
+      }
+      function back() {
+        window.history.back();
+      }
+      function home() {
+        window.location.href = "/index.html";
+      }
+      function sell() {
+        window.location.href = "/pages/10.upload.html";
+      }
+    </script>
+  </body>
+</html>

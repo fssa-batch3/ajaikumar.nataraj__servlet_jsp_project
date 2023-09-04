@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/CSS/8-payment.css" />
+    <title>payment-page</title>
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+    <form id="submit" class="btn" action="detail">
+      <button onclick="bill()">Conform Order</button>
+    </form>
+
+    <!-- <div id="account"></div> -->
+    <div class="full">
+      <form id="form">
+        <label for="card_no">Card No</label> <br />
+        <input
+          type="tel"
+          id="Bank_Card_no"
+          pattern="[0-9]{16}"
+          autocomplete="hgfgtyfygh"
+          maxlength="16"
+          required
+        />
+        <br />
+        <label for="card_name">Card Holder Name</label> <br />
+        <input type="text" id="holder_name" autocomplete="off" /><br />
+
+        <label for="cvv_no">CVV No</label> <br />
+        <input
+          id="cvv_no"
+          type="password"
+          pattern="[0-9]{3}"
+          autocomplete="hgfgtyfygh"
+          maxlength="3"
+          required
+        /><br />
+        <label for="card_ex_date">Card Expiry Month & Year</label> <br />
+        <input
+          type="month"
+          id="card_exp_date"
+          pattern="[a-zA-Z]{1,20}"
+          autocomplete="off"
+        />
+        <br />
+        <button type="submit" value="submit" onclick="bill()">save</button>
+        <script src="../assets/JavaScript/buy_payment.js"></script>
+      </form>
+
+      <main class="qrCode">
+        <div>
+          <img
+            src="../assets/image/own qr code.jpg"
+            alt="paypal"
+            width="250px"
+          />
+          <!-- <img
+            src="../assets/image/own qr code 1.jpg"
+            alt="visa"
+            width="250px"
+          /> -->
+          <br />
+          <!-- <label for="transactionId">Enter Your Transaction Id here</label>
+          <input type="text" /> -->
+        </div>
+        <p>Or</p>
+
+        <div>
+          <!-- <input type="checkbox" value="Cash on Delivery" />Cash on Delivery -->
+          <label for="upiId">Upi Id</label> <br />
+          <input type="text" placeholder="Enter your UPI Id here" />
+        </div>
+      </main>
+    </div>
+    <footer>
+      <!-- <img
+        src="../assets/image/promo_code.png"
+        alt="coupon code"
+        width="50px"
+      />
+      <p>Do you have Coupon Code?</p>
+      <input type="text" /> -->
+      <img
+        src="../assets/image/visa.png"
+        alt="visa"
+        width="90px"
+        height="70px"
+      />
+      <img
+        src="../assets/image/Mastercard-logo.png"
+        alt="Mastercard-logo"
+        width="90px"
+        height="70px"
+      />
+      <img
+        src="../assets/image/maestro-logo.png"
+        alt="maestro"
+        width="90px"
+        height="70px"
+      />
+      <img
+        src="../assets/image/paypal-logo.png"
+        alt="paypal-logo"
+        width="90px"
+        height="70px"
+      />
+    </footer>
+
+    <script>
+      // set delivery date
+      const presentDate = new Date();
+      const year = presentDate.getFullYear();
+      let month = presentDate.getMonth() + 1;
+      let day = presentDate.getDate();
+
+      if (day <= 28) {
+        day = day + 2;
+      }
+
+      if (day > 28) {
+        day = 33 - day;
+        month = month + 1;
+      }
+
+      // // add leading zero if month or day is a single digit
+      if (month < 10) {
+        month = "0" + month;
+      }
+
+      if (day < 10) {
+        day = "0" + day;
+      }
+
+      const currentDate = `${year}-${month}-${day}`;
+
+      console.log(currentDate);
+
+      // code for place the order and add to the another local storage for admin
+      document
+        .getElementById("submit")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          try {
+            let Data = JSON.parse(localStorage.getItem("added_list"));
+            let newData = JSON.parse(localStorage.getItem("Ordered_list"));
+            let orderedData = [];
+            let billId = Date.now();
+            let buyer_id = get_obj["id"];
+            let Delivery_date = currentDate;
+
+            let order = {
+              products: Data,
+              billId: billId,
+              buyer_id,
+              Delivery_date,
+            };
+
+            orderedData.push(order);
+
+            console.log(orderedData);
+
+            // console.log(order);
+            if (newData != null) {
+              orderedData = JSON.parse(localStorage.getItem("Ordered_list"));
+
+              orderedData.push(order);
+
+              localStorage.setItem("Ordered_list", JSON.stringify(orderedData));
+            } else {
+              let orderedData = [];
+
+              let order = {
+                products: Data,
+                billId: billId,
+                buyer_id,
+                Delivery_date,
+              };
+
+              orderedData.push(order);
+              localStorage.setItem("Ordered_list", JSON.stringify(orderedData));
+            }
+
+            localStorage.removeItem("added_list");
+            // window.location.href = "/pages/5a-fruits.html";
+          } catch (error) {
+            console.error(error);
+          }
+        });
+      function home() {
+        window.location.href = "/index.html";
+      }
+    </script>
+  </body>
+</html>

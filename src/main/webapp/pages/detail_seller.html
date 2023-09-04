@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/5a-fruits.css" />
+    <!-- <link rel="stylesheet" href="../assets/CSS/detail.css" /> -->
+  </head>
+  <body>
+    <header class="header">
+      <button>
+        <img
+          src="../assets/image/arrowback.png"
+          alt="arrow-back"
+          width="50px"
+          onclick="back()"
+        />
+      </button>
+
+      <h2>Seller Details</h2>
+      <div class="logo">
+        <img src="../assets/image/logo.png" alt="logo" width="110px" />
+      </div>
+    </header>
+    <script>
+      let url = window.location.search; // ?name=Fruit[i]
+      console.log(url);
+      let urlParams = new URLSearchParams(url); // converting string into key value pair
+      let seller_id = urlParams.get("seller_id"); // return value of the "Name" key
+      console.log(seller_id);
+
+      let user_info = JSON.parse(localStorage.getItem("user_info"));
+      console.log(user_info);
+
+      const get_obj = user_info.find((e) => e.id == seller_id);
+      console.log(get_obj);
+
+      // create card
+      let div_card = document.createElement("div");
+      div_card.setAttribute("id", "form");
+      div_card.setAttribute("class", "card");
+
+      let detail = document.createElement("div");
+      detail.setAttribute("class", "detail");
+      div_card.append(detail);
+
+      let name = document.createElement("p");
+      name.innerText = "Name :" + get_obj["FullName"];
+      detail.append(name);
+
+      let email = document.createElement("p");
+      email.innerText = "Email :" + get_obj["Email"];
+      detail.append(email);
+
+      let type = document.createElement("p");
+      type.innerText = "Phone_number :" + get_obj["Phone_number"];
+      detail.append(type);
+
+      let place = document.createElement("p");
+      place.innerText = "Place :" + get_obj["Home_Address"];
+      detail.append(place);
+
+      let userId = document.createElement("p");
+      userId.innerText = "User Id : " + get_obj["id"];
+      detail.append(userId);
+
+      document.querySelector("body").append(div_card);
+
+      function back() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>

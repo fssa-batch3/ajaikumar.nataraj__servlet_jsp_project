@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/history.css" />
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+
+    <main class="card_main">
+      <!-- <section class="card_div">
+        <input type="image" />
+        <input type="text" />
+        <input type="number" />
+        <input type="number" />
+      </section> -->
+    </main>
+
+    <footer>
+      <button onclick="bill()">Go to Bill Page</button>
+    </footer>
+
+    <script>
+      function back() {
+        window.history.back();
+      }
+      function home() {
+        window.location.href = "/index.html";
+      }
+    </script>
+    <script src="../assets/JavaScript/seller_place_order.js"></script>
+  </body>
+</html>

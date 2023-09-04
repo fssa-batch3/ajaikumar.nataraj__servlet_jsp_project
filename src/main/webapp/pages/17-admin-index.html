@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/17-admin-index.css" />
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p id="newimg"></p>
+      </div>
+    </header>
+
+    <div class="side-bar">
+      <h3>Members' List</h3>
+      <p onclick="customer()">Mr. Buyer</p>
+      <!-- <p>Hotel Customers</p> -->
+      <p onclick="seller()">Mr. Vendors</p>
+    </div>
+    <div class="btn">
+      <button onclick="new_order()">New Order</button>
+
+      <button onclick="new_upload()" class="nu">New Upload</button>
+
+      <div class="btn-1">
+        <button class="no">Completed Order</button>
+        <div class="no-dw">
+          <a onclick="delievered_orders()"> Delivered Orders</a>
+          <a onclick="picked_up_orders()"> Picked Up Orders</a>
+        </div>
+      </div>
+      <div class="btn-1">
+        <button class="no">Order Inprogress</button>
+        <div class="no-dw">
+          <a onclick="deliever_orders()"> Deliver Orders</a>
+          <a onclick="pickup_orders()"> Pick Up Orders</a>
+        </div>
+      </div>
+      <!-- <a href="../pages/24-inprogress-orders.html">
+        <button class="oi">Order Inprogress</button></a> -->
+    </div>
+
+    <script src="../assets/JavaScript/admin_index.js"></script>
+  </body>
+</html>

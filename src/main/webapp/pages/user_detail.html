@@ -1,0 +1,103 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bio Data</title>
+    <link rel="stylesheet" href="../assets/CSS/profile.css" />
+  </head>
+  <!-- This is bio  -->
+
+  <body>
+    <main>
+      <img alt="image" src="../assets/image/avatar.png" />
+
+      <div class="button">
+        <form id="form" onsubmit="userDetail() ">
+          <input type="text" id="First_Name" placeholder="First Name" required/><br />
+          <input type="text" id="Last_Name" placeholder="Last Name" required/><br />
+          <input
+            type="number"
+            id="Phone_number"
+            placeholder="Phone Number"
+            required
+          /><br />
+          <input type="email" id="email" placeholder="Email@gmail.com" required/><br />
+          <input type="date" id="DOB" placeholder="Date Of birth" required/><br />
+          <input
+            type="text"
+            id="Home_Address"
+            placeholder="Home Address"
+            required
+          /><br />
+          <input
+            type="text"
+            id="Land_Address"
+            placeholder="Land Address"
+            required
+          /><br />
+          <input type="checkbox" id="gender" value="Male" /> Male
+          <input type="checkbox" id="gender" value="Female" /> Female <br />
+          <input type="checkbox" id="farmer" value="Tenant" /> Tenant Farmer
+          <input type="checkbox" id="farmer" value="Owner" /> Land Holder <br />
+          <input
+            type="number"
+            id="Aadhar_number"
+            placeholder="Aadhar_number"
+            required
+          /><br />
+        </div>
+    </main>
+    <button>Submit</button>
+    <button type="reset"><a href="3.home.html">Cancel </a></button>
+</form>
+    <script>
+      let register = JSON.parse(localStorage.getItem("BIO"));
+      // console.log(register)
+      //   let email = register[register.length - 1]["email"];
+      //   console.log(email);
+
+      let bioFn = document.getElementById("form");
+      function userDetail() {
+          event.preventDefault();
+          if (localStorage.getItem("BIO") === null) {
+              let arr = [];
+            // console.log("hi");
+            localStorage.setItem("BIO",JSON.stringify(arr)) 
+        //   JSON.parse(localStorage.getItem("BIO"));
+        }
+
+        let FN = document.getElementById("First_Name").value;
+        let LN = document.getElementById("Last_Name").value;
+        let PN = document.getElementById("Phone_number").value;
+        let email = document.getElementById("email").value;
+        let DOM = document.getElementById("DOB").value;
+        let HomeAddress = document.getElementById("Home_Address").value;
+        let LandAddress = document.getElementById("Land_Address").value;
+        let Gender = document.getElementById("gender").value;
+        let farmer = document.getElementById("farmer").value;
+        let Aadhar_number = document.getElementById("Aadhar_number").value;
+
+        let bio = {
+          FN,
+          LN,
+          PN,
+          email,
+          DOM,
+          HomeAddress,
+          LandAddress,
+          Gender,
+          farmer,
+          Aadhar_number,
+        };
+
+        arr = JSON.parse(localStorage.getItem("BIO"));
+        arr.push(bio);
+
+        let str = JSON.stringify(arr);
+        localStorage.setItem("BIO", str);
+        window.location.href = "/pages/profile.html";
+      }
+    </script>
+  </body>
+</html>

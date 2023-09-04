@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/CSS/new_seller.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <div class="logo">
+        <img src="../assets/image/logo.png" alt="logo" width="90px" />
+      </div>
+      <div class="topic">
+        <!-- <input disabled class="pro" type="text" id="profile" /> -->
+        <p onclick="home()">Home</p>
+        <p onclick="about()">About Us</p>
+        <p onclick="service()">Services</p>
+      </div>
+      <div class="name">
+        <p onclick="pro()" id="newimg"></p>
+      </div>
+    </header>
+    <button onclick="history()">History</button>
+    <main>
+      <section class="form">
+        <form action="detail" id="form">
+          <div class="list">
+            <nav class="img">
+              <label for="url">Enter your image</label> <br />
+              <input
+                required="required"
+                type="url"
+                id="url"
+                placeholder="Enter Url"
+              />
+            </nav>
+            <nav>
+              <label for="name">Enter Your Product Name</label> <br />
+              <input
+                required="required"
+                type="text"
+                id="product"
+                placeholder="Your Product Name"
+              />
+            </nav>
+            <nav>
+              <label for="description">Enter Product's Description</label>
+              <br />
+              <textarea
+                required="required"
+                pattern="[a-zA-Z]"
+                name="address"
+                id="description"
+                cols="45"
+                rows="5"
+              ></textarea>
+            </nav>
+          </div>
+          <div>
+            <nav>
+              <label for="type">Enter Your Product Type</label> <br />
+              <input
+                required="required"
+                list="Types"
+                name="type"
+                id="type"
+                placeholder="Type"
+                autocomplete="off"
+              />
+              <datalist id="Types">
+                <option value="Fruit"></option>
+                <option value="Vegetable"></option>
+                <option value="Coffee & Tea"></option>
+                <option value="Cereals & Grains"></option>
+              </datalist>
+            </nav>
+
+            <nav>
+              <label for="price">Enter Your Price</label> <br />
+              <input
+                required="required"
+                type="number"
+                id="price"
+                placeholder="Enter Your Price per Kg"
+              />
+            </nav>
+            <nav>
+              <label for="qty">Enter Your Quantity</label> <br />
+              <input
+                required="required"
+                type="number"
+                id="qty"
+                placeholder="Enter Your Product's Quantity"
+              />
+            </nav>
+            <nav>
+              <label for="name">Enter Your Product District</label> <br />
+              <input
+                required="required"
+                type="text"
+                id="district"
+                placeholder="Your District Name"
+              />
+            </nav>
+            <nav>
+              <label for="name">Enter Your Product State</label> <br />
+              <input
+                required="required"
+                type="text"
+                id="state"
+                placeholder="Your State Name"
+              />
+            </nav>
+          </div>
+          <button type="submit">Add this Product</button>
+        </form>
+      </section>
+    </main>
+
+    <script>
+      let buyer_info = JSON.parse(localStorage.getItem("newSellerInfo"));
+      console.log(buyer_info);
+
+      let login_id = JSON.parse(localStorage.getItem("logIn"));
+      console.log(login_id);
+
+      const get_obj = buyer_info.find((e) => e.Email === login_id);
+      console.log(get_obj);
+
+      const word = get_obj["FullName"];
+      const firstLetter = word.charAt(0);
+      console.log(firstLetter);
+
+      let newimage = document.getElementById("newimg");
+      newimage.innerText = firstLetter;
+
+      const profile = get_obj["FullName"];
+      const name = document.getElementById("profile");
+      name.value = profile;
+      console.log(name);
+
+      // get currentdate
+      const today = new Date();
+      const year = today.getFullYear();
+      let month = today.getMonth() + 1;
+      let day = today.getDate();
+
+      // add leading zero if month or day is a single digit
+      if (month < 10) {
+        month = "0" + month;
+      }
+
+      if (day < 10) {
+        day = "0" + day;
+      }
+
+      const currentDate = `${day}-${month}-${year}`;
+
+      console.log(currentDate);
+      uploadForm = document.getElementById("form");
+
+      uploadForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        document.createElement("newSellerProducts");
+        let array = [];
+        if (localStorage.getItem("newSellerProducts") != null) {
+          array = JSON.parse(localStorage.getItem("newSellerProducts"));
+        }
+
+        // let match = false;
+
+        // to set the details by object in an array
+        const Url = document.getElementById("url").value;
+        const Name = document.getElementById("product").value;
+        const Type = document.getElementById("type").value;
+        const Price = document.getElementById("price").value;
+        const Qty = document.getElementById("qty").value;
+        const District = document.getElementById("district").value;
+        const State = document.getElementById("state").value;
+        const Description = document.getElementById("description").value;
+        let ProductId = Date.now();
+        let userId = get_obj["id"];
+        let UploadDate = currentDate;
+
+        let inputDetails = {
+          Url,
+          Name,
+          Type,
+          Price,
+          Qty,
+          District,
+          State,
+          Description,
+          ProductId,
+          userId,
+          UploadDate,
+        };
+        console.log(inputDetails);
+
+        array.push(inputDetails);
+        const str = JSON.stringify(array);
+        localStorage.setItem("newSellerProducts", str);
+        console.log(str);
+        document.getElementById("form").reset();
+      });
+
+      function history() {
+        window.location.href = "/pages/new_seller_history.html";
+      }
+      function pro() {
+        window.location.href = "/pages/profile.html";
+      }
+      function home() {
+        window.location.href = "/pages/new_index.html";
+      }
+      function about() {
+        window.location.href = "/pages/Aboutus.html";
+      }
+    </script>
+  </body>
+</html>

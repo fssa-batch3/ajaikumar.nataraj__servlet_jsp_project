@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/history.css" />
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+    <button class="placeOrderBtn" type="change" id="change" onclick="order()">
+      Payment Page
+    </button>
+
+    <div class="details">
+      <h1>Enter your delivery details:</h1>
+      <form class="detail" id="form">
+        <nav>
+          <label>Name</label><br />
+          <input type="text" id="First_name" placeholder="Name" />
+        </nav>
+        <nav>
+          <label>Phone Number</label> <br />
+          <input
+            type="tel"
+            id="Phone_Number"
+            maxlength="10"
+            placeholder="Phone number"
+          />
+        </nav>
+        <nav>
+          <label>Delivery Address</label><br />
+          <input
+            required
+            type="text"
+            id="Home_Address"
+            placeholder="Address"
+            style="width: 400px"
+          />
+        </nav>
+        <nav>
+          <label>Pin Code</label> <br />
+          <input
+            id="pincode"
+            type="tel"
+            pattern="[0-9]{6}"
+            maxlength="6"
+            minlength="6"
+          />
+        </nav>
+        <!-- <input type="date" id="Pickup_date" placeholder="Pickup date" /> -->
+      </form>
+    </div>
+    <main class="card_main">
+      <!-- <section class="card_div">
+        <input type="image" />
+        <input type="text" />
+        <input type="number" />
+        <input type="number" />
+      </section> -->
+    </main>
+
+    <script src="../assets/JavaScript/total_amount.js"></script>
+
+    <div class="amount_total">
+      <p>Total Amount :</p>
+      <p id="operoation"></p>
+    </div>
+
+    <script src="../assets/JavaScript/buyer_total.js"></script>
+  </body>
+</html>

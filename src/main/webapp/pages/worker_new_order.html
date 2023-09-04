@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/20-customer-order-list.css" />
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+
+    <nav>
+      <input type="search" id="searchbar" placeholder="Search here..." />
+    </nav>
+    <!-- <table aria-describedby="order" class="table"></table> -->
+    <hr />
+    <!-- <footer class="f-btn">
+      <a href="../pages/19a-store.html"><button>Go to Store</button></a>
+    </footer> -->
+
+    <!-- <script>
+      let Ordered_list = JSON.parse(localStorage.getItem("Ordered_list"));
+      let table_card = document.createElement("table");
+
+      let th_tr1 = document.createElement("tr");
+      table_card.append(th_tr1);
+
+      let th_tr = document.createElement("th");
+      th_tr.innerText = "Bill ID";
+      th_tr1.append(th_tr);
+
+      let th1_tr = document.createElement("th");
+      th1_tr.innerText = "Buyer ID";
+      th_tr1.append(th1_tr);
+
+      let th10_tr = document.createElement("th");
+      th10_tr.innerText = "Seller ID";
+      th_tr1.append(th10_tr);
+
+      let th2_tr = document.createElement("th");
+      th2_tr.innerText = "Products";
+      th_tr1.append(th2_tr);
+
+      let th3_tr = document.createElement("th");
+      th3_tr.innerText = "Quantity";
+      th_tr1.append(th3_tr);
+
+      let th4_tr = document.createElement("th");
+      th4_tr.innerText = "Price";
+      th_tr1.append(th4_tr);
+
+      let th5_tr = document.createElement("th");
+      th5_tr.innerText = "Delivery Date";
+      th_tr1.append(th5_tr);
+      for (let i = 0; i < Ordered_list.length; i++) {
+        let data = Ordered_list[i]["products"];
+        console.log(data);
+        for (let j = 0; j < data.length; j++) {
+          let td_tr2 = document.createElement("tr");
+          table_card.append(td_tr2);
+
+          let td_tr = document.createElement("td");
+          td_tr.innerText = Ordered_list[i]["billId"];
+          td_tr2.append(td_tr);
+
+          let td1_tr = document.createElement("td");
+          td1_tr.innerText = Ordered_list[i]["worker_id"];
+          td_tr2.append(td1_tr);
+
+          let td10_tr = document.createElement("td");
+          td10_tr.innerText = data[i]["userId"];
+          td_tr2.append(td10_tr);
+
+          let td2_tr = document.createElement("td");
+          td2_tr.innerText = data[j]["Name"];
+          td_tr2.append(td2_tr);
+
+          console.log(td2_tr);
+
+          let td3_tr = document.createElement("td");
+          td3_tr.innerText = data[j]["bQty"] + " kg";
+          td_tr2.append(td3_tr);
+
+          let td4_tr = document.createElement("td");
+          td4_tr.innerText = "Rs." + data[j]["Price"];
+          td_tr2.append(td4_tr);
+
+          let td5_tr = document.createElement("td");
+          td5_tr.innerText = data[j]["Pickup_date"];
+          td_tr2.append(td5_tr);
+
+          document.querySelector(".table").append(table_card);
+
+          let row = document.createElement("hr");
+          td_tr2.append(row);
+        }
+      }
+    </script> -->
+    <!-- <script>
+      let worker_info = JSON.parse(localStorage.getItem("worker_info"));
+      console.log(worker_info);
+
+      let workerLoginId = JSON.parse(localStorage.getItem("worker_login"));
+      console.log(workerLoginId);
+
+      const findObj = worker_info.find((e) => e.Email === workerLoginId);
+      console.log(findObj);
+
+      const word = findObj["FullName"];
+      const firstLetter = word.charAt(0);
+      console.log(firstLetter);
+
+      let newimage = document.getElementById("newimg");
+      newimage.innerText = firstLetter;
+    </script> -->
+    <script src="/assets/JavaScript/worker_new_order.js"></script>
+  </body>
+</html>

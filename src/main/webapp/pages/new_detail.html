@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/new_detail.css" />
+  </head>
+  <body>
+    <header class="head">
+      <div class="logo">
+        <img src="../assets/image/logo.png" alt="logo" width="90px" />
+      </div>
+      <div>
+        <input disabled class="pro" type="text" id="profile" />
+      </div>
+      <div class="name">
+        <h4 onclick="pro()" id="newimg"></h4>
+      </div>
+    </header>
+
+    <main>
+      <!-- <section class="full">
+        <section>
+          <div>
+            <img src="../assets/image/apple.jpg" alt="apple" width="500px" />
+          </div>
+          <div>
+            <p>name</p>
+            <p>price</p>
+            <p>Qty</p>
+            <p>description</p>
+          </div>
+        </section>
+        <section>
+          <p>name</p>
+          <p>phone no</p>
+          <p>email id</p>
+          <p>address</p>
+        </section>
+      </section> -->
+    </main>
+
+    <footer></footer>
+
+    <script>
+      // url params for id
+      let url = window.location.search;
+      console.log(url);
+      let urlParams = new URLSearchParams(url);
+      let selected_Id = urlParams.get("ProductId");
+      console.log(selected_Id);
+
+      // get full details about the product
+      // let Data = JSON.parse(localStorage.getItem("newSellerProducts"));
+
+      const Card = JSON.parse(localStorage.getItem("owner_upload_list"));
+
+      console.log(Card);
+
+      for (let i = 0; i < Card.length; i++) {
+        let Data = Card[i]["new_owner_data"];
+        for (let j = 0; j < Data.length; j++) {
+          if (Data[j]["ProductId"] == selected_Id) {
+            product_id = Data[j];
+          }
+        }
+      }
+      console.log(product_id);
+
+      let users_id = product_id["userId"];
+      console.log(users_id);
+
+      // to get seller's details
+      let user_info = JSON.parse(localStorage.getItem("user_info"));
+      console.log(user_info);
+      for (let i = 0; i < user_info.length; i++) {
+        if (user_info[i]["id"] == users_id) {
+          user_id = user_info[i];
+        }
+      }
+      console.log(user_id);
+
+      // show name in the header
+      let buyer_info = JSON.parse(localStorage.getItem("buyer_info"));
+      //   console.log(buyer_info);
+
+      let login_id = JSON.parse(localStorage.getItem("buyer_logIn"));
+      //   console.log(login_id);
+
+      const get_obj = buyer_info.find((e) => e.Email === login_id);
+      //   console.log(get_obj);
+
+      const word = get_obj["FullName"];
+      const firstLetter = word.charAt(0);
+      //   console.log(firstLetter);
+
+      let newimage = document.getElementById("newimg");
+      newimage.innerText = firstLetter;
+
+      const profile = get_obj["FullName"];
+      const name = document.getElementById("profile");
+      name.value = profile;
+      //   console.log(name);
+
+      let full_section = document.createElement("section");
+      full_section.setAttribute("class", "full");
+
+      let product_section = document.createElement("section");
+      full_section.append(product_section);
+
+      let product_img_div = document.createElement("div");
+      product_img_div.setAttribute("class", "full_div");
+      product_section.append(product_img_div);
+
+      let product_img = document.createElement("img");
+      product_img.setAttribute("src", product_id["Url"]);
+      product_img.setAttribute("alt", "product_img");
+      product_img.setAttribute("width", "200px");
+      product_img_div.append(product_img);
+
+      let product_detail_div = document.createElement("div");
+      product_detail_div.setAttribute("class", "full_div");
+      product_section.append(product_detail_div);
+
+      let product_name = document.createElement("p");
+      product_name.innerText = "Name : " + product_id["Name"];
+      product_detail_div.append(product_name);
+
+      let product_price = document.createElement("p");
+      product_price.innerText = "Price :  ₹ " + product_id["Price"] + " / kg";
+      product_detail_div.append(product_price);
+
+      let product_qty = document.createElement("p");
+      product_qty.innerText = "Available Qty : " + product_id["Qty"] + " kg";
+      product_detail_div.append(product_qty);
+
+      let product_description = document.createElement("p");
+      product_description.innerText =
+        "Description : " + product_id["Description"];
+      product_detail_div.append(product_description);
+
+      let buyBtn = document.createElement("button");
+      buyBtn.innerText = "Add to Cart";
+      buyBtn.setAttribute("id", "submit");
+      buyBtn.setAttribute("value", "submit");
+      buyBtn.setAttribute("id", product_id["ProductId"]);
+      buyBtn.setAttribute("onclick", "addProduct(this.id)");
+      product_detail_div.append(buyBtn);
+
+      let user_section = document.createElement("section");
+      user_section.setAttribute("class", "full_div");
+      full_section.append(user_section);
+
+      let user_name = document.createElement("p");
+      user_name.innerText = "Name : " + user_id["FullName"];
+      user_section.append(user_name);
+
+      let user_phno = document.createElement("p");
+      user_phno.innerText = "Ph. no : " + user_id["Phone_number"];
+      user_section.append(user_phno);
+
+      let user_emailid = document.createElement("p");
+      user_emailid.innerText = "Email : " + user_id["Email"];
+      user_section.append(user_emailid);
+
+      let user_address = document.createElement("p");
+      user_address.innerText = "Address : " + user_id["Home_Address"];
+      user_section.append(user_address);
+
+      let product_place = document.createElement("p");
+      product_place.innerText =
+        "Place : " + product_id["City"] + "," + product_id["District"];
+      user_section.append(product_place);
+
+      function addProduct(ProductId) {
+        event.preventDefault();
+        // console.log(ProductId);
+
+        try {
+          let addData = JSON.parse(localStorage.getItem("added_list"));
+          // console.log(addData);
+
+          // console.log(Card);
+
+          let currentProduct;
+
+          for (let i = 0; i < Card.length; i++) {
+            for (let j = 0; j < Card[i]["new_owner_data"].length; j++) {
+              if (Card[i]["new_owner_data"][j]["ProductId"] == ProductId) {
+                currentProduct = Card[i]["new_owner_data"][j];
+              }
+            }
+          }
+
+          // console.log(currentProduct);
+
+          //  code for set the automatic qty for user as 1kg and it stores in local storage
+          let arr = [];
+          // console.log(arr);
+          currentProduct["bQty"] = "1";
+          arr.push(currentProduct["bQty"]);
+
+          // msg for confirm to add to cart
+          let msg = confirm(
+            "Are you sure you want to add this product to your cart"
+          );
+          if (msg !== true) {
+            return;
+          } else {
+            if (addData === null) {
+              let array = [];
+              array.push(currentProduct);
+              localStorage.setItem("added_list", JSON.stringify(array));
+            } else {
+              addData.push(currentProduct);
+              localStorage.setItem("added_list", JSON.stringify(addData));
+            }
+          }
+        } catch (error) {
+          // console.error(error);
+        }
+      }
+
+      document.querySelector("main").append(full_section);
+
+      // let suggest = JSON.parse(localStorage.getItem("newSellerProducts"));
+
+      let relate_products = JSON.parse(
+        localStorage.getItem("owner_upload_list")
+      );
+
+      console.log(relate_products);
+      let count = 0;
+
+      for (let i = 0; i < relate_products.length; i++) {
+        let suggestProducts = relate_products[i]["new_owner_data"];
+        for (let j = 0; j < suggestProducts.length; j++) {
+          let suggestedProducts = relate_products[i]["new_owner_data"][j];
+          console.log(suggestedProducts);
+          console.log(count);
+          if (count >= 5) {
+            break;
+          }
+          let info = document.createElement("a");
+          info.setAttribute("class", "aTag");
+          info.setAttribute(
+            "href",
+            "./new_detail.html?ProductId=" + suggestProducts[j]["ProductId"]
+          );
+
+          let div_card = document.createElement("div");
+          div_card.setAttribute(
+            "class",
+            "card_div" + " " + suggestProducts[j]["Type"]
+          );
+          div_card.setAttribute("type", "button");
+          div_card.setAttribute("id", "form");
+          info.append(div_card);
+
+          let image = document.createElement("img");
+          image.setAttribute("src", suggestProducts[j]["Url"]);
+          image.setAttribute("alt", "image");
+          image.setAttribute("id", "pUrl");
+          image.setAttribute("width", "150px");
+          div_card.append(image);
+
+          let fruit_name = document.createElement("p");
+          fruit_name.innerText = suggestProducts[j]["Name"];
+          fruit_name.setAttribute("id", "pName");
+          fruit_name.setAttribute("disabled", " ");
+          div_card.append(fruit_name);
+          // console.log(fruit_name);
+
+          let rupees = document.createElement("p");
+          rupees.innerText =
+            "Price :" + " ₹ " + suggestProducts[j]["Price"] + " /kg";
+          rupees.setAttribute("id", "pPrice");
+          rupees.setAttribute("type", "text");
+          rupees.setAttribute("disabled", "");
+          div_card.append(rupees);
+
+          // url params code for passing the selected product details
+
+          document.querySelector("footer").append(info);
+          // }
+          count++;
+        }
+      }
+
+      function pro() {
+        window.location.href = "/pages/profile_buy.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/CSS/new_seller.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="head">
+      <div class="logo">
+        <img src="../assets/image/logo.png" alt="logo" width="90px" />
+      </div>
+      <div>
+        <input class="pro" type="text" id="profile" />
+      </div>
+      <div class="name">
+        <p onclick="pro()" id="newimg"></p>
+      </div>
+    </header>
+    <button onclick="back()">Back</button>
+    <main>
+      <section class="form">
+        <form action="detail" id="form">
+          <div class="list">
+            <nav class="img">
+              <label for="url">Change your image</label> <br />
+              <input
+                required="required"
+                type="url"
+                id="url"
+                placeholder="Change Url"
+              />
+            </nav>
+            <nav>
+              <label for="name">Change Your Product Name</label> <br />
+              <input
+                required="required"
+                type="text"
+                id="product"
+                placeholder="Your Product Name"
+              />
+            </nav>
+            <nav>
+              <label for="type">Change Your Product Type</label> <br />
+              <input
+                required="required"
+                list="Types"
+                name="type"
+                id="type"
+                placeholder="Type"
+                autocomplete="off"
+              />
+              <datalist id="Types">
+                <option value="Fruit"></option>
+                <option value="Vegetable"></option>
+                <option value="Coffee & Tea"></option>
+                <option value="Cereals & Grains"></option>
+              </datalist>
+            </nav>
+            <nav>
+              <label for="description">Change Product's Description</label>
+              <br />
+              <textarea
+                required="required"
+                pattern="[a-zA-Z]"
+                name="address"
+                id="description"
+                cols="45"
+                rows="5"
+              ></textarea>
+            </nav>
+          </div>
+          <div>
+            <nav>
+              <label for="price">Your Product's Price</label> <br />
+              <input
+                required="required"
+                type="number"
+                id="price"
+                placeholder="Change Your Price per Kg"
+              />
+            </nav>
+            <!-- <nav>
+              <label for="discountPrice">Enter Your Selling Price</label>
+              <br />
+              <input
+                type="number"
+                id="discountPrice"
+                placeholder="Change Your Discount Price per Kg"
+              />
+            </nav> -->
+            <nav>
+              <label for="qty">Change Your Quantity</label> <br />
+              <input
+                required="required"
+                type="number"
+                id="qty"
+                placeholder="Change Your Product's Quantity"
+              />
+            </nav>
+            <nav>
+              <label for="name">Change Your City</label> <br />
+              <input
+                required="required"
+                type="text"
+                id="city"
+                placeholder="Change Your State Name"
+              />
+            </nav>
+            <nav>
+              <label for="name">Change Your District</label> <br />
+              <input
+                required="required"
+                type="text"
+                id="district"
+                placeholder="Change Your District Name"
+              />
+            </nav>
+            <!-- <nav>
+              <label for="name">Change Your State</label> <br />
+              <input
+                required="required"
+                type="text"
+                id="state"
+                
+                placeholder="Change Your State Name"
+              />
+            </nav> -->
+          </div>
+          <button type="submit">Edit</button>
+        </form>
+      </section>
+    </main>
+
+    <script>
+      // url params for id
+      let url = window.location.search;
+      console.log(url);
+      let urlParams = new URLSearchParams(url);
+      let selected_Id = urlParams.get("ProductId");
+      console.log(selected_Id);
+
+      // get full details about the product
+      let Data = JSON.parse(localStorage.getItem("owner_upload_list"));
+      console.log(Data);
+
+      for (let i = 0; i < Data.length; i++) {
+        let data = Data[i]["new_owner_data"];
+        for (let j = 0; j < data.length; j++) {
+          if (data[j]["ProductId"] == selected_Id) {
+            product_id = data[j];
+          }
+        }
+      }
+      console.log(product_id);
+
+      // get detail for header name
+      let productDetail = JSON.parse(localStorage.getItem("user_info"));
+      console.log(productDetail);
+
+      let login_id = JSON.parse(localStorage.getItem("logIn"));
+      console.log(login_id);
+
+      const get_obj = productDetail.find((e) => e.Email === login_id);
+      console.log(get_obj);
+
+      const word = get_obj["FullName"];
+      const firstLetter = word.charAt(0);
+      console.log(firstLetter);
+
+      let newimage = document.getElementById("newimg");
+      newimage.innerText = firstLetter;
+
+      const profile = get_obj["FullName"];
+      const name = document.getElementById("profile");
+      name.value = profile;
+      console.log(name);
+
+      // to set the details by object in an array
+      const img = document.getElementById("url");
+      const productName = document.getElementById("product");
+      const productType = document.getElementById("type");
+      const productPrice = document.getElementById("price");
+      const productQty = document.getElementById("qty");
+      const productDistrict = document.getElementById("district");
+      const productState = document.getElementById("city");
+      const productDescription = document.getElementById("description");
+
+      img.value = product_id["Url"];
+      productName.value = product_id["Name"];
+      productType.value = product_id["Type"];
+      productPrice.value = product_id["Price"];
+      productQty.value = product_id["Qty"];
+      productDistrict.value = product_id["District"] || "";
+      productState.value = product_id["City"] || "";
+      productDescription.value = product_id["Description"];
+
+      const form = document.getElementById("form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        let Url = document.getElementById("url").value;
+        let Name = document.getElementById("product").value;
+        let Type = document.getElementById("type").value;
+        let Price = document.getElementById("price").value;
+        let Qty = document.getElementById("qty").value;
+        let District = document.getElementById("district").value;
+        let City = document.getElementById("city").value;
+        let Description = document.getElementById("description").value;
+
+        let inputDetails = {
+          Url,
+          Name,
+          Type,
+          Price,
+          Qty,
+          District,
+          City,
+          Description,
+        };
+        console.log(inputDetails);
+
+        let combineData = Object.assign(product_id, inputDetails);
+
+        let findIndex = Data.indexOf(product_id);
+        Data[findIndex] = combineData;
+        localStorage.setItem("owner_upload_list", JSON.stringify(Data));
+
+        // window.history.back();
+      });
+
+      function back() {
+        window.history.back();
+      }
+      function pro() {
+        window.location.href = "/pages/profile.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../assets/CSS/4-index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="head">
+      <div class="logo">
+        <img src="../assets/image/logo.png" alt="logo" width="80px" />
+      </div>
+      <div>
+        <input disabled class="pro" type="text" id="profile" />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+
+    <button onclick="history()">History</button>
+
+    <main class="card_main">
+      <div class="card_div">
+        <img src="../assets/image/card_fruits.jpg" alt="Fruits" width="275px" />
+        <button onclick="fruit()">Fruits</button>
+      </div>
+      <div class="card_div">
+        <img
+          src="../assets/image/card_vegetables.jpg"
+          alt="vegetable"
+          width="275px"
+        />
+        <button onclick="veg()">Vegetables</button>
+      </div>
+      <div class="card_div">
+        <img src="../assets/image/card_grain.jpg" alt="grain" width="275px" />
+        <button onclick="grain()">Cereals and Grains</button>
+      </div>
+      <div class="card_div">
+        <img src="../assets/image/card_tea.jpg" alt="tea" width="275px" />
+        <button onclick="coffee()">Tea and Coffee</button>
+      </div>
+    </main>
+
+    <script src="../assets/JavaScript/buyer_index.js"></script>
+  </body>
+</html>

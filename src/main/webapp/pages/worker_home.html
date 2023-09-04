@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/17-admin-index.css" />
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+    <div class="side-bar">
+      <h3>Members' List</h3>
+      <p onclick="customer()">Mr. Buyer</p>
+      <!-- <p>Hotel Customers</p> -->
+      <p onclick="seller()">Mr. Vendors</p>
+    </div>
+    <div class="btn">
+      <button onclick="new_order()">View New Order</button>
+      <button onclick="new_upload()" class="nu">View New Upload</button>
+
+      <div class="btn-1">
+        <button class="no">View Order Inprogress</button>
+        <div class="no-dw">
+          <a onclick="deliver_order_inprogress()"> Deliver Orders</a>
+          <a onclick="pickup_order_inprogress()"> Pick Up Orders</a>
+        </div>
+      </div>
+      <!-- <a href="../pages/24-inprogress-orders.html">
+        <button class="oi">Order Inprogress</button></a> -->
+    </div>
+
+    <script>
+      let buyer_info = JSON.parse(localStorage.getItem("worker_info"));
+      console.log(buyer_info);
+
+      let login_id = JSON.parse(localStorage.getItem("worker_login"));
+      console.log(login_id);
+
+      const get_obj = buyer_info.find((e) => e.Email === login_id);
+      console.log(get_obj);
+
+      const word = get_obj["FullName"];
+      const firstLetter = word.charAt(0);
+      console.log(firstLetter);
+
+      let newimage = document.getElementById("newimg");
+      newimage.innerText = firstLetter;
+    </script>
+    <script src="/assets/JavaScript/worker_home.js"></script>
+  </body>
+</html>
