@@ -227,8 +227,8 @@ input {
 	<a href="../assets/image/apple.jpg"></a>
 	<section class="sec"></section>
 
-	<form method="post" action="RegisterProductServlet" class="full-card"
-		id="form">
+	<form action="RegisterProductServlet" class="full-card"
+		id="form" method="post" >
 		<h3>Upload your products</h3>
 		<div class="full_list">
 			<div class="list">
@@ -290,7 +290,7 @@ input {
 		</div>
 
 		<div class="btn-card">
-			<button class="btn" id="add-btn">Add</button>
+			<button class="btn" id="add-btn" type="submit">Add</button>
 		</div>
 	</form>
 

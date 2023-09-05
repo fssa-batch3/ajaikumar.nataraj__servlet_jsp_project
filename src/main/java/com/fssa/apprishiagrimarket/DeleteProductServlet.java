@@ -2,8 +2,6 @@ package com.fssa.apprishiagrimarket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fssa.rishi.utils.ConnectionUtil;
+import com.fssa.rishi.model.ProductDetails;
+import com.fssa.rishi.services.ProductService;
+import com.fssa.rishi.services.exceptions.ServiceException;
 
 @WebServlet("/DeleteProductServlet")
 public class DeleteProductServlet extends HttpServlet {
@@ -26,26 +26,19 @@ public class DeleteProductServlet extends HttpServlet {
 
 		long product_id = Long.parseLong(productId);
 
-		String updateQuery = "UPDATE product_details SET is_deleted = true WHERE id = ?";
 
 		try {
-			// Get connection
-			Connection connection = ConnectionUtil.getConnection();
+			ProductDetails user1 = new ProductDetails(product_id);
 
-			// Prepare SQL statement
-			PreparedStatement statement = connection.prepareStatement(updateQuery);
-			statement.setLong(1, product_id);
+			ProductService productService = new ProductService();
 
-			// Execute the query
-			int rows = statement.executeUpdate();
+			try {
+				productService.deleteProduct(user1);
+				response.sendRedirect("GetAllOwnProductsServlet");
+			} catch (ServiceException e) {
+				e.printStackTrace(); 
+			}
 
-			statement.close();
-			connection.close();
-
-			// Return successful or not
-			response.sendRedirect("GetAllOwnProductsServlet");
-
-			return;
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.println("Error: " + e.getMessage());

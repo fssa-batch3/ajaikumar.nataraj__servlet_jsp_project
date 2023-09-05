@@ -2,9 +2,6 @@ package com.fssa.apprishiagrimarket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fssa.rishi.model.ProductDetails;
 import com.fssa.rishi.services.ProductService;
-import com.fssa.rishi.utils.ConnectionUtil;
+import com.fssa.rishi.services.exceptions.ServiceException;
 
 /**
  * Servlet implementation class RegisterProductUpdateAndDelete
@@ -44,29 +41,12 @@ public class RegisterProductUpdateServlet extends HttpServlet {
 		ProductService productService = new ProductService();
 
 		try {
-		    Connection connection = ConnectionUtil.getConnection();
+			productService.updateProduct(product);
+			response.sendRedirect("GetAllOwnProductsServlet");
 
-		    String updateQuery = "UPDATE product_details SET name = ?, price = ?, quantity = ?, description = ? WHERE id = ?";
-		    PreparedStatement statement = connection.prepareStatement(updateQuery);
-		    statement.setLong(1, id);
-		    statement.setString(2, name);
-		    statement.setInt(3, price);
-		    statement.setInt(4, qty);
-		    statement.setString(5, description);
-
-		    // Execute the query
-		    int rows = statement.executeUpdate();
-
-		    statement.close();
-		    connection.close();
-
-		    response.sendRedirect("GetAllOwnProductsServlet");
-		    return;
-		} catch (SQLException e) {
-		    e.printStackTrace();
-		    // Handle database errors
+		} catch (ServiceException e) {
+			e.printStackTrace();
 		}
-
 
 	}
 

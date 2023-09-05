@@ -57,9 +57,9 @@ button {
 	</a>
 
 	<div class="product-cards" id="productContainer">
-		<c:forEach var="product" items="${OWN_PRODUCTS_LIST}">
+		<c:forEach var="product" items="${products}">
 
-			<form method="post" class="product-card">
+			<div class="product-card">
 				<input type="text" value="${product.name}" /> <input type="number"
 					value="${product.price}" /> <input type="number"
 					value="${product.quantity}" />
@@ -69,7 +69,7 @@ button {
 					<button>Update</button>
 				</a> <a href="DeleteProductServlet?id=${product.id}"><button>Delete</button></a>
 
-			</form>
+			</div>
 		</c:forEach>
 	</div>
 
