@@ -1,157 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Website</title>
-<style>
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-	background-color: #f4f4f4;
-}
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
 
-header {
-	background-color: white;
-	color: #fff;
-	box-shadow: 0px 0px 10px rgb(149, 234, 120);
-	text-align: center;
-	padding: 1rem;
-	display: flex;
-	justify-content: space-between;
-}
-
-h1 {
-	color: green;
-}
-
-.logo {
-	max-width: 200px;
-	display: block;
-	margin: 0 auto;
-}
-
-.buttons {
-	text-align: center;
-	margin-top: 1rem;
-}
-
-.btn {
-	display: inline-block;
-	padding: 10px 20px;
-	background-color: green;
-	color: #fff;
-	text-decoration: none;
-	border: none;
-	cursor: pointer;
-	margin: 0 10px;
-}
-
-.btn:hover {
-	color: green;
-	background-color: #fff;
-	box-shadow: 0px 0px 10px rgb(149, 234, 120);
-	border-radius: 2px;
-}
-
-.content {
-	text-align: center;
-	padding: 2rem;
-	display: flex;
-	justify-content: space-between;
-}
-
-.content div {
-	width: 45%;
-	color: green;
-    font-size: 19px;
-}
-
-.content img {
-	max-width: 100%;
-	margin-bottom: 1rem;
-}
-footer {
-    background-color: green;
-    color: #fff;
-    position: fixed;
-    top: 810px;
-    width: 100%;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.footer-content p {
-    font-size: 14px;
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links li {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-.footer-links a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}
-
-</style>
+<link rel="stylesheet" href="./assets/CSS/index-1.css" />
+<link rel="stylesheet" href="./assets/CSS/head.css" />
 </head>
 <body>
 	<header>
-		<img src="./images/logo.png" alt="Image" width=70px>
-		<h1>Welcome !....</h1>
-		<div class="buttons">
-			<a class="btn" href="register.html">Sign Up</a>
-			<a class="btn"
-				href="login.html">Login</a>
+		<div>
+			<img src="./assets/image/RISHIMARKET (1).png" alt="logo" width="50%" />
+		</div>
+		<div class="head">
+			<p>Home</p>
+			<p onclick="about()">About us</p>
+			<div class="dropdown">
+				<p class="dropbtn">Register</p>
+				<div class="dropdown-content">
+					<a onclick="buy_sign()">as Buyer</a> <a onclick="sell_sign()">as
+						Seller</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<p class="dropbtn">Log in</p>
+				<div class="dropdown-content">
+					<a onclick="buy_login()">as Buyer</a> <a onclick="sell_login()">as
+						Seller</a>
+				</div>
+			</div>
+			<!-- <p onclick="customer()">Log In</p> -->
+		</div>
+		<div>
+			<img src="./assets/image/logo.png" alt="profile" width="100px" />
 		</div>
 	</header>
-	<div class="content">
-		<div>
-			<img src="./images/img1.jpg" alt="Image" width=750px>
-			<p>Farming, an essential pillar of global sustenance, encompasses
-				the cultivation of crops and the rearing of livestock to meet
-				humanity's ever-growing demand for food and resources. Rooted in
-				ancient practices and now fueled by technological advancements,
-				farming has evolved into a multifaceted endeavor.</p>
-		</div>
-		<div>
-			<img src="./images/img2.jpg" alt="Image" width=500px>
-			<p>It involves a delicate balance between nature and human
-				intervention, combining knowledge of soil health, weather patterns,
-				and crop cycles. Farmers diligently prepare and nurture the land,
-				utilizing innovative techniques to optimize yields while considering
-				the environment's well-being. From small-scale, sustainable
-				operations to large agribusinesses, farming remains a vital
-				contributor to our interconnected global food web and socioeconomic
-				landscape.</p>
-		</div>
-	</div>
-	<footer>
-        <div class="footer-content">
-            <p>&copy; 2023 RishiAgriMarket. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
+
+	<section class="content_sec">
+		<img src="./assets/image/left.jpg" alt="left" width="500px" />
+		<p class="content_sec_p">
+			If you are busy <br /> Buy products in RISHI
+		</p>
+		<img src="./assets/image/right.png" alt="right" width="570px" />
+	</section>
+
+	<section class="detail_para">
+		<p>Buy and Sell your Agricultural Products online</p>
+	</section>
+
+
+
 </body>
 </html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bill</title>
+    <link rel="stylesheet" href="../assets/CSS/9a-bill.css" />
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+
+    <div class="details">
+      <h3 class="btn">Your Pickup details:</h3>
+      <form class="detail">
+        <nav>
+          <label>Name</label> <br />
+          <input type="text" id="First_name" placeholder="name" disabled />
+        </nav>
+        <nav>
+          <label>Phone Number</label> <br />
+          <input
+            type="number"
+            id="Phone_Number"
+            placeholder="Phone number"
+            maxlength="10"
+            minlength="10"
+            disabled
+          />
+        </nav>
+        <nav>
+          <label>Address</label> <br />
+          <input
+            type="text"
+            id="Land_Address"
+            placeholder="address"
+            style="width: 500px"
+            required
+            disabled
+          />
+        </nav>
+        <nav>
+          <label>Pincode</label> <br />
+          <input
+            id="pincode"
+            type="tel"
+            pattern="[0-9]{6}"
+            maxlength="6"
+            minlength="6"
+            disabled
+          />
+        </nav>
+        <!-- <input type="date" id="Pickup_date" placeholder="Pickup date" /> -->
+      </form>
+    </div>
+
+    <main class="table">
+      <script src="../assets/JavaScript/seller_bill.js"></script>
+      <div class="amount_total">
+        <table aria-describedby="total_amount">
+          <tr>
+            <th>Total Amount</th>
+          </tr>
+          <tr>
+            <td id="operoation"></td>
+          </tr>
+        </table>
+      </div>
+      <button class="downloadBtn" onclick="download()">
+        Download the Bill
+      </button>
+    </main>
+
+    <footer class="btn" class="footer">
+      <p class="foot-p">
+        <img
+          src="../assets/image/smiling-face.gif"
+          alt="smiling-face"
+          width="50px"
+        />
+        Thanks for Selling your products
+        <img
+          src="../assets/image/sparkling-heart.gif"
+          alt="heart"
+          width="50px"
+        />
+        We always Welcomes you!
+      </p>
+    </footer>
+    <script src="/assets/JavaScript/seller's_bill.js"></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(191, 227, 191);
+}
+.header {
+  display: flex;
+  font-size: 40px;
+  background-color: #2bae66ff;
+  height: 100px;
+  width: 100%;
+  margin-left: -0px;
+  border-radius: 50px;
+}
+.header button {
+  border-radius: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.before-arrow img {
+  border-radius: 50px;
+  margin-left: 20px;
+}
+.hol {
+  text-align: center;
+  width: 1200px;
+  color: white;
+  margin-top: 20px;
+}
+.side-bar {
+  position: fixed;
+  height: 300px;
+  width: 230px;
+  background-color: #2bae66ff;
+  margin-left: -10px;
+  color: white;
+  margin-top: 130px;
+  font-size: 30px;
+  border-radius: 30px;
+}
+.side-bar h3 {
+  margin-left: 10px;
+}
+.table {
+  font-size: 28px;
+  margin-left: 250px;
+  color: #2bae66ff;
+  margin-top: 100px;
+}
+.table button {
+  font-size: 25px;
+  background-color: #2bae66ff;
+  color: white;
+  border-radius: 50px;
+}
+.foot {
+  font-size: 25px;
+  top: 700px;
+  background-color: #2bae66ff;
+  color: white;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  align-content: center;
+  border-radius: 30px;
+}
+.foot h3 {
+  text-align: center;
+}

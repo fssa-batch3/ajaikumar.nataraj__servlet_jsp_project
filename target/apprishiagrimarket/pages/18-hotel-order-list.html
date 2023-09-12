@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/18-hotel-order-list.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="../pages/17-admin-index.html">
+        <button>
+          <img
+            src="../assets/image/arrowback.png"
+            alt="arrow-back"
+            width="50px"
+          /></button
+      ></a>
+      <div class="logo">
+        <img src="../assets/image/logo.png" alt="logo" width="80px" />
+      </div>
+      <div class="hol">Hotel Order's List..</div>
+    </header>
+    <hr />
+
+    <main></main>
+
+    <hr />
+
+    <script>
+      // JSON ..
+      let Detail = [
+        {
+          name: "Marine Hotel",
+          products: {
+            one: "Tomato",
+            two: "Onion",
+          },
+          quantity: "50",
+          date: "15/12/2022",
+          availability: "okay",
+          confirmation: "accept",
+        },
+      ];
+
+      for (let i = 0; i <= Detail.length; i++) {
+        let table = document.createElement("table");
+        table.setAttribute("class", "table");
+        table.setAttribute("id", "detailTable");
+
+        // main.append.table;
+
+        // let tr = document.createElement("tr");
+        // table.append(tr);
+
+        // let th = document.createElement("th");
+        // th.innerText = "Hotel_Name";
+        // th.innerText = "Products";
+        // th.innerText = "Quantity";
+        // th.innerText = "Delivery_Date";
+        // th.innerText = "Availability";
+        // th.innerText = "Confirmation";
+        // tr.append(th);
+
+        // let tr1 = document.createElement("tr");
+        // table.append(tr1);
+
+        // let td = document.createElement("td");
+        // td.innerText = Detail[i]["name"];
+        // td.innerText = Detail[i]["products"];
+        // td.innerText = Detail[i]["quantity"] + "kg";
+        // td.innerText = Detail[i]["date"];
+        // td.innerText = Detail[i]["availability"];
+        // td.innerText = Detail[i]["confirmation"];
+        // tr1.append(td);
+
+        table.innerHTML = `<tr>
+          <th>Hotel Name/ID</th>
+          <th>Products</th>
+          <th>Quantity</th>
+          <th>Delivery Date</th>
+          <th>Availability</th>
+          <th>Accept/Decline</th>
+        </tr>
+        <tr>
+          <td>${Detail[i]["name"]}</td>
+          <td>${Detail[i]["products"]["one"]},${
+          Detail[i]["products"]["two"]
+        }</td>
+          <td>${Detail[i]["quantity"] + "kg"}</td>
+          <td>${Detail[i]["date"]}</td>
+          <td>${Detail[i]["availability"]}</td>
+          <td>${Detail[i]["confirmation"]}</td>
+        </tr>
+        <hr />
+       `;
+
+        document.querySelector("main").append(table);
+      }
+    </script>
+
+    <footer class="f-btn">
+      <a href="../pages/19-store.html"> <button>Go to Store</button></a>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../assets/CSS/profile.css" />
+  </head>
+  <body>
+    <header>
+      <button id="delete">Delete</button>
+      <button id="logout" click="logout" type="button">
+        <span class="glyphicon glyphicon-log-out"></span> Log out
+      </button>
+    </header>
+    <form class="main" id="form">
+      <div class="profile">
+        <nav class="extraDetail">
+          <p>UserId:</p>
+          <p id="userId"></p>
+        </nav>
+        <nav onclick="leaderBoard()" class="extraDetail">
+          <p>Points:</p>
+          <p id="points"></p>
+        </nav>
+        <img src="../assets/image/profile.png" alt="apple" /> <br />
+        <label for="Home_Address">Home Address</label>
+        <input id="Home_Address" class="input" placeholder="Home Address" />
+
+        <label for="gender">Gender</label>
+        <input
+          id="gender"
+          list="genders"
+          name="type"
+          class="input"
+          autocomplete="off"
+          placeholder="Gender (Male / Female)"
+        />
+        <datalist id="genders">
+          <option value="Male"></option>
+          <option value="Female"></option>
+          <option value="Others"></option>
+        </datalist>
+      </div>
+      <div class="form" id="form">
+        <label for="User name">User name</label> <br />
+        <input id="First_name" class="input" placeholder="User Name" />
+        <label for="ph no">Phone Number</label>
+        <input
+          id="Phone_Number"
+          pattern="[6-9]{1}[0-9]{9}"
+          maxlength="10"
+          minlength="10"
+          class="input"
+          placeholder="Phone Number"
+        />
+        <label for="email">Email</label>
+        <input id="Email" class="input" placeholder="Email" disabled />
+        <label for="Date of Birth">Date of Birth</label>
+        <input id="DOB" type="date" class="input" placeholder="Date of Birth" />
+        <label for="pincode">Pincode</label>
+        <input
+          id="pincode"
+          type="tel"
+          class="input"
+          placeholder="Pincode"
+          pattern="[0-9]{6}"
+          maxlength="6"
+          minlength="6"
+        />
+
+        <label for="district">District</label>
+        <input
+          type="text"
+          id="district"
+          list="Districts"
+          placeholder="Select your district"
+          autocomplete="none"
+        />
+        <datalist id="Districts" name="Districts">
+          <option value="">Select District</option>
+          <option value="Ariyalur">Ariyalur</option>
+          <option value="Chengalpattu">Chengalpattu</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Coimbatore">Coimbatore</option>
+          <option value="Cuddalore">Cuddalore</option>
+          <option value="Dharmapuri">Dharmapuri</option>
+          <option value="Dindigul">Dindigul</option>
+          <option value="Erode">Erode</option>
+          <option value="Kallakurichi">Kallakurichi</option>
+          <option value="Kancheepuram">Kancheepuram</option>
+          <option value="Kanyakumari">Kanyakumari</option>
+          <option value="Karur">Karur</option>
+          <option value="Krishnagiri">Krishnagiri</option>
+          <option value="Madurai">Madurai</option>
+          <option value="Nagapattinam">Nagapattinam</option>
+          <option value="Namakkal">Namakkal</option>
+          <option value="Nilgiris">Nilgiris</option>
+          <option value="Perambalur">Perambalur</option>
+          <option value="Pudukkottai">Pudukkottai</option>
+          <option value="Ramanathapuram">Ramanathapuram</option>
+          <option value="Salem">Salem</option>
+          <option value="Sivaganga">Sivaganga</option>
+          <option value="Tenkasi">Tenkasi</option>
+          <option value="Thanjavur">Thanjavur</option>
+          <option value="Theni">Theni</option>
+          <option value="Thiruvallur">Thiruvallur</option>
+          <option value="Thiruvarur">Thiruvarur</option>
+          <option value="Thoothukudi">Thoothukudi</option>
+          <option value="Tiruchirappalli">Tiruchirappalli</option>
+          <option value="Tirunelveli">Tirunelveli</option>
+          <option value="Tirupathur">Tirupathur</option>
+          <option value="Tiruppur">Tiruppur</option>
+          <option value="Tiruvannamalai">Tiruvannamalai</option>
+          <option value="Vellore">Vellore</option>
+          <option value="Viluppuram">Viluppuram</option>
+          <option value="Virudhunagar">Virudhunagar</option>
+        </datalist>
+        <label for="state">State</label>
+        <input
+          id="state"
+          name="type"
+          class="input"
+          list="countries"
+          autocomplete="off"
+          value="TamilNadu"
+        />
+        <datalist id="countries">
+          <option value="TamilNadu">TamilNadu</option>
+        </datalist>
+        <button type="submit">SUBMIT</button>
+      </div>
+    </form>
+    <footer></footer>
+
+    <script src="/assets/JavaScript/buyer_profile_edit.js"></script>
+    <!-- <script>
+      // to set the user's age more than 18
+      const inputDate = document.getElementById("DOB");
+      const today = new Date();
+      today.setFullYear(today.getFullYear() - 18);
+      const minDate = today.toISOString().split("T")[0];
+      inputDate.setAttribute("max", minDate);
+
+      const oneUser = JSON.parse(localStorage.getItem("buyer_logIn"));
+
+      const buyer_info = JSON.parse(localStorage.getItem("newBuyerInfo"));
+      let select_user = buyer_info.find(function (event) {
+        try {
+          let customerEmail = event["Email"];
+          if (buyer_info == customerEmail) {
+            return true;
+          } else if (oneUser == customerEmail) {
+            return true;
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      });
+
+      console.log(select_user);
+      // to get value from registration form
+      const email = document.getElementById("Email");
+      const phNo = document.getElementById("Phone_Number");
+      const userName = document.getElementById("First_name");
+      const password = document.getElementById("password");
+      const DOB = document.getElementById("DOB");
+      const transport_DOB = document.getElementById("DOB");
+      const Home_Address = document.getElementById("Home_Address");
+      const District = document.getElementById("District");
+      const gender = document.getElementById("gender");
+      const state = document.getElementById("state");
+      const country = document.getElementById("country");
+
+      // Compare the values
+
+      email.value = select_user["Email"];
+      phNo.value = select_user["Phone_number"];
+      userName.value = select_user["FullName"];
+      password.value = select_user["Password"];
+      DOB.value = select_user["DOB"];
+      transport_DOB.value = select_user["DOB"];
+      Home_Address.value = select_user["Home_Address"] || "";
+      District.value = select_user["District"] || "";
+      gender.value = select_user["gender"] || "";
+      state.value = select_user["state"] || "";
+      country.value = select_user["country"] || "";
+
+      // to replace the values
+      const form = document.getElementById("form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        try {
+          let FullName = document.getElementById("First_name").value;
+          // let Email = document.getElementById("Email").value;
+          let Phone_number = document.getElementById("Phone_Number").value;
+          let Password = document.getElementById("password").value;
+          let DOB = document.getElementById("DOB").value;
+          let transport_DOB = document.getElementById("DOB").value;
+          let Home_Address = document.getElementById("Home_Address").value;
+          let District = document.getElementById("District").value;
+          let gender = document.getElementById("gender").value;
+          let state = document.getElementById("state").value;
+          let country = document.getElementById("country").value;
+
+          let newData = {
+            FullName,
+            // Email,
+            Phone_number,
+            Password,
+            DOB,
+            transport_DOB,
+            Home_Address,
+            District,
+            gender,
+            state,
+            country,
+          };
+          console.log(newData);
+
+          // assign the value to
+
+          const combineData = Object.assign(select_user, newData);
+          console.log(combineData);
+          alert("successfully changed");
+
+          let findIndex = buyer_info.indexOf(select_user);
+          buyer_info[findIndex] = combineData;
+          localStorage.setItem("newBuyerInfo", JSON.stringify(buyer_info));
+          // window.location.href = "/pages/profile_buy.html";
+          window.history.back();
+        } catch (error) {
+          console.error(error);
+        }
+      });
+
+      // delete option in the page
+
+      let delete_user = document.getElementById("delete");
+      delete_user.addEventListener("click", function (event) {
+        event.preventDefault();
+        try {
+          let indexDel = buyer_info.indexOf(select_user);
+          let msg = confirm("Are you sure you want to delete your account");
+          if (msg !== true) {
+            return;
+          } else {
+            buyer_info.splice(indexDel, 1);
+            console.log(buyer_info);
+            localStorage.setItem("buyer_info", JSON.stringify(buyer_info));
+            window.location.href = "/pages/1.signin.html";
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      });
+      // logout the user
+      let logout_user = document.getElementById("logout");
+      logout_user.addEventListener("click", function (event) {
+        event.preventDefault();
+        try {
+          let indexDel = buyer_info.indexOf(select_user);
+          let msg = confirm(
+            "Are you sure you want to logout from your account"
+          );
+          if (msg !== true) {
+            return;
+          } else {
+            window.location.href = "/pages/2.Login.html";
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      });
+
+      // to show and hide password
+      const togglePassword = document.querySelector("#togglePassword");
+
+      const change = document.querySelector("#password");
+
+      togglePassword.addEventListener("click", () => {
+        const type =
+          change.getAttribute("type") === "password" ? "text" : "password";
+
+        change.setAttribute("type", type);
+
+        this.classList.toggle("bi-eye");
+      });
+    </script> -->
+  </body>
+</html>

@@ -8,7 +8,7 @@
 <style>
 body {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-size: 25px;
+	/* font-size: 25px;
 	/* background-color: rgb(227, 241, 233); */
 	text-align: center;
 	justify-content: center;
@@ -55,8 +55,8 @@ textarea:invalid {
 	box-shadow: 3px 3px 3px 3px rgb(217, 244, 217);
 	width: 950px;
 	height: 600px;
-	margin-top: 50px;
 	border-radius: 6px;
+	position: relative;
 }
 
 .form input {
@@ -108,6 +108,14 @@ form i {
 	margin-left: -30px;
 	cursor: pointer;
 }
+
+.mandatory {
+	font-size: 10px;
+	position: absolute;
+	top: 0;
+	right: 5px;
+	color: red;
+}
 /* Media query*/
 @media screen and (max-width: 600px) {
 	* {
@@ -143,10 +151,6 @@ form i {
 	.log {
 		margin-left: -50px;
 	}
-	p {
-		margin: 0px;
-		margin-left: -170px;
-	}
 	button {
 		font-size: 20px;
 		width: 150px;
@@ -157,7 +161,8 @@ form i {
 <body class="body">
 	<div class="full">
 		<h1>Welcome! to Rishi Organic Market</h1>
-		<form action="RegisterBuyerServlet" method="post" class="form" id="form">
+		<form action="RegisterBuyerServlet" method="post" class="form"
+			id="form">
 			<div>
 				<img src="./assets/image/buy_sign.png" alt="farmer" width="500px" />
 				<label for="pincode">Pincode</label> <br /> <input id="pincode"
@@ -165,6 +170,8 @@ form i {
 					minlength="6" />
 			</div>
 			<div>
+				<p class="mandatory">* All fields are mandatory</p>
+
 				<label for="name">Full Name:</label><br /> <input type="text"
 					id="name" name="name" pattern="[a-zA-Z]{8, 20}" autocomplete="off"
 					title="Enter a single name" required autofocus /><br /> <label
@@ -179,14 +186,15 @@ form i {
 					title="- Don't leave spaces between the password
             - Atleast 6 characters
             - Use capital and small aiphabets"
-					required /><i class="bi bi-eye-slash" id="togglePassword"></i> <br />
-				<label for="address">Address</label> <br />
+					required /><i class="bi bi-eye-slash" id="togglePassword"></i><br />
+				<label for="confirm_password">Confirm Password:</label><br /> <input
+					type="password" id="confirm_password" name="confirm_password"
+					pattern="^(?!\s)(?!.*\s)[^\s]{6,}$" autocomplete="hg" required /><i
+					class="bi bi-eye-slash" id="toggleConformPassword"></i> <br /> <label
+					for="address">Address</label> <br />
 				<textarea required pattern="[a-zA-Z]" name="address" id="address"
 					cols="45" rows="5"></textarea>
-				<br /> <label for="confirm_password">Confirm Password:</label><br />
-				<input type="password" id="confirm_password" name="confirm_password"
-					pattern="^(?!\s)(?!.*\s)[^\s]{6,}$" autocomplete="hg" required /><i
-					class="bi bi-eye-slash" id="toggleConformPassword"></i> <br />
+
 
 				<button class="sub" type="submit" value="submit" onclick="sign()">
 					Register Now</button>

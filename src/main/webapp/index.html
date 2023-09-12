@@ -1,104 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="./assets/CSS/index-1.css" />
-    <link rel="stylesheet" href="./assets/CSS/head.css" />
-  </head>
-  <body>
-    <header>
-      <div>
-        <img src="./assets/image/RISHIMARKET (1).png" alt="logo" width="50%" />
-      </div>
-      <div class="head">
-        <p>Home</p>
-        <p onclick="about()">About us</p>
-        <div class="dropdown">
-          <p class="dropbtn">Register</p>
-          <div class="dropdown-content">
-            <a onclick="buy_sign()">as Buyer</a>
-            <a onclick="sell_sign()">as Seller</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <p class="dropbtn">Log in</p>
-          <div class="dropdown-content">
-            <a onclick="buy_login()">as Buyer</a>
-            <a onclick="sell_login()">as Seller</a>
-          </div>
-        </div>
-        <!-- <p onclick="customer()">Log In</p> -->
-      </div>
-      <div>
-        <img src="./assets/image/logo.png" alt="profile" width="100px" />
-      </div>
-    </header>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
 
-    <section class="content_sec">
-      <img src="./assets/image/left.jpg" alt="left" width="500px" />
-      <p class="content_sec_p">
-        If you are busy <br />
-        Buy products in RISHI
-      </p>
-      <img src="./assets/image/right.png" alt="right" width="570px" />
-    </section>
+<link rel="stylesheet" href="./assets/CSS/index-1.css" />
+<link rel="stylesheet" href="./assets/CSS/head.css" />
+</head>
+<body>
+	<header>
+		<div>
+			<img src="./assets/image/RISHIMARKET (1).png" alt="logo" width="50%" />
+		</div>
+		<div class="head">
+			<p>Home</p>
+			<p onclick="about()">About us</p>
+			<div class="dropdown">
+				<p class="dropbtn">Register</p>
+				<div class="dropdown-content">
+					<a onclick="buy_sign()">as Buyer</a> <a onclick="sell_sign()">as
+						Seller</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<p class="dropbtn">Log in</p>
+				<div class="dropdown-content">
+					<a onclick="buy_login()">as Buyer</a> <a onclick="sell_login()">as
+						Seller</a>
+				</div>
+			</div>
+			<!-- <p onclick="customer()">Log In</p> -->
+		</div>
+		<div>
+			<img src="./assets/image/logo.png" alt="profile" width="100px" />
+		</div>
+	</header>
 
-    <section class="detail_para">
-      <p>Buy and Sell your Agricultural Products online</p>
-    </section>
+	<section class="content_sec">
+		<img src="./assets/image/left.jpg" alt="left" width="500px" />
+		<p class="content_sec_p">
+			If you are busy <br /> Buy products in RISHI
+		</p>
+		<img src="./assets/image/right.png" alt="right" width="570px" />
+	</section>
 
-    
+	<section class="detail_para">
+		<p>Buy and Sell your Agricultural Products online</p>
+	</section>
 
-    <script>
-      function sell_sign() {
-        window.location.href = "register.jsp";
-      }
-      function sell_login() {
-        window.location.href = "login.jsp";
-      }
-      function buy_sign() {
-          window.location.href = "registerbuyer.jsp";
-      }
-      function buy_login() {
-        window.location.href = "loginBuyer.jsp";
-      }
-      function admin() {
-        window.location.href = "/pages/16.admin.login.html";
-      }
-      function about() {
-        window.location.href = "/pages/Aboutus.html";
-      }
-      function sell() {
-        window.location.href = "/pages/10.upload.html";
-      }
-      function fruitbuy() {
-        window.location.href = "/pages/5a-fruits.html";
-      }
-      function vegbuy() {
-        window.location.href = "/pages/5b-vegetables.html";
-      }
-      function grainbuy() {
-        window.location.href = "/pages/5d-grain.html";
-      }
-      function teabuy() {
-        window.location.href = "/pages/5c-tea.html";
-      }
-      function review() {
-        window.location.href = "/pages/review.html";
-      }
-      function worker() {
-        window.location.href = "/pages/worker_login.html";
-      }
-      function leader_board() {
-        window.location.href = "/pages/leaderboard_seller.html";
-      }
-    </script>
-  </body>
+
+
+</body>
 </html>

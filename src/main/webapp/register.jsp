@@ -61,6 +61,7 @@ textarea:invalid {
 	height: 600px;
 	margin-top: 50px;
 	border-radius: 6px;
+	position: relative;
 }
 
 .form input {
@@ -111,6 +112,14 @@ button:hover {
 form i {
 	margin-left: -30px;
 	cursor: pointer;
+}
+
+.mandatory {
+	font-size: 10px;
+	position: absolute;
+	top: 0;
+	right: 5px;
+	color: red; 
 }
 /* Media query*/
 @media screen and (max-width: 600px) {
@@ -170,6 +179,8 @@ form i {
 					maxlength="6" minlength="6" />
 			</div>
 			<div>
+				<p class="mandatory">* All fields are mandatory</p>
+
 				<label>Full Name:</label><br /> <input type="text" id="name"
 					name="name" pattern="[a-zA-Z]{8, 20}" autocomplete="off"
 					title="Enter a single name" required autofocus /><br /> <label>Mail
@@ -184,13 +195,14 @@ form i {
                   - Atleast 6 characters
                   - Use capital and small aiphabets"
 					required /><i class="bi bi-eye-slash" id="togglePassword"></i> <br />
-				<label for="address">Address</label> <br />
+				<label>Confirm Password:</label><br /> <input type="password"
+					id="conform_password" name="conform_password" autocomplete="hg"
+					pattern="^(?!\s)(?!.*\s)[^\s]{6,}$" required /><i
+					class="bi bi-eye-slash" id="toggleConformPassword"></i><br /> <label
+					for="address">Address</label> <br />
 				<textarea required pattern="[a-zA-Z]" name="address" id="address"
 					cols="45" rows="5"></textarea>
-				<br /> <label>Confirm Password:</label><br /> <input
-					type="password" id="conform_password" name="conform_password"
-					autocomplete="hg" pattern="^(?!\s)(?!.*\s)[^\s]{6,}$" required /><i
-					class="bi bi-eye-slash" id="toggleConformPassword"></i><br />
+
 
 				<button class="sub" type="submit" value="submit" onclick="sign()">
 					sign up</button>

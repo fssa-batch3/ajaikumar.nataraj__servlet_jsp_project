@@ -76,7 +76,7 @@ public class RegisterProductServlet extends HttpServlet {
 		    int qty = Integer.parseInt(productQty);
 		    int pincode = Integer.parseInt(uploadPincode);
 
-		    ProductDetails product = new ProductDetails(uniqueID, name, price, qty, description, null, address, type, city, userId, pincode, uploadDate);
+		    ProductDetails product = new ProductDetails(uniqueID, name, price, qty, description, url, address, type, city, userId, pincode, uploadDate);
 		    ProductService productService = new ProductService();
 
 		    List<ProductDetails> products = null;

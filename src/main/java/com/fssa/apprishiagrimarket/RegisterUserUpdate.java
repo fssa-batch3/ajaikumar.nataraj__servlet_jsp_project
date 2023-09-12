@@ -2,29 +2,74 @@ package com.fssa.apprishiagrimarket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.fssa.rishi.utils.ConnectionUtil;
+import com.fssa.rishi.model.User;
+import com.fssa.rishi.services.UserService;
+import com.fssa.rishi.services.exceptions.ServiceException;
+	/**
+	 * Servlet implementation class ProfileServlet
+	 */
+	@WebServlet("/ProfileServlet")
+	public class RegisterUserUpdate extends HttpServlet {
+		private static final long serialVersionUID = 1L;
+	  
+		@Override
+		protected void doGet(HttpServletRequest request, HttpServletResponse response)
+		        throws ServletException, IOException {
+		    PrintWriter out = response.getWriter();
+		    long userId = Long.parseLong(request.getParameter("id"));
+		    RequestDispatcher dispatcher = null;
+		    try {
+		        User user = UserService.findUserById(userId);
 
-/**
- * Servlet implementation class RegisterUserUpdateAndDelete
- */
-@WebServlet("/RegisterUserUpdate")
-public class RegisterUserUpdate extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+		        request.setAttribute("user", user); 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+		        dispatcher = request.getRequestDispatcher("GetUsersList.jsp");
+		        dispatcher.forward(request, response);
+
+		    } catch (ServiceException e) {
+		        out.print(e.getMessage());
+		    }
+		}
+
+
+
+		 @Override
+		    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+		            throws ServletException, IOException {
+		        long userId = Long.parseLong(request.getParameter("id"));
+		        User updateUser = new User();
+		        updateUser.setId(userId);
+		        updateUser.setUsername(request.getParameter("username"));
+		        updateUser.setPassword(request.getParameter("password"));		        
+		        updateUser.setPhoneNo(Long.parseLong(request.getParameter("phoneNo")));
+		        updateUser.setDistrict(request.getParameter("district"));
+		        updateUser.setState(request.getParameter("state"));
+		        updateUser.setAddress(request.getParameter("address"));
+		        updateUser.setDob(Date.valueOf(request.getParameter("dob")));
+		        updateUser.setPincode(Integer.parseInt(request.getParameter("pincode")));
+		        updateUser.setGender(request.getParameter("gender"));
+		        updateUser.setEmail(request.getParameter("email"));
+
+		        PrintWriter out = response.getWriter();
+
+		        UserService userService = new UserService();
+		        try {
+		            userService.updateUser(updateUser);
+		            // Redirect back to the profile page with the user's updated data
+		            response.sendRedirect("ProfileServlet?id=" + userId);
+		        } catch (ServiceException e) {
+		            out.println(e.getMessage());
+		        }
+		    }
 		
 	}
-}
+

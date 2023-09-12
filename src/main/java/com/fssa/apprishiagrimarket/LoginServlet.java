@@ -36,16 +36,22 @@ public class LoginServlet extends HttpServlet {
 				out.println("Login Successfull...");
 				HttpSession session = request.getSession();
 				session.setAttribute("loggedInEmail", email);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("productRegister.jsp");
-				dispatcher.forward(request, response);
+				response.sendRedirect("productRegister.jsp");
+//				RequestDispatcher dispatcher = request.getRequestDispatcher("");
+//				dispatcher.forward(request, response);
 			}
 
 			else {
 				out.println("Invalid Login Credentials");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+				dispatcher.forward(request, response);
 			}
 		} catch (ServiceException e) {
 			out.println(e.getMessage());
 			e.printStackTrace();
+			request.setAttribute("ErrorMessage", e.getMessage());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
 		}
 
 	}

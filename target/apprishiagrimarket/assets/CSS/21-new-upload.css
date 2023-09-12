@@ -1,0 +1,66 @@
+body {
+  background-color: rgb(191, 227, 191);
+  color: #2bae66ff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.header {
+  display: flex;
+  font-size: 40px;
+  background-color: #2bae66ff;
+  height: 100px;
+  width: 100%;
+  margin-left: -0px;
+  border-radius: 50px;
+}
+.header button {
+  border-radius: 60px;
+  background-color: #2bae66ff;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.before-arrow img {
+  border-radius: 50px;
+  margin-left: 20px;
+}
+.hol {
+  text-align: center;
+  width: 1200px;
+  color: white;
+  margin-top: 20px;
+}
+.table {
+  font-size: 35px;
+  margin-top: 30px;
+  border: solid 1px blue;
+  overflow: scroll;
+}
+.table tr td {
+  border: 1px solid blue;
+}
+.table button {
+  font-size: 20px;
+  color: white;
+  width: 120px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #2bae66ff;
+}
+
+.f-btn {
+  background-color: #2bae66ff;
+  top: 803px;
+  position: fixed;
+  margin-left: -10px;
+  width: 100%;
+  height: 90px;
+  text-align: center;
+}
+.f-btn button {
+  margin-top: 20px;
+  width: 250px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: white;
+  color: blue;
+  font-size: 25px;
+}

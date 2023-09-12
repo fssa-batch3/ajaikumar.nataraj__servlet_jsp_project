@@ -1,0 +1,46 @@
+body {
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(191, 227, 191);
+}
+.header {
+  font-size: 30px;
+  display: flex;
+  height: 100px;
+  background-color: #2bae66ff;
+  color: white;
+  border-radius: 50px;
+}
+.header button {
+  border-radius: 70px;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+.store {
+  text-align: center;
+  width: 1300px;
+  margin-top: 20px;
+}
+.side-bar {
+  position: fixed;
+  height: 650px;
+  width: 310px;
+  background-color: #2bae66ff;
+  margin-left: 00px;
+  color: white;
+  border-radius: 60px;
+  margin-top: 50px;
+}
+.main {
+  margin-left: 340px;
+  width: 1000px;
+  color: #2bae66ff;
+  margin-top: 50px;
+}
+.main tr {
+  width: 500px;
+  margin-top: 50px;
+}
+.main tr {
+  margin-top: 50px;
+}

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.fssa.rishi.model.ProductDetails;
 import com.fssa.rishi.services.ProductService;
+import com.fssa.rishi.services.UserService;
 import com.fssa.rishi.services.exceptions.ServiceException;
 
 /**
@@ -28,16 +29,22 @@ public class GetAllOwnProductsServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 		PrintWriter out = response.getWriter();
+		List<ProductDetails> products = null;
+		ProductService productService = new ProductService();
+		UserService service = new UserService();
 
 		if (session != null) {
 			String loggedInEmail = (String) session.getAttribute("loggedInEmail");
+
 			if (loggedInEmail == null) {
 				response.sendRedirect("login.jsp");
 			} else {
 				try {
-					List<ProductDetails> products = new ProductService().readProductDetails();
+				    products = productService.readProductDetails();
+					long id = service.findIdByEmail(loggedInEmail);
 					System.out.println(products);
-					request.setAttribute("OWN_PRODUCTS_LIST", products);
+					request.setAttribute("products", products);
+					request.setAttribute("userId", id);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("GetAllOwnProductsList.jsp");
 					dispatcher.forward(request, response);
 				} catch (ServiceException e) {

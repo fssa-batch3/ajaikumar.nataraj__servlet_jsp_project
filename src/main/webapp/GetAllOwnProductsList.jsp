@@ -14,8 +14,9 @@
 	padding: 10px;
 	margin: 10px;
 	max-width: 300px;
-	height: auto;
-	background-color: lightgrey;
+	height: 370px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
 .product-card h2 {
@@ -48,28 +49,40 @@ button {
 	border: none;
 	background-color: lightgreen;
 }
+
+img {
+	width: 200px;
+}
 </style>
 </head>
 <body>
 	<h1>All Products List</h1>
-	<a href="LogoutServletSeller">
-		<button>logout</button>
-	</a>
+
+	<nav>
+		<a href="ProfileServlet?id=${userId}">
+			<button>Profile</button>
+		</a> <a href="LogoutServletSeller">
+			<button>logout</button>
+		</a>
+	</nav>
+
 
 	<div class="product-cards" id="productContainer">
 		<c:forEach var="product" items="${products}">
 
-			<div class="product-card">
-				<input type="text" value="${product.name}" /> <input type="number"
-					value="${product.price}" /> <input type="number"
-					value="${product.quantity}" />
-				<textarea>${product.description}</textarea>
-				<a
-					href="RegisterProductUpdate?id=${product.id}&name=${product.name}&price=${product.price}&quantity=${product.quantity}&description=${product.description}">
-					<button>Update</button>
-				</a> <a href="DeleteProductServlet?id=${product.id}"><button>Delete</button></a>
+	<!--	<c:if test="${userId == product.seller_id}"> -->
+				<div class="product-card">
+					<img alt="img" src="${product.url}">
+					<p>${product.name}</p>
+					<p>Rs. ${product.price} / kg</p>
+					<p>Available : ${product.quantity} Kg</p>
+					<p>${product.description}</p>
+					<a href="RegisterProductUpdate?id=${product.id}"><button>Edit</button>
+					</a> <a href="DeleteProductServlet?id=${product.id}"><button>Delete</button></a>
 
-			</div>
+				</div>
+		<!-- </c:if> -->	
+		
 		</c:forEach>
 	</div>
 

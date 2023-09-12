@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/20-customer-order-list.css" />
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+
+    <nav>
+      <input type="search" id="searchbar" placeholder="Search here..." />
+    </nav>
+    <!-- <table aria-describedby="order" class="table"></table> -->
+    <hr />
+    <!-- <footer class="f-btn">
+      <a href="../pages/19a-store.html"><button>Go to Store</button></a>
+    </footer> -->
+
+    <script src="/assets/JavaScript/worker_order_inprogress.js"></script>
+    <script>
+      let buyer_info = JSON.parse(localStorage.getItem("worker_info"));
+      console.log(buyer_info);
+
+      let login_id = JSON.parse(localStorage.getItem("worker_login"));
+      console.log(login_id);
+
+      const get_obj = buyer_info.find((e) => e.Email === login_id);
+      console.log(get_obj);
+
+      const word = get_obj["FullName"];
+      const firstLetter = word.charAt(0);
+      console.log(firstLetter);
+
+      let newimage = document.getElementById("newimg");
+      newimage.innerText = firstLetter;
+    </script>
+  </body>
+</html>

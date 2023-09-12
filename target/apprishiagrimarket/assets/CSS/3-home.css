@@ -1,0 +1,101 @@
+.body {
+  /* background-color: rgb(191, 227, 191); */
+  /* height: 850px; */
+  background-size: cover;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+/* body {
+  background-image: url(../image/growing\ tree.gif);
+} */
+
+.com-btn {
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  padding-top: 50px;
+}
+.com-btn button {
+  /* box-shadow: 3px 3px 3px rgba(100, 100, 100);
+  background-color: rgb(191, 227, 191); */
+  color: #2bae66ff;
+  border-radius: 10px;
+  border: none;
+  width: 400px;
+  height: 50px;
+  font-size: 40px;
+}
+.logo {
+  margin-left: 5px;
+  margin-top: 5px;
+  width: 200px;
+}
+button {
+  margin-right: 50px;
+  margin-top: 25px;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 25px;
+  color: #2bae66ff;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2bae66ff;
+  height: 120px;
+  align-items: center;
+}
+.head input {
+  width: 200px;
+  height: 40px;
+  font-size: 30px;
+  display: flex;
+  text-align: center;
+  color: #2bae66ff;
+}
+.com-btn nav {
+  width: 600px;
+  height: 600px;
+}
+
+.com-btn_nav2 img {
+  width: 600px;
+  height: 495px;
+}
+.com-btn button:hover {
+  scale: 1.1;
+}
+.com-btn nav {
+  background-color: rgb(191, 227, 191);
+  border-radius: 10px;
+}
+
+/* Media query */
+@media screen and (max-width: 600px) {
+  .body {
+    width: 600px;
+    margin-top: 00px;
+    margin-bottom: 00px;
+  }
+  body {
+    width: 600px;
+    height: 700px;
+    background-image: none;
+  }
+  .head {
+    width: 500px;
+    margin-left: 40px;
+    margin-top: 00px;
+  }
+  .buy-btn {
+    margin-top: 00px;
+  }
+  .sell-btn {
+    margin-top: 40px;
+  }
+  .hbuy-btn {
+    margin-top: 40px;
+  }
+}

@@ -214,11 +214,13 @@ input {
 		<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
 			width="50px" />
 		<div class="logo">
-			<img src="./images/logo.png" alt="Image" width=70px>
+			<img src="../images/logo.png" alt="Image" width=70px>
 
 		</div>
 		<div class="name">
-			<p onclick="profile()" id="newimg"></p>
+			<a a href="ProfileServlet?id=${userId}">
+				<p>P</p>
+			</a>
 		</div>
 	</header>
 
@@ -227,8 +229,8 @@ input {
 	<a href="../assets/image/apple.jpg"></a>
 	<section class="sec"></section>
 
-	<form action="RegisterProductServlet" class="full-card"
-		id="form" method="post" >
+	<form action="RegisterProductServlet" class="full-card" id="form"
+		method="post">
 		<h3>Upload your products</h3>
 		<div class="full_list">
 			<div class="list">
@@ -244,7 +246,7 @@ input {
 				<nav>
 					<label for="type">Product's Type</label> <input required="required"
 						list="Types" name="type" id="type" placeholder="Type"
-						autocomplete="off" value="Fruit" />
+						autocomplete="off" />
 					<datalist id="Types">
 						<option value="Fruit"></option>
 						<option value="Vegetable"></option>
@@ -277,9 +279,9 @@ input {
 						placeholder="Enter Your City Name" />
 				</nav>
 				<nav>
-					<label for="address">Enter Address</label> <input required="required"
-						type="text" id="address" name="address" value="10, Gandhi street, gobi."
-						placeholder="Enter Your Address" />
+					<label for="address">Enter Address</label> <input
+						required="required" type="text" id="address" name="address"
+						value="10, Gandhi street, gobi." placeholder="Enter Your Address" />
 				</nav>
 				<nav>
 					<label for="pincode">Enter your Pincode</label> <input

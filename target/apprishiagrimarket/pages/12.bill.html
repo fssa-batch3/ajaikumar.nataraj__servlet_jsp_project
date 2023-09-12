@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bill</title>
+    <link rel="stylesheet" href="../assets/CSS/9a-bill.css" />
+  </head>
+  <body>
+    <div class="contact">
+      <p>+91 9876543210</p>
+      <p>Rishi-market@agri.com</p>
+    </div>
+    <header class="head">
+      <img
+        onclick="back()"
+        src="../assets/image/arrowback.png"
+        alt="back"
+        width="50px"
+      />
+      <div class="logo">
+        <img
+          onclick="home()"
+          src="../assets/image/logo.png"
+          alt="logo"
+          width="90px"
+        />
+      </div>
+      <div class="name">
+        <p onclick="profile()" id="newimg"></p>
+      </div>
+    </header>
+
+    <button onclick="account()">Go to Account Detail</button>
+
+    <div class="table">
+      <script src="../assets/JavaScript/self_bill.js"></script>
+      <div class="amount_total">
+        <table aria-describedby="total_amount">
+          <tr>
+            <th>Total Amount</th>
+          </tr>
+          <tr>
+            <td id="operoation"></td>
+          </tr>
+        </table>
+      </div>
+      <div id="form" class="details">
+        <h3>Your Pickup details:</h3>
+        <form class="detail">
+          <nav>
+            <label>Name</label> <br />
+            <input type="text" id="First_name" placeholder="name" />
+          </nav>
+          <nav>
+            <label>Phone Number</label> <br />
+            <input
+              type="number"
+              id="Phone_Number"
+              placeholder="Phone number"
+              maxlength="10"
+              minlength="10"
+            />
+          </nav>
+          <nav>
+            <label>Address</label> <br />
+            <input
+              type="text"
+              id="Land_Address"
+              placeholder="address"
+              style="width: 500px"
+              required
+            />
+          </nav>
+          <nav>
+            <label>Pincode</label> <br />
+            <input
+              id="pincode"
+              type="tel"
+              pattern="[0-9]{6}"
+              maxlength="6"
+              minlength="6"
+            />
+          </nav>
+          <!-- <input type="date" id="Pickup_date" placeholder="Pickup date" /> -->
+        </form>
+        <button type="submit">Save Pickup Address</button>
+      </div>
+    </div>
+
+    <footer>
+      <img
+        src="../assets/image/smiling-face.gif"
+        alt="smiling-face"
+        width="50px"
+      />
+      Thanks for Selling
+      <img src="../assets/image/sparkling-heart.gif" alt="heart" width="50px" />
+      We always Welcomes you!
+    </footer>
+    <script src="/assets/JavaScript/seller_self_bill.js"></script>
+  </body>
+</html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Buyer</title>
 <style>
 .body {
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
@@ -20,7 +20,7 @@
 	align-content: center;
 	/* border: 1px solid #2bae66ff; */
 	box-shadow: 3px 3px 5px 5px rgb(217, 244, 217);
-	height: 600px;
+	height: 400px;
 	width: 600px;
 	border-radius: 10px;
 }
@@ -110,25 +110,23 @@ button:hover {
 <body class="body">
 	<h1>Hi! Buyer...</h1>
 
+	<%
+	String e = (String) request.getAttribute("ErrorMessage");
+	if (e != null) {
+	%>
+	<span style="color: red;"><%=e%></span>
+	<%
+	}
+	%>
+
 	<div class="form">
 		<form action="LoginBuyerServlet" method="post" class="center"
 			id="form">
-			<%
-			String errorMessage = request.getParameter("error");
-			if (errorMessage != null) {
-			%>
-			<div class="alert alert-danger" role="alert">
-				<%=errorMessage%><!-- this will change based on invalid field entered -->
-			</div>
-			<%
-			}
-			%>
-			<nav>
-				<img src="./assets/image/login.png" alt="profile" width="350px" />
-			</nav>
+
+
 			<label>User Mail id:</label><br /> <input type="text" id="Email"
-				required value="ajai@gmail.com" name="email" /><br /> <label>Password:</label><br />
-			<input value="Ajai@123" type="password" id="Password" required
+				required value="kannan@gmail.com" name="email" /><br /> <label>Password:</label><br />
+			<input value="Ajai@12345" type="password" id="Password" required
 				name="password" /> <br />
 			<button class="btn" type="submit">Sign in</button>
 		</form>

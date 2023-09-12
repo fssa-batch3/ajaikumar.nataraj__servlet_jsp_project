@@ -1,0 +1,85 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 60px;
+  font-size: 30px;
+  color: #2bae66ff;
+  background-color: rgb(191, 227, 191);
+}
+table {
+  margin-top: 30px;
+  padding-bottom: 300px;
+}
+table .tr {
+  top: 100px;
+}
+.detail {
+  width: 100px;
+}
+.details {
+  float: right;
+  width: 500px;
+  margin-top: -140px;
+}
+.FullName {
+  display: flex;
+}
+input {
+  font-size: 30px;
+  color: #2bae66ff;
+}
+.detail input {
+  background-color: rgb(191, 227, 191);
+}
+table input {
+  background-color: rgb(191, 227, 191);
+}
+.footer {
+  text-align: center;
+  width: 1440px;
+  /* position: fixed; */
+  /* top: 820px; */
+}
+.footer button {
+  width: 400px;
+  background-color: #2bae66ff;
+  color: white;
+  font-size: 30px;
+  border-radius: 10px;
+}
+.footer button:hover {
+  scale: 1.2;
+}
+.img img {
+  margin-top: -40px;
+}
+.img {
+  text-align: center;
+}
+.amount_total {
+  margin-bottom: 300px;
+}
+
+/*media query*/
+
+@media screen and (max-width: 600px) {
+  body {
+    width: 600px;
+    margin-left: 10px;
+  }
+  h2 {
+    font-size: 25px;
+    width: 580px;
+  }
+  .details {
+    margin-top: 20px;
+  }
+  input {
+    width: 250px;
+  }
+  .footer {
+    text-align: center;
+  }
+  .footer button {
+    margin-top: 40px;
+  }
+}

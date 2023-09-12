@@ -21,6 +21,5 @@
 %>
 
 <p>Logged In user: <%=loggedInEmail%> </p>
-<a href="LogoutServlet">logout</a>
 </body>
 </html>

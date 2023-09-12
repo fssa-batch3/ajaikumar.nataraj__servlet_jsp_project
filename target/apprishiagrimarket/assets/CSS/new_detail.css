@@ -1,0 +1,84 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  color: #2bae66ff;
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px;
+  color: white;
+  height: 80px;
+}
+.pro {
+  font-size: 30px;
+  background-color: white;
+  text-align: center;
+  color: #2bae66ff;
+}
+.name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+  color: #2bae66ff;
+  border-radius: 100px;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+}
+.full {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  height: 470px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px;
+}
+.full section {
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px;
+  justify-content: center;
+  /* text-align: center; */
+  height: 430px;
+  border-radius: 5px;
+}
+.full_div {
+  padding-left: 20px;
+}
+.card_div {
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px;
+  justify-content: center;
+  font-size: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+.card_div img {
+  border-radius: 5px;
+}
+footer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+a {
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+}
+.aTag {
+  color: #2bae66ff;
+}
+
+button {
+  color: white;
+  background-color: #2bae66ff;
+  border: none;
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 5px;
+}

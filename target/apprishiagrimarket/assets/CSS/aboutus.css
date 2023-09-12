@@ -1,0 +1,23 @@
+.detail_full {
+  display: flex;
+  margin-top: 200px;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+.img img {
+  width: 700px;
+}
+.para {
+  width: 700px;
+  font-size: 30px;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+.para p {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}

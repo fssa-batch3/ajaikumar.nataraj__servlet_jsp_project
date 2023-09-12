@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/CSS/16-admin-home.css" />
+    <!-- <link rel="stylesheet" href="../assets/CSS/2-login.css" /> -->
+  </head>
+  <body>
+    <header class="header">
+      <div>
+        <img src="../assets/image/logo.png" alt="logo" width="150px" />
+      </div>
+      <div class="head">
+        <img src="../assets/image/waving-hand.gif" alt="hand" width="80px" />
+        <h1 id="wish">Happy Morning Buddy!</h1>
+        <img src="../assets/image/smiling-face.gif" alt="smile" width="80px" />
+      </div>
+    </header>
+    <div class="update">
+      <button>G-Mail</button>
+      <button>Reviews</button>
+      <button>New Order</button>
+      <button>Order Inprogress</button>
+    </div>
+
+    <div class="form">
+      <form class="center" id="form">
+        <nav>
+          <img src="../assets/image/profile.png" alt="profile" width="90px" />
+        </nav>
+        <label>User Mail id:</label><br />
+        <input type="text" id="Email" required="true" /><br />
+        <label>Password:</label><br />
+        <input type="password" id="Password" required="true" /> <br />
+        <button class="btn" type="submit">Sign in</button>
+      </form>
+    </div>
+
+    <script>
+      let hour = new Date().getHours();
+      let min = new Date().getMinutes();
+
+      if (min < 10) {
+        min = "0" + min;
+      }
+      const currentTime = `${hour}:${min}`;
+
+      console.log(currentTime);
+      if (currentTime < "10:00") {
+        console.log("Good Morning Buddy");
+      } else if (currentTime < "12:00") {
+        console.log("Good Afternoon Buddy");
+      } else if (currentTime < "16:00") {
+        console.log("Good Evening Buddy");
+      } else if (currentTime < "19:00") {
+        console.log("Good Morning Buddy");
+      }
+
+      let logIn = document.getElementById("form");
+      console.log(logIn);
+
+      let arr = [];
+
+      logIn.addEventListener("submit", (event) => {
+        event.preventDefault();
+        let defaultData = JSON.parse(localStorage.getItem("admin_info"));
+        console.log(defaultData);
+
+        let Email = document.getElementById("Email").value.toLowerCase().trim();
+        let Password = document.getElementById("Password").value;
+
+        let match = false;
+
+        for (let i = 0; i < defaultData.length; i++) {
+          if (
+            Email == defaultData[i]["Email"] &&
+            Password == defaultData[i]["Password"]
+          ) {
+            match = true;
+            arr.push(defaultData[i]);
+            window.localStorage.setItem(
+              "admin_logIn",
+              JSON.stringify(arr[0]["Email"])
+            );
+            break;
+            // i = i + defaultData.length;
+          } else {
+            match = false;
+          }
+        }
+
+        if (match == true) {
+          alert("Success");
+
+          window.location.href = "/pages/17-admin-index.html";
+        } else {
+          alert("Login credentials not correct");
+        }
+      });
+    </script>
+    <!-- <div class="form">
+      <label>User Name:</label>
+      <input type="text" id="name" value="Shinchan" placeholder="Shinchan" />
+      <label>Password:</label>
+      <input
+        type="password"
+        id="password"
+        value="Sc@123!"
+        placeholder="Sc@123!"
+      />
+    </div>
+    <div class="sign">
+      <button type="button" onclick="submit()">Sign In</button>
+    </div> -->
+    <div class="day-type">
+      <h4>Today...</h4>
+      <input list="Types" id="mode" autocomplete="off" name="Types" />
+      <datalist id="Types">
+        <option value="Hurry! You have more work!"></option>
+        <option value="Relax! You have less work!"></option>
+        <option value="Cool! You have ordinary work!"></option>
+      </datalist>
+    </div>
+    <script>
+      function submit() {
+        const name = document.getElementById("name").value;
+        const password = document.getElementById("password").value;
+
+        console.log(name);
+        console.log(password);
+
+        window.location.href =
+          "http://127.0.0.1:5500/pages/17-admin-index.html";
+      }
+    </script>
+  </body>
+</html>

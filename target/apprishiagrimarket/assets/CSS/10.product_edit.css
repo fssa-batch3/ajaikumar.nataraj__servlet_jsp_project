@@ -1,0 +1,72 @@
+.btn {
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  width: 140px;
+  height: 40px;
+  background-color: #2bae66ff;
+  color: white;
+  margin-top: 15px;
+}
+.btn-card {
+  margin-top: 20px;
+}
+
+.detail,
+.img {
+  border: none;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px rgb(162, 211, 139);
+}
+.details {
+  text-align: center;
+  height: 300px;
+}
+.full-card {
+  background-color: rgb(191, 227, 191);
+  width: 550px;
+  text-align: center;
+  border-radius: 10px;
+  height: 450px;
+}
+.btn-card {
+  display: flex;
+  justify-content: space-evenly;
+}
+.output-btn {
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
+  border: none;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px rgb(146, 193, 125);
+}
+.div_card-output {
+  height: 440px;
+  width: 400px;
+  background-color: rgb(191, 227, 191);
+  text-align: center;
+  float: right;
+  border-radius: 10px;
+}
+.main {
+  margin-top: 00px;
+  margin-left: 00px;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: space-around;
+  text-align: center;
+}
+input {
+  font-size: 23px;
+  margin-top: 15px;
+}
+h3 {
+  font-size: 40px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
