@@ -50,19 +50,19 @@ public class RegisterSellerServlet extends HttpServlet {
 
 		Seller user1 = new Seller(email, name, password, phoneNo, null, null, address, uniqueID,
 				 pincode, null,  true);
-		Seller user2 = new Seller(email, null, null, uniqueID);
 
 		SellerService sellerService = new SellerService();
 
 		try {
-			if (sellerService.registerUser(user1) && sellerService.registerSeller(user2)) {
+			if (sellerService.registerUser(user1)) {
 				out.println("Registration successful");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("productRegister.jsp");
-				dispatcher.forward(request, response);
+//				RequestDispatcher dispatcher = request.getRequestDispatcher(request.getContextPath() + "/pages/2.Login.jsp");
+//				dispatcher.forward(request, response);
+				response.sendRedirect(request.getContextPath() + "/pages/2.Login.jsp");
 			} else {
 				out.println("Registration failed");
-//				RequestDispatcher dispatcher = request.getRequestDispatcher(".pages/1.buy.signin.html");
-//				dispatcher.forward(request, response);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("<%= request.getContextPath()%>/1.buy.signin.jsp");
+				dispatcher.forward(request, response);
 			}
 		} catch (ServiceException e) {
 			e.printStackTrace();

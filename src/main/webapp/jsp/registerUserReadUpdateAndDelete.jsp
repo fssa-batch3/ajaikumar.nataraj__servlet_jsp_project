@@ -95,9 +95,7 @@ strong {
 		<p>
 			<strong>District:</strong>
 			<%=user.getDistrict()%></p>
-		<p>
-			<strong>State:</strong>
-			<%=user.getState()%></p>
+		
 		<p>
 			<strong>Address:</strong>
 			<%=user.getAddress()%></p>

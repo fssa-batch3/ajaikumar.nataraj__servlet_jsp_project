@@ -50,14 +50,16 @@ public class RegisterBuyerServlet extends HttpServlet {
 		long uniqueID = System.currentTimeMillis();
 
 		UserService userService = new UserService();
-		User user1 = new User(email, name, password, phoneNo, "Erode", "TN",
-				address, uniqueID, null, pincode, "Male", false, false);
+		User user1 = new User(email, name, password, phoneNo, "Erode",
+				address, uniqueID, null, pincode, false, false);
 
 		try {
 			if (userService.registerUser(user1)) {
 				out.println("Registration successful");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("GetAllProductsList.jsp");
-				dispatcher.forward(request, response);
+//				RequestDispatcher dispatcher = request.getRequestDispatcher("GetAllProductsList.jsp");
+//				dispatcher.forward(request, response);
+				response.sendRedirect(request.getContextPath() + "/pages/2.buy-login.jsp");
+
 			} else {
 				out.println("Registration failed");
 //				RequestDispatcher dispatcher = request.getRequestDispatcher(".pages/1.buy.signin.html");

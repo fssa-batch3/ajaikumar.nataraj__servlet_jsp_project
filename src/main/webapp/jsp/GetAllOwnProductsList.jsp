@@ -70,7 +70,7 @@ img {
 	<div class="product-cards" id="productContainer">
 		<c:forEach var="product" items="${products}">
 
-	<!--	<c:if test="${userId == product.seller_id}"> -->
+			<c:if test="${userId == product.seller_id}">
 				<div class="product-card">
 					<img alt="img" src="${product.url}">
 					<p>${product.name}</p>
@@ -81,8 +81,8 @@ img {
 					</a> <a href="DeleteProductServlet?id=${product.id}"><button>Delete</button></a>
 
 				</div>
-		<!-- </c:if> -->	
-		
+			</c:if>
+
 		</c:forEach>
 	</div>
 

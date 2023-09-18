@@ -118,10 +118,7 @@ form i {
 				value="<%=user1.getPhoneNumber()%>" placeholder="Phone Number" /><br />
 			<label for="Home Address">Home Address</label> <input type="text"
 				id="home_address" name="address" value="<%=user1.getAddress()%>"
-				class="input" placeholder="Home Address" /><br /> <label
-				for="gender">Gender</label> <input type="text" id="gender"
-				name="gender" value="<%=user1.getGender()%>" class="input"
-				placeholder="Gender (Male / Female)" /><br />
+				class="input" placeholder="Home Address" />
 		</div>
 		<div class="form">
 			<label for="email">Email</label> <input type="email" id="email"
@@ -133,9 +130,7 @@ form i {
 				value="<%=user1.getPincode()%>" placeholder="Pincode" /><br /> <label
 				for="district">District</label> <input type="text" id="district"
 				name="district" class="input" value="<%=user1.getDistrict()%>"
-				placeholder="District" /><br /> <label for="state">State</label> <input
-				type="text" id="state" name="state" class="input"
-				value="<%=user1.getState()%>" placeholder="State" /><br />
+				placeholder="District" /><br /> 
 
 			<button type="submit">Update</button>
 			<a href="DeleteUserServlet?email=<%=user1.getEmail()%>">

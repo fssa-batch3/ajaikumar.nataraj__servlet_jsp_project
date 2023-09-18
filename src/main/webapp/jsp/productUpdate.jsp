@@ -269,7 +269,7 @@ input {
 				<nav>
 					<label for="city">City Name</label> <br />
 					<input required="required" type="text" id="city" name="city"
-						value=<%=product.getCity()%> />
+						value=<%=product.getDistrict()%> />
 				</nav>
 				<nav>
 					<label for="address">Enter Address</label> <br />

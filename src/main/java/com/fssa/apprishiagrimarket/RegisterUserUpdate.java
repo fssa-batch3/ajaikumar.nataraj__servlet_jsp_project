@@ -32,7 +32,7 @@ import com.fssa.rishi.services.exceptions.ServiceException;
 
 		        request.setAttribute("user", user); 
 
-		        dispatcher = request.getRequestDispatcher("GetUsersList.jsp");
+		        dispatcher = request.getRequestDispatcher("/pages/profile.jsp");
 		        dispatcher.forward(request, response);
 
 		    } catch (ServiceException e) {
@@ -52,11 +52,9 @@ import com.fssa.rishi.services.exceptions.ServiceException;
 		        updateUser.setPassword(request.getParameter("password"));		        
 		        updateUser.setPhoneNo(Long.parseLong(request.getParameter("phoneNo")));
 		        updateUser.setDistrict(request.getParameter("district"));
-		        updateUser.setState(request.getParameter("state"));
 		        updateUser.setAddress(request.getParameter("address"));
 		        updateUser.setDob(Date.valueOf(request.getParameter("dob")));
 		        updateUser.setPincode(Integer.parseInt(request.getParameter("pincode")));
-		        updateUser.setGender(request.getParameter("gender"));
 		        updateUser.setEmail(request.getParameter("email"));
 
 		        PrintWriter out = response.getWriter();

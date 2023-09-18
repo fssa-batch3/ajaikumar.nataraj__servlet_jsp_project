@@ -3,8 +3,6 @@ package com.fssa.apprishiagrimarket;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,9 +16,8 @@ import javax.servlet.http.HttpSession;
 
 import com.fssa.rishi.model.ProductDetails;
 import com.fssa.rishi.services.ProductService;
+import com.fssa.rishi.services.UserService;
 import com.fssa.rishi.utils.ConnectionUtil;
-
-
 
 /**
  * Servlet implementation class RegisterProductServlet
@@ -29,11 +26,6 @@ import com.fssa.rishi.utils.ConnectionUtil;
 public class RegisterProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		doPost(req, resp);
-//	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -43,24 +35,14 @@ public class RegisterProductServlet extends HttpServlet {
 
 		try {
 		    String userEmail = (String) session.getAttribute("loggedInEmail");
-		    String sql = "SELECT id FROM user WHERE email = ?";
-		    
-		    PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		    preparedStatement.setString(1, userEmail);
+		   
+		    UserService service = new UserService();
+		    long userId = service.findIdByEmail(userEmail);
+		    request.setAttribute("userId", userId);
 
-		    ResultSet resultSet = preparedStatement.executeQuery();
-
-		    String userID = null;
-		    if (resultSet.next()) {
-		        userID = resultSet.getString("id");
-		    } else {
-		        // Handle the case where no matching user was found
-		        throw new Exception("User not found");
-		    }
 
 		    LocalDate uploadDate = LocalDate.now();
 		    long uniqueID = System.currentTimeMillis();
-		    long userId = Long.parseLong(userID);
 
 		    String name = request.getParameter("name");
 		    String productPrice = request.getParameter("price");
@@ -68,7 +50,7 @@ public class RegisterProductServlet extends HttpServlet {
 		    String description = request.getParameter("description");
 		    String url = request.getParameter("url");
 		    String address = request.getParameter("address");
-		    String city = request.getParameter("city");
+		    String district = request.getParameter("district");
 		    String type = request.getParameter("type");
 		    String uploadPincode = request.getParameter("pincode");
 		    
@@ -76,7 +58,7 @@ public class RegisterProductServlet extends HttpServlet {
 		    int qty = Integer.parseInt(productQty);
 		    int pincode = Integer.parseInt(uploadPincode);
 
-		    ProductDetails product = new ProductDetails(uniqueID, name, price, qty, description, url, address, type, city, userId, pincode, uploadDate);
+		    ProductDetails product = new ProductDetails(uniqueID, name, price, qty, description, url, address, type, district, userId, pincode, uploadDate);
 		    ProductService productService = new ProductService();
 
 		    List<ProductDetails> products = null;
@@ -85,8 +67,7 @@ public class RegisterProductServlet extends HttpServlet {
 		        out.println("Register Product Successfully");
 		        products = productService.readProductDetails();
 		        session.setAttribute("products", products);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("GetAllOwnProductsList.jsp");
-		        dispatcher.forward(request, response);
+		        response.sendRedirect("GetAllOwnProductsServlet");
 		        } else {
 		        	out.println("register failed");
 		        }

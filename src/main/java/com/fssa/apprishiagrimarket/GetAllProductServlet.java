@@ -40,9 +40,9 @@ public class GetAllProductServlet extends HttpServlet {
 					List<ProductDetails> products = new ProductService().readProductDetails();
 					long id = service.findIdByEmail(loggedInEmail);
 					System.out.println(products);
-					request.setAttribute("PRODUCTS_LIST", products);
+					request.setAttribute("products", products);
 					request.setAttribute("userId", id);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("GetAllProductsList.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/2.productDetails.jsp");
 					dispatcher.forward(request, response);
 				} catch (ServiceException e) {
 					String errormsg = ("Error in getting the products: " + e.getMessage());

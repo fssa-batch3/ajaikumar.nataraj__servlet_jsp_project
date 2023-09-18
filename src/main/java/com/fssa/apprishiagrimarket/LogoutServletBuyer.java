@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LogoutServlet
  */
-@WebServlet("/LogoutServlet")
+@WebServlet("/LogoutServletBuyer")
 public class LogoutServletBuyer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public class LogoutServletBuyer extends HttpServlet {
 		}
 		
 		// Redirecting to login page since we have logged out
-		response.sendRedirect("loginBuyer.jsp");
+		response.sendRedirect(request.getContextPath() + "/pages/2.buy-login.jsp");
 	}
 
 }

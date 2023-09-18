@@ -33,7 +33,7 @@ public class RegisterProductUpdateServlet extends HttpServlet {
 
 			request.setAttribute("updateProduct", product);
 
-			patcher = request.getRequestDispatcher("productUpdate.jsp");
+			patcher = request.getRequestDispatcher("/pages/10.history.jsp");
 			patcher.forward(request, response);
 
 		} catch (ServiceException e) {
@@ -60,7 +60,7 @@ public class RegisterProductUpdateServlet extends HttpServlet {
 		updateProduct.setPincode(Integer.parseInt(request.getParameter("pincode")));
 		updateProduct.setAddress(request.getParameter("address"));
 		updateProduct.setId(productId);
-		updateProduct.setCity(request.getParameter("city"));
+		updateProduct.setDistrict(request.getParameter("district"));
 		
 		PrintWriter out = response.getWriter();
 	

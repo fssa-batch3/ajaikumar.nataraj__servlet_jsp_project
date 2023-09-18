@@ -41,14 +41,16 @@ public class LoginBuyerServlet extends HttpServlet {
 
 			else {
 				out.println("Invalid Login Credentials");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("loginBuyer.jsp");
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher(request.getContextPath() + "/pages/2.buy-login.jsp");
 				dispatcher.forward(request, response);
 			}
 		} catch (ServiceException e) {
 			out.println(e.getMessage());
 			e.printStackTrace();
 			request.setAttribute("ErrorMessage", e.getMessage());
-			RequestDispatcher dispatcher = request.getRequestDispatcher("loginBuyer.jsp");
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher(request.getContextPath() + "/pages/2.buy-login.jsp");
 			dispatcher.forward(request, response);
 		}
 

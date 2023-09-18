@@ -37,15 +37,16 @@ public class GetAllOwnProductsServlet extends HttpServlet {
 			String loggedInEmail = (String) session.getAttribute("loggedInEmail");
 
 			if (loggedInEmail == null) {
-				response.sendRedirect("login.jsp");
+				response.sendRedirect(request.getContextPath() + "/pages/2.Login.jsp");
 			} else {
 				try {
-				    products = productService.readProductDetails();
 					long id = service.findIdByEmail(loggedInEmail);
+
+				    products = productService.readOwnProductDetails(id);
 					System.out.println(products);
 					request.setAttribute("products", products);
 					request.setAttribute("userId", id);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("GetAllOwnProductsList.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/11.place-products.jsp");
 					dispatcher.forward(request, response);
 				} catch (ServiceException e) {
 					String errormsg = ("Error in getting the products: " + e.getMessage());
