@@ -2,6 +2,8 @@ package com.fssa.apprishiagrimarket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fssa.rishi.model.Cart;
+import com.fssa.rishi.model.Order;
 import com.fssa.rishi.model.ProductDetails;
 import com.fssa.rishi.services.CartService;
+import com.fssa.rishi.services.OrderService;
 import com.fssa.rishi.services.ProductService;
 import com.fssa.rishi.services.UserService;
 import com.fssa.rishi.services.exceptions.ServiceException;
@@ -25,46 +29,43 @@ import com.fssa.rishi.services.exceptions.ServiceException;
 public class AddToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        PrintWriter out = response.getWriter();
-//        long productId = Long.parseLong(request.getParameter("id"));
-//        try {
-//            ProductDetails product = ProductService.findProductById(productId);
-//
-//            request.setAttribute("cartProduct", product);
-//
-//        } catch (ServiceException e) {
-//            out.print(e.getMessage());
-//        }
-//    }
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String userEmail = (String) session.getAttribute("loggedInEmail");
+		UserService service = new UserService();
 		try {
-			// Get the product ID from the request (modify this based on your actual form)
+			long userId = service.findIdByEmail(userEmail);
+			System.out.println(userId);
 			long productId = Long.parseLong(request.getParameter("id"));
+			long orderId = System.currentTimeMillis();
 
-			UserService service = new UserService();
+			ProductDetails products = ProductService.findProductById(productId);
 
-			HttpSession session = request.getSession(false);
-			String loggedInEmail = (String) session.getAttribute("loggedInEmail");
-			long userId = service.findIdByEmail(loggedInEmail);
+			String name = products.getName();
+			int price = products.getPrice();
+			int quantity = products.getQuantity();
 
-			CartService cartService = new CartService();
-			boolean addedToCart = cartService.createCart(productId, userId);
+			Cart cart = new Cart(orderId, userId, productId, name, price, quantity);
+			System.out.println("New order");
 
-			if (addedToCart) {
-				// Redirect to a success page or display a success message
-				response.sendRedirect("success.jsp");
-			} else {
-				// Redirect to an error page or display an error message
-				response.sendRedirect("error.jsp");
+			CartService orderservice = new CartService();
+
+			try {
+				if (orderservice.createCart(cart)) {
+					System.out.println("Register Product Successfully");
+					response.sendRedirect("GetAllProductServlet");
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (ServiceException | NumberFormatException e) {
-			// Handle the service exception (e.g., log it or show an error message)
+		} catch (ServiceException e) {
 			e.printStackTrace();
-			response.sendRedirect("error.jsp");
 		}
 	}
 }

@@ -58,7 +58,7 @@ public class RegisterSellerServlet extends HttpServlet {
 				out.println("Registration successful");
 //				RequestDispatcher dispatcher = request.getRequestDispatcher(request.getContextPath() + "/pages/2.Login.jsp");
 //				dispatcher.forward(request, response);
-				response.sendRedirect(request.getContextPath() + "/pages/2.Login.jsp");
+				response.sendRedirect(request.getContextPath() + "/pages/2.buy-login.jsp");
 			} else {
 				out.println("Registration failed");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("<%= request.getContextPath()%>/1.buy.signin.jsp");

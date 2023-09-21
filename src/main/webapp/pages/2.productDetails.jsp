@@ -23,19 +23,19 @@
 				width="90px" />
 		</div>
 		<nav>
-		<a href="ProfileServlet?id=${userId}">
-			<button>Profile</button>
-		</a> <a href="LogoutServlet">
-			<button>logout</button>
-		</a>
-	</nav>
+			<a href="ProfileServlet?id=${userId}">
+				<button>Profile</button>
+			</a> <a href="LogoutServlet">
+				<button>logout</button>
+			</a>
+		</nav>
 	</header>
 	<h1>All Products List</h1>
 	<div class="search-bar">
 		<input class="search-bar" type="text" id="searchInput"
 			placeholder="Search products...">
 	</div>
-	
+
 	<div class="product-cards" id="productContainer">
 		<c:forEach var="product" items="${products}">
 			<div class="product-card">

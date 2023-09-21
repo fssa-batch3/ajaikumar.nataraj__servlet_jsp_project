@@ -25,7 +25,7 @@ public class DeleteUserServlet extends HttpServlet {
 
         try {
             userService.deleteUser(userEmail);
-            response.sendRedirect("registerbuyer.jsp");
+            response.sendRedirect(request.getContextPath() + "/pages/registerbuyer.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();

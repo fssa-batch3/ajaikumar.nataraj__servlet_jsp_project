@@ -62,7 +62,7 @@
 
 	<script>
 		function log() {
-			window.location.href = "2.Login.jsp";
+			window.location.href = "2.buy-login.jsp";
 		}
 	</script>
 

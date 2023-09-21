@@ -25,62 +25,60 @@ import com.fssa.rishi.utils.ConnectionUtil;
 @WebServlet("/RegisterProductServlet")
 public class RegisterProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
 		Connection connection = ConnectionUtil.getConnection();
 		PrintWriter out = response.getWriter();
 
 		try {
-		    String userEmail = (String) session.getAttribute("loggedInEmail");
-		   
-		    UserService service = new UserService();
-		    long userId = service.findIdByEmail(userEmail);
-		    request.setAttribute("userId", userId);
+			String userEmail = (String) session.getAttribute("loggedInEmail");
 
+			UserService service = new UserService();
+			long userId = service.findIdByEmail(userEmail);
+			request.setAttribute("userId", userId);
 
-		    LocalDate uploadDate = LocalDate.now();
-		    long uniqueID = System.currentTimeMillis();
+			LocalDate uploadDate = LocalDate.now();
+			long uniqueID = System.currentTimeMillis();
 
-		    String name = request.getParameter("name");
-		    String productPrice = request.getParameter("price");
-		    String productQty = request.getParameter("qty");
-		    String description = request.getParameter("description");
-		    String url = request.getParameter("url");
-		    String address = request.getParameter("address");
-		    String district = request.getParameter("district");
-		    String type = request.getParameter("type");
-		    String uploadPincode = request.getParameter("pincode");
-		    
-		    int price = Integer.parseInt(productPrice);
-		    int qty = Integer.parseInt(productQty);
-		    int pincode = Integer.parseInt(uploadPincode);
+			String name = request.getParameter("name");
+			String productPrice = request.getParameter("price");
+			String productQty = request.getParameter("qty");
+			String description = request.getParameter("description");
+			String url = request.getParameter("url");
+			String address = request.getParameter("address");
+			String district = request.getParameter("district");
+			String type = request.getParameter("type");
+			String uploadPincode = request.getParameter("pincode");
 
-		    ProductDetails product = new ProductDetails(uniqueID, name, price, qty, description, url, address, type, district, userId, pincode, uploadDate);
-		    ProductService productService = new ProductService();
+			int price = Integer.parseInt(productPrice);
+			int qty = Integer.parseInt(productQty);
+			int pincode = Integer.parseInt(uploadPincode);
 
-		    List<ProductDetails> products = null;
-		    try {
-		        if(productService.registerProduct(product)) {
-		        out.println("Register Product Successfully");
-		        products = productService.readProductDetails();
-		        session.setAttribute("products", products);
-		        response.sendRedirect("GetAllOwnProductsServlet");
-		        } else {
-		        	out.println("register failed");
-		        }
-		    } catch (Exception e) {
-		        e.printStackTrace();  
-		        out.println(e.getMessage());
-		    }
+			ProductDetails product = new ProductDetails(uniqueID, name, price, qty, description, url, address, type,
+					district, userId, pincode, uploadDate);
+			ProductService productService = new ProductService();
+
+			List<ProductDetails> products = null;
+			try {
+				if (productService.registerProduct(product)) {
+					out.println("Register Product Successfully");
+					products = productService.readProductDetails();
+					session.setAttribute("products", products);
+					response.sendRedirect(request.getContextPath() + "/pages/successSeller.jsp");
+				} else {
+					out.println("register failed");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				out.println(e.getMessage());
+			}
 		} catch (Exception e) {
-		    e.printStackTrace();
-		    out.println("Error: " + e.getMessage());
+			e.printStackTrace();
+			out.println("Error: " + e.getMessage());
 		}
 	}
-
-	
 
 }

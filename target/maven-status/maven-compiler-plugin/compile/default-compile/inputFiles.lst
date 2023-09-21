@@ -1,4 +1,3 @@
-C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\LogoutServletSeller.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\GetUserServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\LoginBuyerServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\LogoutServletBuyer.java
@@ -11,10 +10,14 @@ C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\DeleteProductServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\DeleteUserServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\LoginServlet.java
+C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\LogoutServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\RegisterProductUpdateServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\RegisterProductServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\RegisterBuyerServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\RegisterUserUpdate.java
+C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\productsDetailServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\GetSingleProductDetail.java
+C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\AddToCartServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\GetAllOwnProductsServlet.java
 C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\GetAllProductServlet.java
+C:\Users\AjaikumarNataraj\eclipse-workspace\apprishiagrimarket\src\main\java\com\fssa\apprishiagrimarket\BuyNowServlet.java

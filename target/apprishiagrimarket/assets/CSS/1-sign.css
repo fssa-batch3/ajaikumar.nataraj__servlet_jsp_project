@@ -1,6 +1,5 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 25px;
   /* background-color: rgb(227, 241, 233); */
   text-align: center;
   justify-content: center;
@@ -22,7 +21,6 @@ textarea:invalid {
 }
 
 .body {
-  font-size: 30px;
   color: black;
 }
 .head {
@@ -44,6 +42,7 @@ textarea:invalid {
   height: 600px;
   margin-top: 50px;
   border-radius: 6px;
+  position: relative;
 }
 
 .form input {
@@ -88,6 +87,13 @@ button:hover {
 form i {
   margin-left: -30px;
   cursor: pointer;
+}
+.mandatory {
+	font-size: 10px;
+	position: absolute;
+	top: 0;
+	right: 5px;
+	color: red;
 }
 /* Media query*/
 @media screen and (max-width: 600px) {
