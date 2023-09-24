@@ -39,7 +39,6 @@ public class RegisterSellerServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		String confirm_password = request.getParameter("conform_password");
 		String address = request.getParameter("address");
 		String phoneNumber = request.getParameter("phoneNumber");
 		String Pincode = request.getParameter("pincode");
@@ -67,6 +66,8 @@ public class RegisterSellerServlet extends HttpServlet {
 		} catch (ServiceException e) {
 			e.printStackTrace();
 			out.println(e.getMessage());
+			response.sendRedirect(request.getContextPath() + "/pages/1.signin.jsp?errorMessage=" + e.getMessage());
+
 		}
 
 	}

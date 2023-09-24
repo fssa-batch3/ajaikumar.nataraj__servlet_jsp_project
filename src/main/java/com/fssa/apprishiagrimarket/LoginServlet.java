@@ -3,7 +3,6 @@ package com.fssa.apprishiagrimarket;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +14,7 @@ import com.fssa.rishi.dao.UserDAO;
 import com.fssa.rishi.dao.exceptions.DAOException;
 import com.fssa.rishi.model.User;
 import com.fssa.rishi.services.SellerService;
+import com.fssa.rishi.services.UserService;
 import com.fssa.rishi.services.exceptions.ServiceException;
 
 /**
@@ -32,13 +32,16 @@ public class LoginServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		SellerService userService = new SellerService();
+		SellerService sellerService = new SellerService();
+		UserService userService = new UserService();
 		try {
-			if (userService.logInUser(user)) {
+			if (sellerService.logInUser(user)) {
 				out.println("Login Successfull...");
 				HttpSession session = request.getSession();
+				
 				session.setAttribute("loggedInEmail", email);
-				try {
+				long id = userService.findIdByEmail(email);
+				session.setAttribute("sellerId", id);
 					int type = UserDAO.findTypeByEmail(email);
 
 					if (type == 1) {
@@ -46,25 +49,22 @@ public class LoginServlet extends HttpServlet {
 					} else if (type == 0) {
 						response.sendRedirect("GetAllProductServlet");
 					}
-				} catch (DAOException e) {
-					// Handle the exception (e.g., log it or show an error message)
-					e.printStackTrace();
-				}
+
 			}
 
 			else {
 				out.println("Invalid Login Credentials");
-				RequestDispatcher dispatcher = request
-						.getRequestDispatcher(request.getContextPath() + "/pages/2.Login.jsp");
-				dispatcher.forward(request, response);
+				response.sendRedirect(
+						request.getContextPath() + "/pages/2.buy-login.jsp?errorMessage=Invalid Password");
+
 			}
-		} catch (ServiceException e) {
-			out.println(e.getMessage());
-			e.printStackTrace();
-			request.setAttribute("ErrorMessage", e.getMessage());
-			RequestDispatcher dispatcher = request
-					.getRequestDispatcher(request.getContextPath() + "/pages/2.Login.jsp");
-			dispatcher.forward(request, response);
+		} catch (ServiceException | DAOException e) {
+			response.sendRedirect(request.getContextPath() + "/pages/2.buy-login.jsp?errorMessage=" + e.getMessage());
+
+
+//			RequestDispatcher dispatcher = request.getRequestDispatcher(
+//					request.getContextPath() + "/pages/2.buy-login.jsp?ErrorMessage=Invalid Email");
+//			dispatcher.forward(request, response);
 		}
 
 	}

@@ -40,7 +40,6 @@ public class RegisterBuyerServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		String confirm_password = request.getParameter("conform_password");
 		String address = request.getParameter("address");
 		String phoneNumber = request.getParameter("phone_number");
 		String Pincode = request.getParameter("pincode");
@@ -50,7 +49,7 @@ public class RegisterBuyerServlet extends HttpServlet {
 		long uniqueID = System.currentTimeMillis();
 
 		UserService userService = new UserService();
-		User user1 = new User(email, name, password, phoneNo, "Erode",
+		User user1 = new User(email, name, password, phoneNo, null,
 				address, uniqueID, null, pincode, false, false);
 
 		try {
@@ -68,6 +67,8 @@ public class RegisterBuyerServlet extends HttpServlet {
 		} catch (ServiceException e) {
 			e.printStackTrace();
 			out.println(e.getMessage());
+			response.sendRedirect(request.getContextPath() + "/pages/1.buy-signin.jsp?errorMessage=" + e.getMessage());
+
 		}
 
 	}

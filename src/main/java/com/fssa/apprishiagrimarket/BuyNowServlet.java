@@ -29,9 +29,16 @@ public class BuyNowServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String userEmail = (String) session.getAttribute("loggedInEmail");
+		UserService service = new UserService();
+		
 		PrintWriter out = response.getWriter();
 		long productId = Long.parseLong(request.getParameter("id"));
 		try {
+			long userId = service.findIdByEmail(userEmail);
+			System.out.println(userId);
+			request.setAttribute("userId", userId);
 			System.out.print(productId);
 			ProductDetails product = ProductService.findProductById(productId);
 			System.out.print(product);
@@ -66,6 +73,7 @@ public class BuyNowServlet extends HttpServlet {
 
 			String name = request.getParameter("name");
 			int price = Integer.parseInt(request.getParameter("price"));
+			System.out.println(price);
 			int quantity = Integer.parseInt(request.getParameter("quantity"));
 			String address = request.getParameter("address");
 			String district = request.getParameter("district");
@@ -74,7 +82,7 @@ public class BuyNowServlet extends HttpServlet {
 
 			Order order = new Order(orderId, userId, productId, name, price, quantity, address, district, pincode,
 					uploadDate);
-			System.out.println("New order");
+			System.out.println(order);
 
 			OrderService orderservice = new OrderService();
 

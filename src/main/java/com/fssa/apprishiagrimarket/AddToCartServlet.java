@@ -48,9 +48,8 @@ public class AddToCartServlet extends HttpServlet {
 
 			String name = products.getName();
 			int price = products.getPrice();
-			int quantity = products.getQuantity();
 
-			Cart cart = new Cart(orderId, userId, productId, name, price, quantity);
+			Cart cart = new Cart(orderId, userId, productId, name, price, 1);
 			System.out.println("New order");
 
 			CartService orderservice = new CartService();
@@ -62,10 +61,12 @@ public class AddToCartServlet extends HttpServlet {
 
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				response.sendRedirect(
+						request.getContextPath() + "/GetAllProductServlet?errorMessage=" + e.getMessage());
 			}
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			response.sendRedirect(
+					request.getContextPath() + "/pages/2.productDetails.jsp?errorMessage=" + e.getMessage());
 		}
 	}
 }

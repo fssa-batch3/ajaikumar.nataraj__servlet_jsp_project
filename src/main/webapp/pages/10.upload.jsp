@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page import="com.fssa.rishi.model.ProductDetails"%>
+<%
+long id = (long) session.getAttribute("sellerId");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,181 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <title>Document</title>
-<link rel="stylesheet" href="../assets/CSS/10-upload.css" />
+<style type="text/css">
+body {
+	font-family: Arial, sans-serif;
+}
+
+.head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px
+		2px, rgba(0, 0, 0, 0.09) 0px 8px 4px;
+	color: white;
+	height: 60px;
+}
+
+.contact {
+	background-color: #2bae66ff;
+	height: 20px;
+	font-size: 15px;
+	color: white;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.contact p {
+	margin-top: 2px;
+}
+
+.name {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	color: white;
+	border-radius: 100px;
+	width: 50px;
+	height: 50px;
+	background-color: #2bae66ff;
+}
+/* Header container */
+.head {
+	color: #fff; /* Text color */
+	padding: 10px 20px; /* Padding around the header */
+	display: flex; /* Make the header contents display in a row */
+	justify-content: space-between;
+	/* Distribute elements evenly horizontally */
+	align-items: center; /* Center elements vertically */
+}
+
+/* Style for the back button */
+.head img[alt="back"] {
+	cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+/* Style for the logo */
+.logo img[alt="logo"] {
+	width: 90px; /* Set the logo width */
+	cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+/* Style for the profile section */
+.profile {
+	display: flex; /* Make the profile section contents display in a row */
+	align-items: center; /* Center elements vertically */
+}
+
+/* Style for the profile links */
+.profile a {
+	text-decoration: none; /* Remove underline from links */
+	margin-right: 10px; /* Add some spacing between links */
+	color: #fff; /* Text color for links */
+}
+
+/* Style for the profile icons */
+.profile img[alt="logo"], .profile img[alt="profile"], .profile img[alt="cart"]
+	{
+	width: 50px; /* Set the icon width */
+	cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+/* Add more specific styles or adjust the styles as needed */
+
+/* Form container */
+.full-card {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #ffffff;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 30px;
+}
+
+/* Form heading */
+.full-card h3 {
+	text-align: center;
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+/* Form input fields and labels */
+nav {
+	margin-bottom: 20px;
+}
+
+label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+	color: #555;
+}
+
+input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	color: #333;
+}
+
+/* Style the select input */
+input[type="text"][list] {
+	background-color: transparent;
+	border: none;
+}
+
+datalist {
+	display: none;
+}
+
+/* Form button */
+.btn-card {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.btn {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.btn:hover {
+	background-color: #45a049;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	padding: 12px 16px;
+	z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+/* Additional styling for responsive design can be added as needed */
+</style>
+<!--  <link rel="stylesheet" href="../assets/CSS/10-upload.css" /> -->
 </head>
 <body>
 	<div class="contact">
@@ -25,25 +202,27 @@
 			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
-		<div class="name">
-			<c:set var="userId" value="${userId}" />
-			<a href="<%=request.getContextPath()%>/profileServlet?id=${userId}">
-				<button class="btn">Profile</button>
-			</a>
 
-
-
+		<div class="dropdown">
+			<img alt="menu" src="../assets/image/menu.png" width="30px">
+			<div class="dropdown-content">
+				<a href="<%=request.getContextPath()%>/GetAllOwnProductsServlet">
+					<img src="../assets/image/orders.png" alt="logo" width="30px" />
+				</a> <br> <a
+					href="<%=request.getContextPath()%>/GetAllProductServlet"> <img
+					src="../assets/image/cart.png" alt="logo" width="30px" />
+				</a><br> <a
+					href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
+					<img src="../assets/image/profile.png" alt="logo" width="30px" />
+				</a>
+			</div>
 		</div>
+
+
+
 	</header>
 
-	<div class="btn_div">
 
-		<a href="<%=request.getContextPath()%>/GetAllOwnProductsServlet">
-			<button class="btn">History</button>
-		</a> <a href="<%=request.getContextPath()%>/GetAllProductServlet">
-			<button class="btn">Go to Buy</button>
-		</a>
-	</div>
 	<section class="output_section"></section>
 
 	<a href="../assets/image/apple.jpg"></a>
@@ -52,21 +231,24 @@
 	<form action="<%=request.getContextPath()%>/RegisterProductServlet"
 		method="post" class="full-card" id="form">
 		<h3>Upload your products</h3>
+		<%
+		String errorMessage = request.getParameter("errorMessage");
+		if (errorMessage != null) {
+			out.println("<p style='color: red; width=100%;'>" + errorMessage + "</p>");
+		}
+		%>
 		<div class="full_list">
 			<div class="list">
 				<nav>
-					<label for="url">Product's Url</label> <input type="url" name="url"
-						id="url" placeholder="Enter Image Url" />
+					<input type="url" name="url" id="url" placeholder="Enter Image Url" />
 				</nav>
 				<nav>
-					<label for="name">Product's Name</label> <input required="required"
-						type="text" name="name" id="name" value="Graphes"
-						placeholder="Your Product's Name" />
+					<input required="required" type="text" name="name" id="name"
+						value="Graphes" placeholder="Your Product's Name" />
 				</nav>
 				<nav>
-					<label for="type">Product's Type</label> <input required="required"
-						list="Types" name="type" id="type" placeholder="Type"
-						autocomplete="off" />
+					<input required="required" list="Types" name="type" id="type"
+						placeholder="Select Type" autocomplete="off" />
 					<datalist id="Types">
 						<option value="Fruit"></option>
 						<option value="Vegetable"></option>
@@ -75,7 +257,6 @@
 					</datalist>
 				</nav>
 				<nav>
-					<label for="description"> Description about your product </label> <br />
 					<input required="required" name="description" type="text"
 						id="description" class="description"
 						value="It is good fruit with nutrients"
@@ -84,18 +265,15 @@
 			</div>
 			<div class="list">
 				<nav>
-					<label for="price">Product's Price</label> <input
-						required="required" type="number" name="price" id="price"
+					<input required="required" type="number" name="price" id="price"
 						value="100" placeholder="Enter Your Product's Price per kg" />
 				</nav>
 				<nav>
-					<label for="qty">Product's Quantity</label> <input
-						required="required" type="number" name="qty" id="qty" value="100"
-						placeholder="Enter Your Product's Quantity" />
+					<input required="required" type="number" name="qty" id="qty"
+						value="100" placeholder="Enter Your Product's Quantity" />
 				</nav>
 				<nav>
-					<label for="district">District</label> <br> <input required
-						list="Districts" name="district" id="district"
+					<input required list="Districts" name="district" id="district"
 						placeholder="Select District" autocomplete="off" />
 					<datalist id="Districts">
 						<option value="Ariyalur">Ariyalur</option>
@@ -138,14 +316,12 @@
 				</nav>
 
 				<nav>
-					<label for="address">Enter Address</label> <input
-						required="required" type="text" id="address" name="address"
+					<input required="required" type="text" id="address" name="address"
 						value="10, Gandhi street, gobi." placeholder="Enter Your Address" />
 				</nav>
 				<nav>
-					<label for="pincode">Enter your Pincode</label> <input
-						required="required" type="number" id="pincode" name="pincode"
-						value="654321" placeholder="Enter your Pincode" />
+					<input required="required" type="number" id="pincode"
+						name="pincode" value="654321" placeholder="Enter your Pincode" />
 				</nav>
 			</div>
 		</div>
@@ -157,6 +333,11 @@
 
 	<div class="add_detail"></div>
 
+	<script>
+		function back() {
+			window.history.back();
+		}
+	</script>
 
 </body>
 </html>

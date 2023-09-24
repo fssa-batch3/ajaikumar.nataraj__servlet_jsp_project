@@ -56,7 +56,7 @@
 
         <b>Fruits</b>
         <button onclick="buy_login()">Buy Now</button>
-        <button onclick="sell_login()">Sell Now</button>
+        <button onclick="buy_login()">Sell Now</button>
       </div>
       <div class="card_div">
         <img
@@ -66,19 +66,19 @@
         />
         <b>Vegetables</b>
         <button onclick="buy_login()">Buy Now</button>
-        <button onclick="sell_login()">Sell Now</button>
+        <button onclick="buy_login()">Sell Now</button>
       </div>
       <div class="card_div">
         <img src="./assets/image/card_tea.jpg" alt="tea" width="275px" />
         <b>Tea and Coffee</b>
         <button onclick="buy_login()">Buy Now</button>
-        <button onclick="sell_login()">Sell Now</button>
+        <button onclick="buy_login()">Sell Now</button>
       </div>
       <div class="card_div">
         <img src="./assets/image/card_grain.jpg" alt="grain" width="275px" />
         <b>Cereals and Grains</b>
         <button onclick="buy_login()">Buy Now</button>
-        <button onclick="sell_login()">Sell Now</button>
+        <button onclick="buy_login()">Sell Now</button>
       </div>
     </main>
 
@@ -301,9 +301,7 @@
       function sell_sign() {
         window.location.href = "./pages/1.signin.jsp";
       }
-      function sell_login() {
-        window.location.href = "./pages/2.Login.jsp";
-      }
+    
       function buy_sign() {
         window.location.href = "./pages/1.buy-signin.jsp";
       }

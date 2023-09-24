@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import com.fssa.rishi.model.ProductDetails;
 import com.fssa.rishi.services.ProductService;
 import com.fssa.rishi.services.UserService;
+import com.fssa.rishi.services.exceptions.ServiceException;
 import com.fssa.rishi.utils.ConnectionUtil;
 
 /**
@@ -26,6 +27,26 @@ import com.fssa.rishi.utils.ConnectionUtil;
 public class RegisterProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+		String userEmail = (String) session.getAttribute("loggedInEmail");
+
+		UserService service = new UserService();
+		try {
+			long userId = service.findIdByEmail(userEmail);
+			System.out.println(userId);
+			request.setAttribute("userId", userId);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/10.upload.jsp");
+			dispatcher.forward(request, response);
+		} catch (ServiceException e) {
+			response.sendRedirect(request.getContextPath() + "/pages/10.upload.jsp?errorMessage=" + e.getMessage());
+
+		}
+
+	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -34,12 +55,15 @@ public class RegisterProductServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		try {
+			UserService service = new UserService();
 			String userEmail = (String) session.getAttribute("loggedInEmail");
 
-			UserService service = new UserService();
 			long userId = service.findIdByEmail(userEmail);
-			request.setAttribute("userId", userId);
+//			request.setAttribute("userId", userId);
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/10.upload.jsp");
+//			dispatcher.forward(request, response);
 
+			System.out.println(userId);
 			LocalDate uploadDate = LocalDate.now();
 			long uniqueID = System.currentTimeMillis();
 
@@ -72,12 +96,13 @@ public class RegisterProductServlet extends HttpServlet {
 					out.println("register failed");
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
-				out.println(e.getMessage());
+				response.sendRedirect(request.getContextPath() + "/pages/10.upload.jsp?errorMessage=" + e.getMessage());
+				System.out.println(e.getMessage());
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			out.println("Error: " + e.getMessage());
+			response.sendRedirect(request.getContextPath() + "/pages/10.upload.jsp?errorMessage=" + e.getMessage());
+			System.out.println(e.getMessage());
+
 		}
 	}
 

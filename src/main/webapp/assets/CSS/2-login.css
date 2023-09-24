@@ -1,91 +1,81 @@
+/* Reset some default browser styles */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Overall page styles */
 .body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 30px;
-  text-align: center;
-  align-items: center;
-  align-content: center;
+    background-color: #f0f0f0; /* Background color */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
 }
 
-.center {
-  justify-content: space-between;
-  align-content: center;
-  /* border: 1px solid #2bae66ff; */
-  box-shadow: 3px 3px 5px 5px rgb(217, 244, 217);
-  height: 600px;
-  width: 600px;
-  border-radius: 10px;
+/* Header styles */
+h1 {
+    font-size: 36px;
+    color: #333; /* Header text color */
+    margin-top: 20px;
 }
-.center input {
-  border-radius: 8px;
+
+/* Error message styles */
+.error-message {
+    color: red;
+    font-weight: bold;
 }
-.center label {
-  margin-top: 30px;
-}
-input:valid {
-  border: 2px solid rgb(15, 232, 15);
-}
-input:invalid {
-  border: 2px solid red;
-}
-.btn {
-  font-size: 30px;
-  width: 300px;
-  margin-top: 20px;
-  background-color: #2bae66ff;
-  color: white;
-  border: none;
-  box-shadow: 2px 2px 2px rgb(217, 244, 217);
-  border-radius: 5px;
-}
-button:hover {
-  color: #2bae66ff;
-  background-color: whitesmoke;
-}
+
+/* Form container styles */
 .form {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 40px;
+    background-color: #fff; /* Form background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+    max-width: 400px;
+    margin: 20px auto;
 }
 
-.form input {
-  font-size: 30px;
+/* Form input styles */
+label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
 }
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Sign-in button styles */
+.btn {
+    background-color: #007bff; /* Button background color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Sign-up link styles */
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Footer styles */
 .footer {
-  /* margin-top: 90px; */
-  text-align: center;
-  padding: 30px auto;
-}
-
-/* Media query*/
-@media screen and (max-width: 600px) {
-  * {
-    width: 600px;
-  }
-
-  body {
-    width: 600px;
-    height: 800px;
-    font-size: 20px;
-    text-align: start;
-    overflow: hidden;
-  }
-  .body {
-    width: 600px;
-  }
-  .body img {
-    width: 90px;
-    text-align: none;
-  }
-  .form {
-    width: 500px;
-  }
-  h1 {
-    margin-left: 40px;
-  }
-  input {
-    width: 400px;
-  }
+    font-size: 14px;
+    color: #777;
+    margin-top: 20px;
 }

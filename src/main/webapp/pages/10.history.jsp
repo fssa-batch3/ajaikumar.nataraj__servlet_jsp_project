@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.fssa.rishi.model.ProductDetails"%>
+<%@ page import="com.fssa.rishi.model.User"%>
 
+<%
+ProductDetails product = (ProductDetails) request.getAttribute("updateProduct");
+long id = (long) request.getAttribute("userId");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="contact">
+	<div class="contact">
 		<p>+91 9876543210</p>
 		<p>Rishi-market@agri.com</p>
 	</div>
@@ -22,16 +27,21 @@
 				width="90px" />
 		</div>
 		<div class="name">
-			<p onclick="profile()" id="newimg"></p>
+			<a href="ProfileServlet?id=<%=id%>"> <img onclick="home()"
+				src="./assets/image/profile.png" alt="logo" width="50px" />
+			</a>
 		</div>
 	</header>
-	<%
-	String errorMessage = (String) request.getAttribute("errorMessage");
-	ProductDetails product = (ProductDetails) request.getAttribute("updateProduct");
-	%>
+
 	<form action="RegisterProductUpdate?id=<%=product.getId()%>"
 		method="post" class="full-card" id="form">
 		<h3>Update your products</h3>
+		<%
+		String errorMessage = request.getParameter("errorMessage");
+		if (errorMessage != null) {
+			out.println("<p style='color: red;'>" + errorMessage + "</p>");
+		}
+		%>
 		<div class="full_list">
 			<div class="list">
 				<nav>
@@ -66,19 +76,22 @@
 				<nav>
 					<label for="price">Product's Price</label> <br /> <input
 						required="required" type="number" name="price" id="price"
+						pattern="[0-9]{6}" maxlength="6" minlength="6"
 						value=<%=product.getPrice()%> />
 
 				</nav>
 				<nav>
 					<label for="qty">Product's Quantity</label> <br /> <input
 						required="required" type="number" name="qty" id="qty"
+						pattern="[0-9]{6}" maxlength="6" minlength="6"
 						value=<%=product.getQuantity()%> />
 
 				</nav>
 				<nav>
 					<label for="district">District</label> <br> <input required
 						list="Districts" name="district" id="district"
-						placeholder="Select District" autocomplete="off" />
+						value=<%=product.getDistrict()%> placeholder="Select District"
+						autocomplete="off" />
 					<datalist id="Districts">
 						<option value="Ariyalur">Ariyalur</option>
 						<option value="Chennai">Chennai</option>
@@ -125,9 +138,9 @@
 				</nav>
 				<nav>
 					<label for="pincode">Enter your Pincode</label><br /> <input
-						required="required" type="number" id="pincode" name="pincode"
-						value="654321" placeholder="Enter your Pincode"
-						value=<%=product.getPincode()%> />
+						required="required" type="text" id="pincode" name="pincode"
+						value="654321" placeholder="Enter your Pincode" pattern="[0-9]{6}"
+						maxlength="6" minlength="6" value=<%=product.getPincode()%> />
 				</nav>
 			</div>
 		</div>
@@ -136,5 +149,10 @@
 			<button class="btn" id="add-btn" type="submit">Save</button>
 		</div>
 	</form>
+	<script>
+		function back() {
+			window.history.back();
+		}
+	</script>
 </body>
 </html>

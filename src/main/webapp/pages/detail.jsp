@@ -3,9 +3,12 @@
 <%@ page import="com.fssa.rishi.model.ProductDetails"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List"%>
+<%@ page import="com.fssa.rishi.model.User"%>
+
 <%
 String errorMessage = (String) request.getAttribute("errorMessage");
 ProductDetails product = (ProductDetails) request.getAttribute("Product");
+long id = (long) request.getAttribute("userId");
 %>
 <!DOCTYPE html>
 <html>
@@ -84,11 +87,13 @@ h2 {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	clear: both; /* Clear floats */
+	align-item: center;
+	align-content: center;
 }
 
 /* Input and textarea styles */
-input[type="text"], input[type="number"], textarea {
-	width: 100%;
+input[type="text"], input[type="number"], input[type="tel"], textarea {
+	width: 95%;
 	padding: 10px;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
@@ -96,10 +101,10 @@ input[type="text"], input[type="number"], textarea {
 	font-size: 16px;
 }
 
-input[type="text"]::placeholder, input[type="number"]::placeholder, textarea::placeholder {
-    color: lightgrey;
+input[type="text"]::placeholder, input[type="number"]::placeholder,
+	textarea::placeholder {
+	color: lightgrey;
 }
-
 
 /* Submit button styles */
 button[type="submit"] {
@@ -125,6 +130,26 @@ button[type="submit"]:hover {
 .delivery-details {
 	margin-left: 50px;
 }
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	padding: 12px 16px;
+	z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
 </style>
 
 </head>
@@ -140,13 +165,17 @@ button[type="submit"]:hover {
 			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
-		<nav>
-			<a href="ProfileServlet?id=${userId}">
-				<button>Profile</button>
-			</a> <a href="LogoutServlet">
-				<button>logout</button>
-			</a>
-		</nav>
+		<div class="dropdown">
+			<img alt="menu" src="./assets/image/menu.png" width="30px">
+			<div class="dropdown-content">
+				<a href="ProfileServlet?id=<%=id%>"> <img
+					src="./assets/image/profile.png" alt="logo" width="30px" />
+				</a><br> <a href="LogoutServlet"> <img
+					src="./assets/image/logout.png" alt="logo" width="30px" />
+				</a>
+			</div>
+		</div>
+
 	</header>
 	<div class="container">
 		<form action="BuyNowServlet" method="post" class="order-form">
@@ -155,14 +184,16 @@ button[type="submit"]:hover {
 				<div class="form-section product-details">
 					<input type="hidden" name="productId" value="<%=product.getId()%>">
 					<label for="name">Name:</label> <input type="text" id="name"
-						name="name" value="<%=product.getName()%>"> <br> <label
-						for="description">Description:</label>
-					<textarea id="description" name="description"><%=product.getDescription()%></textarea>
+						readonly name="name" value="<%=product.getName()%>"> <br>
+					<label for="description">Description:</label>
+					<textarea id="description" name="description" readonly><%=product.getDescription()%></textarea>
 					<br> <label for="price">Price (Rs.):</label> <input
-						type="text" id="price" name="price"
+						type="text" id="price" name="price" readonly
 						value="<%=product.getPrice()%>"> <br> <label
-						for="quantity">Quantity Available:</label> <input type="text"
-						id="quantity" name="quantity" required autofocus placeholder="Enter your quantity">
+						for="quantity">Quantity Available:</label> <input type="tel"
+						maxlength="2" pattern="[0-9]{1-2}" min="1" value="1" id="quantity"
+						name="quantity" required autofocus
+						placeholder="Enter your quantity">
 				</div>
 
 				<!-- Delivery Details Section -->
@@ -170,13 +201,54 @@ button[type="submit"]:hover {
 					<label for="address">Address:</label>
 					<textarea id="address" name="address" required
 						placeholder="Enter your address"></textarea>
-					<br> <label for="district">District:</label> <input
-						type="text" id="district" name="district" required
-						placeholder="Enter your district"> <br> <label
-						for="phone">Phone Number:</label> <input type="text" id="phone"
-						name="phone" required placeholder="Enter your phone number"> <br>
-					<label for="pincode">Pincode:</label> <input type="number"
-						id="pincode" name="pincode" required placeholder="Enter your pincode">
+					<br> <label for="district">District:</label><input required
+						list="Districts" name="district" id="district" type="text"
+						placeholder="Select District" autocomplete="off" />
+					<datalist id="Districts">
+						<option value="Ariyalur">Ariyalur</option>
+						<option value="Chennai">Chennai</option>
+						<option value="Coimbatore">Coimbatore</option>
+						<option value="Cuddalore">Cuddalore</option>
+						<option value="Dharmapuri">Dharmapuri</option>
+						<option value="Dindigul">Dindigul</option>
+						<option value="Erode">Erode</option>
+						<option value="Kallakurichi">Kallakurichi</option>
+						<option value="Kanchipuram">Kanchipuram</option>
+						<option value="Kanyakumari">Kanyakumari</option>
+						<option value="Karur">Karur</option>
+						<option value="Krishnagiri">Krishnagiri</option>
+						<option value="Madurai">Madurai</option>
+						<option value="Nagapattinam">Nagapattinam</option>
+						<option value="Namakkal">Namakkal</option>
+						<option value="Nilgiris">Nilgiris</option>
+						<option value="Perambalur">Perambalur</option>
+						<option value="Pudukkottai">Pudukkottai</option>
+						<option value="Ramanathapuram">Ramanathapuram</option>
+						<option value="Salem">Salem</option>
+						<option value="Sivaganga">Sivaganga</option>
+						<option value="Tenkasi">Tenkasi</option>
+						<option value="Thanjavur">Thanjavur</option>
+						<option value="Theni">Theni</option>
+						<option value="Thoothukudi (Tuticorin)">Thoothukudi
+							(Tuticorin)</option>
+						<option value="Tiruchirapalli">Tiruchirapalli</option>
+						<option value="Tirunelveli">Tirunelveli</option>
+						<option value="Tirupathur">Tirupathur</option>
+						<option value="Tiruppur">Tiruppur</option>
+						<option value="Tiruvallur">Tiruvallur</option>
+						<option value="Tiruvannamalai">Tiruvannamalai</option>
+						<option value="Tiruvarur">Tiruvarur</option>
+						<option value="Vellore">Vellore</option>
+						<option value="Viluppuram">Viluppuram</option>
+						<option value="Virudhunagar">Virudhunagar</option>
+					</datalist>
+					<br> <label for="phone">Phone Number:</label> <input
+						type="tel" id="phone" name="phone" required minlength="10"
+						maxlength="10" pattern="[6-9]{1}[0-9]{9}"
+						placeholder="Enter your phone number"> <br> <label
+						for="pincode">Pincode:</label><input type="tel" id="pincode"
+						name="pincode" required placeholder="Enter your 6-digit pincode"
+						minlength="6" maxlength="6" pattern="[0-9]{6}">
 				</div>
 			</div>
 			<!-- Payment Details Section -->
@@ -193,5 +265,10 @@ button[type="submit"]:hover {
 			</a>
 		</form>
 	</div>
+	<script>
+		function back() {
+			window.history.back();
+		}
+	</script>
 </body>
 </html>

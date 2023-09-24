@@ -80,10 +80,10 @@ h1 {
 		<p>Rishi-market@agri.com</p>
 	</div>
 	<header class="head">
-		<img onclick="back()" src="./assets/image/arrowback.png" alt="back"
+		<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
 			width="50px" />
 		<div class="logo">
-			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
+			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 		<nav>
@@ -100,7 +100,7 @@ h1 {
 		<!-- Add your image URL here -->
 		<h1>Order Successful</h1>
 		<div class="success-message">
-			<p>Your order has been placed successfully.</p>
+			<p>Your Product has been placed successfully.</p>
 			<p>You will be redirected to home page in 5 seconds...</p>
 		</div>
 	</div>

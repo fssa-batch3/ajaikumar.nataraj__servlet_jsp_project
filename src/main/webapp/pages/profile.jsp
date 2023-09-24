@@ -8,81 +8,148 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./assets/CSS/10-upload.css" />
+<!-- <link rel="stylesheet" href="./assets/CSS/10-upload.css" /> -->
 </head>
 <style>
-button {
-	background-color: #2bae66ff;
-	color: aliceblue;
-	border: none;
-	border-radius: 5px;
-	font-size: 20px;
-	width: 300px;
-	height: 40px;
-	margin-top: 20px;
+.head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px
+		2px, rgba(0, 0, 0, 0.09) 0px 8px 4px;
+	color: white;
+	height: 80px;
+	width: 100%;
 }
 
-button:hover {
-	background-color: white;
+.topic {
 	color: #2bae66ff;
-	/* scale: 1.1; */
+	display: flex;
+	justify-content: space-between;
+	width: 700px;
 }
 
-body {
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 1240px;
-	font-size: 27px;
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-		sans-serif;
-}
-
-.main {
+.contact {
+	background-color: #2bae66ff;
+	height: 20px;
+	font-size: 15px;
+	color: white;
 	display: flex;
 	justify-content: space-evenly;
-	align-items: center;
-	align-content: center;
+}
+
+.contact p {
+	margin-top: 2px;
+}
+
+/* Reset some default browser styles */
+body, h1, h2, p, label, input, button {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+h2 {
+	margin-top: 5%;
+}
+/* Overall page styles */
+body {
+	font-family: Arial, sans-serif;
 	text-align: center;
-	box-shadow: 1px 1px 3px 3px rgb(188, 219, 188);
-	border-radius: 10px;
-	height: 500px;
-	margin-top: 10px;
+	padding: 20px;
 }
 
-.extraDetail {
+/* Profile container styles */
+.profile-container {
 	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 20px;
+	max-width: 800px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.profile {
-	width: 400px;
+/* Profile left (edit) side styles */
+.profile-left {
+	flex: 1;
+	text-align: left;
 }
 
-input {
-	width: 400px;
-	align-items: start;
-	font-size: 30px;
-	border-radius: 5px;
-	box-shadow: 1px 1px 1px 1px rgb(159, 223, 159);
-	border: none;
+/* Profile right (details) side styles */
+.profile-right {
+	flex: 1;
+	text-align: left;
 }
 
-input::placeholder {
-	font-size: 14px;
-}
-
-.form {
-	width: 410px;
+/* Form group styles */
+.form-group {
+	margin-bottom: 20px;
 }
 
 label {
-	font-size: 25px;
+	display: block;
+	font-weight: bold;
+	font-size: 16px;
+	color: #333;
+	margin-bottom: 5px;
 }
 
-/* for password eye symbol */
-form i {
-	margin-left: -40px;
+.input {
+	width: 100%;
+	padding: 10px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button {
+	background-color: #007bff; /* Button background color */
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
 	cursor: pointer;
+	font-size: 18px;
+}
+
+.delete-button {
+	background-color: #ff5555; /* Delete button background color */
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 30px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	padding: 12px 16px;
+	z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+/* Media query for responsive design */
+@media screen and (max-width: 768px) {
+	.profile-container {
+		flex-direction: column;
+		align-items: center;
+	}
+	.profile-left, .profile-right {
+		width: 100%;
+	}
 }
 </style>
 <body>
@@ -101,9 +168,17 @@ form i {
 			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
-		<div>
-		<a href="LogoutServlet"><button>Logout</button></a>
+		<div class="dropdown">
+			<img alt="menu" src="./assets/image/menu.png" width="30px">
+			<div class="dropdown-content">
+				<a href="LogoutServlet"><img src="./assets/image/logout.png"
+					alt="logo" width="30px" /></a> <br> <a
+					href="DeleteUserServlet?email=<%=user1.getEmail()%>"> <img
+					src="./assets/image/delete.png" alt="logo" width="30px" />
+				</a>
+			</div>
 		</div>
+
 	</header>
 
 
@@ -111,39 +186,63 @@ form i {
 		function back() {
 			window.history.back();
 		}
-		
-
 	</script>
-	<form action="ProfileServlet?id=<%=user1.getId()%>" method="POST"
-		class="main">
+	<h2>Profile Details</h2>
+
+	<form action="ProfileServlet?id=<%=user1.getId()%>" method="POST">
+		<div class="profile-container">
+
+			<div class="profile-left">
+				<div>
+					<div class="form-group">
+						<label for="username">User Name</label> <input type="text"
+							id="username" name="username" class="input"
+							value="<%=user1.getUsername()%>" placeholder="User Name" required>
+					</div>
+					<div class="form-group">
+						<label for="phone_number">Phone Number</label> <input type="tel"
+							id="phone_number" name="phone_number" class="input"
+							minlength="10" maxlength="10" pattern="[6-9]{1}[0-9]{9}"
+							value="<%=user1.getPhoneNumber()%>" placeholder="Phone Number"
+							required>
+					</div>
+					<div class="form-group">
+						<label for="home_address">Home Address</label> <input type="text"
+							id="home_address" name="address" value="<%=user1.getAddress()%>"
+							class="input" placeholder="Home Address" required>
+					</div>
+				</div>
+			</div>
+			<div class="profile-right">
+				<div class="form-group">
+					<label for="email">Email</label> <input type="email" id="email"
+						name="email" class="input" value="<%=user1.getEmail()%>"
+						placeholder="Email" readonly>
+				</div>
+				<div class="form-group">
+					<label for="dob">Date of Birth</label>
+					<%
+					java.util.Calendar calendar = java.util.Calendar.getInstance();
+					calendar.add(java.util.Calendar.YEAR, -18); // Subtract 18 years
+					java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
+					String maxDOB = dateFormat.format(calendar.getTime());
+					%>
+					<input type="date" id="dob" name="dob" class="input"
+						value="<%=user1.getDob()%>" max="<%=maxDOB%>">
+				</div>
 
 
-
-		<div class="profile">
-			<label for="User name">User name</label><br /> <input type="text"
-				id="user_name" name="username" class="input"
-				value="<%=user1.getUsername()%>" placeholder="User Name" /><br />
-
-			<label for="password">Password</label><br /> <input type="text"
-				id="password" name="password" class="input"
-				value="<%=user1.getPassword()%>" placeholder="Password" /><br /> <label
-				for="ph_no">Phone Number</label> <input type="text"
-				id="phone_number" name="phoneNo" class="input"
-				value="<%=user1.getPhoneNumber()%>" placeholder="Phone Number" /><br />
-			<label for="Home Address">Home Address</label> <input type="text"
-				id="home_address" name="address" value="<%=user1.getAddress()%>"
-				class="input" placeholder="Home Address" />
-		</div>
-		<div class="form">
-			<label for="email">Email</label> <input type="email" id="email"
-				name="email" class="input" value="<%=user1.getEmail()%>"
-				placeholder="Email" /><br /> <label for="Date of Birth">Date
-				of Birth</label> <input type="date" id="dob" name="dob" class="input"
-				value="<%=user1.getDob()%>" /><br /> <label for="Pincode">Pincode</label>
-			<input type="text" id="pincode" name="pincode" class="input"
-				value="<%=user1.getPincode()%>" placeholder="Pincode" /><br /> <label for="district">District</label> <br> <input required
-						list="Districts" name="district" id="district" value="<%=user1.getDistrict()%>" 
-						placeholder="Select District" autocomplete="off" />
+				<div class="form-group">
+					<label for="pincode">Pincode</label> <input type="text"
+						id="pincode" name="pincode" class="input" minlength="6"
+						maxlength="6" value="<%=user1.getPincode()%>"
+						placeholder="Pincode" required>
+				</div>
+				<div class="form-group">
+					<label for="district">District</label> <input required
+						class="input" list="Districts" name="district" id="district"
+						type="text" value="<%=user1.getDistrict()%>"
+						placeholder="Select District" autocomplete="off">
 					<datalist id="Districts">
 						<option value="Ariyalur">Ariyalur</option>
 						<option value="Chennai">Chennai</option>
@@ -181,17 +280,22 @@ form i {
 						<option value="Vellore">Vellore</option>
 						<option value="Viluppuram">Viluppuram</option>
 						<option value="Virudhunagar">Virudhunagar</option>
-					</datalist><br />
+					</datalist>
+				</div>
 
-			<button type="submit">Update</button>
-			<a href="DeleteUserServlet?email=<%=user1.getEmail()%>">
-				<button>Delete</button>
-			</a>
-
+			</div>
 		</div>
+		<button type="submit">Update</button>
+
 	</form>
 
-	
 
+	<script>
+		function back() {
+			window.history.back();
+		}
+
+		
+	</script>
 </body>
 </html>

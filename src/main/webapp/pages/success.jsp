@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
- <!--  <meta http-equiv="refresh" content="5;url=GetAllProductServlet">  -->
 <!-- Redirect to another page after 5 seconds -->
 
 <title>Insert title here</title>
@@ -25,6 +24,7 @@
 	left: 0px;
 	z-index: 1;
 }
+
 .contact {
 	background-color: #2bae66ff;
 	height: 20px;
@@ -80,10 +80,10 @@ h1 {
 		<p>Rishi-market@agri.com</p>
 	</div>
 	<header class="head">
-		<img onclick="back()" src="./assets/image/arrowback.png" alt="back"
+		<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
 			width="50px" />
 		<div class="logo">
-			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
+			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 		<nav>
@@ -104,5 +104,11 @@ h1 {
 			<p>You will be redirected to home page in 5 seconds...</p>
 		</div>
 	</div>
+	<script>
+        setTimeout(function() {
+            // Replace the URL with the one you want to redirect to
+            window.location.href = "../GetAllProductServlet";
+        }, 5000); // 5000 milliseconds (5 seconds)
+    </script>
 </body>
 </html>

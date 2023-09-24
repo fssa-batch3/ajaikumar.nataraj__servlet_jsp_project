@@ -7,30 +7,110 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Document</title>
-<link rel="stylesheet" href="../assets/CSS/2-login.css" />
+<style type="text/css">
+/* Reset some default browser styles */
+body, h1, h2, p {
+	margin: 0;
+	padding: 0;
+}
+
+/* Overall page styles */
+.body {
+	background-color: #ffffff; /* Background color */
+	font-family: Arial, sans-serif;
+	text-align: center;
+	padding: 20px;
+}
+
+/* Header styles */
+h1 {
+	font-size: 36px;
+	color: #333; /* Header text color */
+	margin-top: 20px;
+}
+
+/* Error message styles */
+.error-message {
+	color: red;
+	font-weight: bold;
+}
+
+/* Form container styles */
+.form {
+	background-color: #fff; /* Form background color */
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+	max-width: 450px;
+	margin: 20px auto;
+}
+
+/* Form input styles */
+label {
+	display: block;
+	margin-top: 10px;
+	text-align: left;
+	font-weight: bold;
+	font-size: 16px;
+	color: #333;
+}
+
+input[type="text"], input[type="password"] {
+	width: 95%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	margin-top: 15px;
+	margin-right: 10px;
+}
+
+/* Sign-in button styles */
+.btn {
+	background-color: #007bff; /* Button background color */
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+	margin-top: 15px;
+}
+
+/* Sign-up link styles */
+p a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+/* Footer styles */
+.footer {
+	font-size: 14px;
+	color: #777;
+	margin-top: 20px;
+}
+</style>
 </head>
 <body class="body">
 	<h1>Hi! User...</h1>
 
 	<%
-	String e = (String) request.getAttribute("ErrorMessage");
-	if (e != null) {
-	%>
-	<span style="color: red;"><%=e%></span>
-	<%
+	String errorMessage = request.getParameter("errorMessage");
+	if (errorMessage != null) {
+		out.println("<p style='color: red;'>" + errorMessage + "</p>");
 	}
 	%>
+
 
 	<div class="form">
 		<form action="<%=request.getContextPath()%>/LoginServlet"
 			method="post" class="center" id="form">
 			<nav>
-				<img src="../assets/image/login.png" alt="profile" width="350px" />
+				<img src="../assets/image/login.png" alt="profile" width="400px" />
 			</nav>
-			<label>User Mail id:</label><br /> <input type="text" id="Email"
-				name="email" required="true" value="ajai@gmail.com" /><br /> <label>Password:</label><br />
-			<input value="Ajai@123" name="password" type="password" id="Password"
-				required="true" /> <br />
+			<input type="text" id="Email" name="email"  placeholder="Enter your Email"
+				value="ajai@gmail.com" /><br /> <input value="Ajai@123" placeholder="Enter your Password"
+				name="password" type="password" id="Password"  /> <br />
 			<button class="btn" type="submit">Sign in</button>
 		</form>
 	</div>
@@ -40,11 +120,10 @@
 			onclick="sign()">Signup</a>
 	</p>
 	<footer class="footer">Toll-Free no:1800 123 100</footer>
-
-
-
-	<!-- 	<script src="../assets/JavaScript/buy_login.js"></script>  -->
-	<!-- <script>
+</body>
+</html>
+<!-- 	<script src="../assets/JavaScript/buy_login.js"></script>  -->
+<!-- <script>
       // to get id of form
       let buyer_logIn = document.getElementById("form");
       console.log(buyer_logIn);
@@ -100,5 +179,3 @@
         window.location.href = "/pages/1.buy-signin.html";
       }
     </script> -->
-</body>
-</html>

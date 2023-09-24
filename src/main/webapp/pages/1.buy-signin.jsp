@@ -6,7 +6,117 @@
 <meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="../assets/CSS/1-sign.css" />
+<!-- <link rel="stylesheet" href="../assets/CSS/1-sign.css" /> -->
+<style type="text/css">
+/* Reset some default browser styles */
+body, h1, h2, p, label, input, textarea, button {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Overall page styles */
+.body {
+	background-color: #ffffff; /* Background color */
+	font-family: Arial, sans-serif;
+	text-align: center;
+	padding: 20px;
+}
+
+/* Header styles */
+h1 {
+	font-size: 36px;
+	color: #333; /* Header text color */
+	margin-top: 20px;
+}
+
+/* Form container styles */
+.full {
+	background-color: #fff; /* Form background color */
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+	max-width: 1000px;
+	margin: 20px auto;
+}
+
+/* Form input and textarea styles */
+form div {
+	margin: 10px 0;
+	text-align: left;
+}
+
+.form {
+	display: flex;
+}
+
+label {
+	display: block;
+	font-weight: bold;
+	font-size: 16px;
+	color: #333;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"],
+	textarea {
+	width: 100%;
+	padding: 10px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Password visibility toggle icon */
+i.bi {
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 55%;
+	transform: translateY(-50%);
+}
+
+/* Submit button styles */
+button.sub {
+	background-color: #007bff; /* Button background color */
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+/* Login button styles */
+button.log {
+	background-color: #333; /* Button background color */
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+/* Footer styles */
+footer div {
+	margin-top: 20px;
+}
+
+small {
+	font-size: 14px;
+	color: #777;
+}
+
+/* Media query for responsive design */
+@media screen and (max-width: 768px) {
+	/* Adjust styles for smaller screens if needed */
+	.full {
+		max-width: 80%;
+	}
+}
+</style>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 <title>Insert title here</title>
@@ -15,39 +125,42 @@
 
 	<div class="full">
 		<h1>Welcome! to Rishi Organic Market</h1>
-		<form action="<%= request.getContextPath()%>/RegisterBuyerServlet" method="post" class="form"
-			id="form">
+		<%
+		String errorMessage = request.getParameter("errorMessage");
+		if (errorMessage != null) {
+			out.println("<p style='color: red;'>" + errorMessage + "</p>");
+		}
+		%>
+		<form action="<%=request.getContextPath()%>/RegisterBuyerServlet"
+			method="post" class="form" id="form">
 			<div>
 				<img src="../assets/image/buy_sign.png" alt="farmer" width="500px" />
-				<label for="pincode">Pincode</label> <br /> <input id="pincode"
-					name="pincode" type="tel" pattern="[0-9]{6}" maxlength="6"
-					minlength="6" />
 			</div>
 			<div>
 				<!-- <p class="mandatory">* All fields are mandatory</p>  -->
 
-				<label for="name">Full Name:</label><br /> <input type="text"
-					id="name" name="name" pattern="[a-zA-Z]{8, 20}" autocomplete="off"
-					title="Enter a single name" required autofocus /><br /> <label
-					for="email">Mail id:</label><br /> <input type="email" id="email"
-					name="email" autocomplete="hgfgtyfygh" required /><br /> <label
-					for="phone_number">Phone no:</label><br /> <input type="tel"
-					id="phone_number" name="phone_number" pattern="[6-9]{1}[0-9]{9}"
-					autocomplete="hgfgtyfygh" maxlength="10" required /><br /> <label
-					for="password">Password:</label><br /> <input type="password"
-					pattern="^(?!\s)(?!.*\s)[^\s]{6,}$" autocomplete="hg" id="password"
+				<input type="text" id="name" name="name" pattern="[a-zA-Z]{4, 20}"
+					value="Ajaikumar" placeholder="Enter your name" autocomplete="off"
+					title="Enter a single name" required autofocus /><br /> <br /> <input
+					type="email" id="email" name="email" placeholder="Enter your email"
+					value="ajai@gmail.com" autocomplete="hgfgtyfygh" required /><br />
+				<br /> <input type="tel" id="phone_number" name="phone_number"
+					value="9878796875" pattern="[6-9]{1}[0-9]{9}"
+					placeholder="Enter your phone number" autocomplete="hgfgtyfygh"
+					maxlength="10" required /><br /> <br /> <input type="password"
+					pattern="^(?!\s)(?!.*\s)[^\s]{6,}$" value="Ajai@123"
+					placeholder="Enter your password" autocomplete="hg" id="password"
 					name="password"
 					title="- Don't leave spaces between the password
             - Atleast 6 characters
             - Use capital and small aiphabets"
-					required /><i class="bi bi-eye-slash" id="togglePassword"></i><br />
-				<label for="confirm_password">Confirm Password:</label><br /> <input
-					type="password" id="confirm_password" name="confirm_password"
-					pattern="^(?!\s)(?!.*\s)[^\s]{6,}$" autocomplete="hg" required /><i
-					class="bi bi-eye-slash" id="toggleConformPassword"></i> <br /> <label
-					for="address">Address</label> <br />
+					required /> <br /> <br />
 				<textarea required pattern="[a-zA-Z]" name="address" id="address"
+					value="10, gandhi street, gobi." placeholder="Enter your address"
 					cols="45" rows="5"></textarea>
+				<input id="pincode" name="pincode" type="tel" pattern="[0-9]{6}"
+					value="638236" placeholder="Enter your pincode" maxlength="6"
+					minlength="6" /> <br />
 
 
 				<button class="sub" type="submit" value="submit" onclick="sign()">
@@ -57,20 +170,21 @@
 
 		<footer>
 			<div>
-				<button class="log" type="submit" onclick="log()">Login</button>
 
-				<small><p>If you already sign in! Please Login..</p></small>
+				<small><p>
+						If you already sign in! Please <a href="2.buy-login.jsp">
+							login..</a>
+					</p></small>
 			</div>
 		</footer>
 	</div>
 
-	<script type="text/javascript">
-		function log() {
-			window.location.href = "2.buy-login.jsp";
-		}
-	</script>
 
-	<!--  <script src="../assets/JavaScript/buyer_signup.js"></script>
+
+
+</body>
+</html>
+<!--  <script src="../assets/JavaScript/buyer_signup.js"></script>
 	<script>
       // get currentdate
       const today = new Date();
@@ -159,5 +273,3 @@
       // for create  user id
       const start = Date.now();
     </script> -->
-</body>
-</html>
