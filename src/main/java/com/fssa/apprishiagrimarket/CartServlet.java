@@ -23,7 +23,7 @@ import com.fssa.rishi.services.exceptions.ServiceException;
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -43,18 +43,30 @@ public class CartServlet extends HttpServlet {
 					long id = service.findIdByEmail(loggedInEmail);
 					System.out.println(id);
 
-				    products = Service.getCartById(id);
+					products = Service.getCartById(id);
 					System.out.println(products);
 					request.setAttribute("products", products);
 					request.setAttribute("userId", id);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/2.CartHistory.jsp");
 					dispatcher.forward(request, response);
 				} catch (ServiceException e) {
-					String errormsg = ("Error in getting the products: " + e.getMessage());
-					out.print(errormsg);
+					try {
+						long id = service.findIdByEmail(loggedInEmail);
+						request.setAttribute("userId", id);
+						String errormsg = "Error in getting the products: " + e.getMessage();
+						request.setAttribute("errorMessage", errormsg);
+
+						// Forward the request to the error page
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/2.CartHistory.jsp");
+						dispatcher.forward(request, response);
+					} catch (Exception ex) {
+						// Handle any exceptions that might occur during the forwarding
+						ex.printStackTrace();
+						// You can also consider redirecting to a generic error page here
+					}
 				}
+
 			}
 		}
-
 	}
 }

@@ -27,6 +27,15 @@
 .dropdown:hover .dropdown-content {
 	display: block;
 }
+
+#noProductMessage {
+	margin-left: 80%;
+	text-align: center;
+}
+
+p {
+	width: 500px;
+}
 </style>
 <title>Insert title here</title>
 </head>
@@ -109,29 +118,37 @@
 			</div>
 		</c:forEach>
 
-
+		<div id="noProductMessage" style="display: none;">
+			<img alt="failure" src="./assets/image/failure.png" width="500px">
+			<p>There is no product related to your search</p>
+		</div>
 	</div>
 
 	<script>
 		// Get the input element
 		const searchInput = document.getElementById("searchInput");
-
-		// Get all product cards
 		const productCards = document.querySelectorAll(".product-card");
+		const noProductMessage = document.getElementById("noProductMessage");
 
-		// Add an event listener for input changes
 		searchInput.addEventListener("input", function() {
 			const query = searchInput.value.trim().toLowerCase();
+			let found = false;
 
-			// Loop through all product cards and hide/show based on the search query
 			productCards.forEach(function(card) {
 				const productText = card.textContent.toLowerCase();
 				if (productText.includes(query)) {
 					card.style.display = "block";
+					found = true;
 				} else {
 					card.style.display = "none";
 				}
 			});
+
+			if (!found) {
+				noProductMessage.style.display = "block";
+			} else {
+				noProductMessage.style.display = "none";
+			}
 		});
 
 		function back() {

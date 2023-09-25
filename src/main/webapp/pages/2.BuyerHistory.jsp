@@ -154,26 +154,34 @@ body {
 	</header>
 	<main>
 		<div class="order-history">
-			<h2>Your Orders</h2>
-			<div class="order-cards">
-				<c:forEach var="order" items="${products}">
-					<div class="order-card">
-						<h3>Order ID: ${order.id}</h3>
-						<p>Product Name: ${order.name}</p>
-						<p>Price (Rs.): ${order.price}</p>
-						<p>Quantity: ${order.quantity}</p>
-						<p>Address: ${order.user_address}</p>
-						<p>Order Date: ${order.ordered_date}</p>
-						<!-- Add more order details as needed -->
-						<a href="OrderedProductDeleteServlet?id=${order.id}">
-							<button class="delete-button">Cancel Order</button>
-						</a>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
+			<c:choose>
+				<c:when test="${empty products}">
+					<p>No orders available.</p>
+				</c:when>
+				<c:otherwise>
+					<h2>Your Orders</h2>
 
+					<div class="order-cards">
+						<c:forEach var="order" items="${products}">
+							<div class="order-card">
+								<h3>Order ID: ${order.id}</h3>
+								<p>Product Name: ${order.name}</p>
+								<p>Price (Rs.): ${order.price}</p>
+								<p>Quantity: ${order.quantity}</p>
+								<p>Address: ${order.user_address}</p>
+								<p>Order Date: ${order.ordered_date}</p>
+								<!-- Add more order details as needed -->
+								<a href="OrderedProductDeleteServlet?id=${order.id}">
+									<button class="delete-button">Cancel Order</button>
+								</a>
+							</div>
+						</c:forEach>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	</main>
+
 	<script>
 		function back() {
 			window.history.back();

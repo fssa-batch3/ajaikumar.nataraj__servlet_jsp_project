@@ -80,19 +80,12 @@ h1 {
 		<p>Rishi-market@agri.com</p>
 	</div>
 	<header class="head">
-		<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
-			width="50px" />
+		
 		<div class="logo">
 			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
-		<nav>
-			<a href="ProfileServlet?id=${userId}">
-				<button>Profile</button>
-			</a> <a href="LogoutServlet">
-				<button>logout</button>
-			</a>
-		</nav>
+		
 	</header>
 	<div class="container">
 		<img src="<%=request.getContextPath()%>/assets/image/tick_green.jpg"

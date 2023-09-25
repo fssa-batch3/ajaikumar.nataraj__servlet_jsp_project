@@ -95,11 +95,11 @@ p {
 
 			</div>
 
-			<div id="noProductMessage" style="display: none;">
-				<img alt="failure" src="./assets/image/failure.png" width="500px">
-				<p>There is no product related to your search</p>
-			</div>
 		</c:forEach>
+		<div id="noProductMessage" style="display: none;">
+			<img alt="failure" src="./assets/image/failure.png" width="500px">
+			<p>There is no product related to your search</p>
+		</div>
 	</div>
 
 	<script>

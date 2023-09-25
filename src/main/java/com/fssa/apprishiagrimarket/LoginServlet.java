@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 			else {
 				out.println("Invalid Login Credentials");
 				response.sendRedirect(
-						request.getContextPath() + "/pages/2.buy-login.jsp?errorMessage=Invalid Password");
+						request.getContextPath() + "/pages/2.buy-login.jsp?errorMessage=Password");
 
 			}
 		} catch (ServiceException | DAOException e) {

@@ -3,7 +3,6 @@ package com.fssa.apprishiagrimarket;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fssa.rishi.model.Order;
+import com.fssa.rishi.model.User;
 import com.fssa.rishi.model.ProductDetails;
 import com.fssa.rishi.services.OrderService;
 import com.fssa.rishi.services.ProductService;
@@ -32,7 +32,7 @@ public class BuyNowServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userEmail = (String) session.getAttribute("loggedInEmail");
 		UserService service = new UserService();
-		
+
 		PrintWriter out = response.getWriter();
 		long productId = Long.parseLong(request.getParameter("id"));
 		try {
@@ -85,12 +85,18 @@ public class BuyNowServlet extends HttpServlet {
 			System.out.println(order);
 
 			OrderService orderservice = new OrderService();
+			User user = UserService.findUserById(userId);
+			System.out.println("Check user in servlet " + user);
 
 //			List<Order> orders = null;
 			try {
 				if (orderservice.createOrder(order)) {
+					request.setAttribute("user", user);
+
 					System.out.println("Register Product Successfully");
-					response.sendRedirect(request.getContextPath() + "/pages/success.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/BuyerPayment.jsp");
+					dispatcher.forward(request, response);
+					// response.sendRedirect(request.getContextPath() + "/pages/BuyerPayment.jsp");
 
 				}
 			} catch (Exception e) {

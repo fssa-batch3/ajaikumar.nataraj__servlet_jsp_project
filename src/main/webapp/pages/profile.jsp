@@ -188,9 +188,17 @@ button {
 		}
 	</script>
 	<h2>Profile Details</h2>
+	<%
+	String errorMessage = request.getParameter("errorMessage");
+	if (errorMessage != null) {
+		out.println("<p style='color: red;'>" + errorMessage + "</p>");
+	}
+	%>
 
 	<form action="ProfileServlet?id=<%=user1.getId()%>" method="POST">
 		<div class="profile-container">
+
+
 
 			<div class="profile-left">
 				<div>
@@ -234,9 +242,9 @@ button {
 
 				<div class="form-group">
 					<label for="pincode">Pincode</label> <input type="text"
-						id="pincode" name="pincode" class="input" minlength="6"
-						maxlength="6" value="<%=user1.getPincode()%>"
-						placeholder="Pincode" required>
+						id="pincode" name="pincode" class="input" placeholder="Pincode"
+						value="<%=user1.getPincode()%>" required pattern="[0-9]{6}"
+						maxlength="6" />
 				</div>
 				<div class="form-group">
 					<label for="district">District</label> <input required
@@ -285,7 +293,7 @@ button {
 
 			</div>
 		</div>
-		<button type="submit">Update</button>
+		<button type="submit" onclick="showUpdateAlert()">Update</button>
 
 	</form>
 
@@ -295,7 +303,10 @@ button {
 			window.history.back();
 		}
 
-		
+		function showUpdateAlert() {
+			// Display an alert with your message
+			alert("Are you sure you want to update");
+		}
 	</script>
 </body>
 </html>
