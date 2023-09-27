@@ -172,9 +172,9 @@ button {
 			<img alt="menu" src="./assets/image/menu.png" width="30px">
 			<div class="dropdown-content">
 				<a href="LogoutServlet"><img src="./assets/image/logout.png"
-					alt="logo" width="30px" /></a> <br> <a
-					href="DeleteUserServlet?email=<%=user1.getEmail()%>"> <img
-					src="./assets/image/delete.png" alt="logo" width="30px" />
+					alt="logo" width="30px" /></a> <br> <a href="#"
+					onclick="confirmDelete('<%=user1.getEmail()%>');"> <img
+					src="./assets/image/delete.png" alt="deleteLogo" width="30px" />
 				</a>
 			</div>
 		</div>
@@ -249,8 +249,9 @@ button {
 				<div class="form-group">
 					<label for="district">District</label> <input required
 						class="input" list="Districts" name="district" id="district"
-						type="text" value="<%=user1.getDistrict()%>"
-						placeholder="Select District" autocomplete="off">
+						type="text"
+						value="<%=user1.getDistrict() != null ? user1.getDistrict() : ""%>"
+						placeholder="Select an Option" autocomplete="off">
 					<datalist id="Districts">
 						<option value="Ariyalur">Ariyalur</option>
 						<option value="Chennai">Chennai</option>
@@ -290,10 +291,10 @@ button {
 						<option value="Virudhunagar">Virudhunagar</option>
 					</datalist>
 				</div>
+				<button type="submit" onclick="showUpdateAlert()">Update</button>
 
 			</div>
 		</div>
-		<button type="submit" onclick="showUpdateAlert()">Update</button>
 
 	</form>
 
@@ -305,7 +306,16 @@ button {
 
 		function showUpdateAlert() {
 			// Display an alert with your message
-			alert("Are you sure you want to update");
+			alert("Your Details Saved Successfully.....");
+		}
+
+		function confirmDelete(email) {
+			var confirmation = confirm("Are you sure you want to delete your Account ?");
+
+			if (confirmation) {
+				// If the user confirms, redirect to the DeleteUserServlet
+				window.location.href = "DeleteUserServlet?email=" + email;
+			} 
 		}
 	</script>
 </body>

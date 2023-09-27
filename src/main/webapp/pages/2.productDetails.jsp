@@ -33,8 +33,8 @@
 	text-align: center;
 }
 
-p {
-	width: 500px;
+h4 {
+	width: 600px;
 }
 </style>
 <title>Insert title here</title>
@@ -100,7 +100,7 @@ p {
 	<%
 	String errorMessage = request.getParameter("errorMessage");
 	if (errorMessage != null) {
-		out.println("<p style='color: red;'>" + errorMessage + "</p>");
+		out.println("<h4 style='color: red;'>" + errorMessage + "</h4>");
 	}
 	%>
 
@@ -120,7 +120,7 @@ p {
 
 		<div id="noProductMessage" style="display: none;">
 			<img alt="failure" src="./assets/image/failure.png" width="500px">
-			<p>There is no product related to your search</p>
+			<h4>There is no product related to your search</h4>
 		</div>
 	</div>
 

@@ -91,7 +91,10 @@ public class RegisterProductServlet extends HttpServlet {
 					out.println("Register Product Successfully");
 					products = productService.readProductDetails();
 					session.setAttribute("products", products);
-					response.sendRedirect(request.getContextPath() + "/pages/successSeller.jsp");
+					int amount = price * qty;
+					response.sendRedirect(request.getContextPath() + "/pages/SellerPayment.jsp?amount=" + amount);
+					//response.sendRedirect(request.getContextPath() + "/pages/successSeller.jsp");
+
 				} else {
 					out.println("register failed");
 				}

@@ -89,9 +89,54 @@ p a {
 	color: #777;
 	margin-top: 20px;
 }
+
+.head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px
+		2px, rgba(0, 0, 0, 0.09) 0px 8px 4px;
+	color: white;
+	height: 80px;
+	width: 100%;
+}
+
+.topic {
+	color: #2bae66ff;
+	display: flex;
+	justify-content: space-between;
+	width: 700px;
+}
+
+.contact {
+	background-color: #2bae66ff;
+	height: 20px;
+	font-size: 15px;
+	color: white;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.contact p {
+	margin-top: 2px;
+}
 </style>
 </head>
 <body class="body">
+	<div class="contact">
+		<p>+91 9876543210</p>
+		<p>Rishi-market@agri.com</p>
+	</div>
+	<header class="head">
+		<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
+			width="50px" />
+		<div class="logo">
+			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
+				width="90px" />
+		</div>
+		<div class="dropdown"></div>
+
+	</header>
 	<h1>Hi! User...</h1>
 
 	<%
@@ -108,9 +153,10 @@ p a {
 			<nav>
 				<img src="../assets/image/login.png" alt="profile" width="400px" />
 			</nav>
-			<input type="text" id="Email" name="email"  placeholder="Enter your Email"
-				value="ajai@gmail.com" /><br /> <input value="Ajai@123" placeholder="Enter your Password"
-				name="password" type="password" id="Password"  /> <br />
+			<input type="text" id="Email" name="email"
+				placeholder="Enter your Email" value="ajai@gmail.com" /><br /> <input
+				value="Ajai@123" placeholder="Enter your Password" name="password"
+				type="password" id="Password" /> <br />
 			<button class="btn" type="submit">Sign in</button>
 		</form>
 	</div>
@@ -121,6 +167,15 @@ p a {
 	</p>
 	<footer class="footer">Toll-Free no:1800 123 100</footer>
 </body>
+<script type="text/javascript">
+	function back() {
+		window.history.back();
+	}
+	function home() {
+	    window.location.href = "<%=request.getContextPath()%>/index.jsp";
+	}
+
+</script>
 </html>
 <!-- 	<script src="../assets/JavaScript/buy_login.js"></script>  -->
 <!-- <script>

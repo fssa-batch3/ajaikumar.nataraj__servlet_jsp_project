@@ -312,7 +312,7 @@
         window.location.href = "./pages/16.admin.login.html";
       }
       function about() {
-        window.location.href = "./pages/Aboutus.html";
+        window.location.href = "./pagesHTML/Aboutus.html";
       }
       function sell() {
         window.location.href = "./pages/10.upload.html";

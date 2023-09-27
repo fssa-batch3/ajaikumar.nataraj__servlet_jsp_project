@@ -190,7 +190,7 @@ button[type="submit"]:hover {
 					<br> <label for="price">Price (Rs.):</label> <input
 						type="text" id="price" name="price" readonly
 						value="<%=product.getPrice()%>"> <br> <label
-						for="quantity">Quantity Available:</label> <input type="tel"
+						for="quantity">Quantity Available:</label> <input type="number"
 						maxlength="2" pattern="[0-9]{1-2}" min="1" value="1" id="quantity"
 						name="quantity" required autofocus
 						placeholder="Enter your quantity">

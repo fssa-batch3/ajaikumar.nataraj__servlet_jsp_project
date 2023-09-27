@@ -79,7 +79,7 @@ h1 {
 
 .product-cards {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Display 5 cards in one row */
+    grid-template-columns: repeat(3, 1fr); /* Display 5 cards in one row */
     gap: 20px;
     justify-content: center;
     align-items: stretch;
