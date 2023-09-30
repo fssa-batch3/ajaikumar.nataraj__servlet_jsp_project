@@ -28,8 +28,9 @@ public class RegisterUserUpdate extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		long userId = Long.parseLong(request.getParameter("id"));
 		RequestDispatcher dispatcher = null;
+		UserService service = new UserService();
 		try {
-			User user = UserService.findUserById(userId);
+			User user = service.findUserById(userId);
 
 			request.setAttribute("user", user);
 
@@ -60,14 +61,10 @@ public class RegisterUserUpdate extends HttpServlet {
 		UserService userService = new UserService();
 		try {
 			userService.updateUser(updateUser);
-			// Set a success message in a request attribute
 			request.setAttribute("successMessage", "Update successful");
-			// Redirect back to the profile page with the user's updated data
 			response.sendRedirect("ProfileServlet?id=" + userId);
 		} catch (ServiceException e) {
-			// Set an error message in a request attribute
 			request.setAttribute("errorMessage", e.getMessage());
-			// Redirect to the profile page with an error message as a query parameter
 			response.sendRedirect(request.getContextPath() + "/ProfileServlet?errorMessage=" + e.getMessage());
 		}
 

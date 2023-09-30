@@ -95,14 +95,35 @@ body {
 }
 
 /* Styles for the "Delete" button */
-.delete-button {
-	background-color: #dc3545; /* Red background color */
+.delete-img {
 	color: #fff; /* White text color */
 	padding: 5px 10px;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
 	font-size: 16px;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.save-button {
+	background-color: green;
+	color: #fff; /* White text color */
+	padding: 5px 10px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+.order-button {
+	background-color: yellow;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 20px;
 	margin-top: 10px;
 }
 
@@ -182,24 +203,35 @@ body {
 					<p>There is no product in your cart.</p>
 				</c:when>
 				<c:otherwise>
-				<h2>Your Cart</h2>
+					<h2>Your Cart</h2>
 					<div class="order-cards">
 						<c:forEach var="order" items="${products}">
-							<div class="order-card">
+							<form action="CartUpdateServlet" method="post" class="order-card">
+								<a href="CartDeleteServlet?id=${order.id}" class="delete-img">
+									<img src="<%=request.getContextPath()%>/assets/image/wrong.png"
+									alt="delet" width="30px" />
+								</a> <a href="BuyNowServlet?id=${order.productId}"> <img
+									src="<%=request.getContextPath()%>/assets/image/cart.png"
+									alt="buy Now" width="30px" />
+								</a>
 								<h3>Cart ID: ${order.id}</h3>
 								<p>Product Name: ${order.name}</p>
 								<p>Price (Rs.): ${order.price}</p>
+								<!-- Add a hidden input field to store the product ID -->
+								<input type="hidden" name="productId" value="${order.id}">
 								<input type="number" id="quantity" name="quantity"
-									value="${order.quantity}"> <br> <a
-									href="BuyNowServlet?id=${order.productId}">
-									<button class="buy-button">Buy Now</button>
-								</a> <a href="CartDeleteServlet?id=${order.id}">
-									<button class="delete-button">Delete</button>
-								</a>
+									value="${order.quantity}"> <br>
+								<button type="submit" class="save-button">Save</button>
 								<!-- Add more order details as needed -->
-							</div>
+							</form>
 						</c:forEach>
 					</div>
+
+					<a href="PlaceOrderServlet?id=${userId}">
+						<button class="order-button">Place Orders</button>
+					</a>
+
+
 				</c:otherwise>
 			</c:choose>
 		</div>

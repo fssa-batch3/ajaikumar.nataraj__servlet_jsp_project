@@ -57,6 +57,14 @@ a {
 			Go back to the <a href="<%=request.getContextPath()%>/index.jsp">home</a>
 			page
 		</p>
+		<p>
+			Go back to the <a href="#" onclick="back()">previous</a> page
+		</p>
 	</div>
+	<script type="text/javascript">
+		function back() {
+			window.history.back();
+		}
+	</script>
 </body>
 </html>

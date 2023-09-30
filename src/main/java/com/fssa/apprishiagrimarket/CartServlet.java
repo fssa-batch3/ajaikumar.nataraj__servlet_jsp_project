@@ -2,6 +2,7 @@ package com.fssa.apprishiagrimarket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fssa.rishi.model.Cart;
+import com.fssa.rishi.model.Order;
 import com.fssa.rishi.services.CartService;
+import com.fssa.rishi.services.OrderService;
 import com.fssa.rishi.services.UserService;
 import com.fssa.rishi.services.exceptions.ServiceException;
 
@@ -43,8 +46,7 @@ public class CartServlet extends HttpServlet {
 					long id = service.findIdByEmail(loggedInEmail);
 					System.out.println(id);
 
-					products = Service.getCartById(id);
-					System.out.println(products);
+					products = Service.getCartByUserId(id);
 					request.setAttribute("products", products);
 					request.setAttribute("userId", id);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/2.CartHistory.jsp");
@@ -69,4 +71,8 @@ public class CartServlet extends HttpServlet {
 			}
 		}
 	}
+	
+	
+
+	  
 }

@@ -8,7 +8,7 @@
 <%
 String errorMessage = (String) request.getAttribute("errorMessage");
 ProductDetails product = (ProductDetails) request.getAttribute("Product");
-long id = (long) request.getAttribute("userId");
+User user = (User) request.getAttribute("User");
 %>
 <!DOCTYPE html>
 <html>
@@ -168,7 +168,7 @@ button[type="submit"]:hover {
 		<div class="dropdown">
 			<img alt="menu" src="./assets/image/menu.png" width="30px">
 			<div class="dropdown-content">
-				<a href="ProfileServlet?id=<%=id%>"> <img
+				<a href="ProfileServlet?id=<%=user.getId()%>"> <img
 					src="./assets/image/profile.png" alt="logo" width="30px" />
 				</a><br> <a href="LogoutServlet"> <img
 					src="./assets/image/logout.png" alt="logo" width="30px" />
@@ -200,12 +200,11 @@ button[type="submit"]:hover {
 				<div class="form-section delivery-details">
 					<label for="address">Address:</label>
 					<textarea id="address" name="address" required
-						placeholder="Enter your address">10, gandhi street, gobi</textarea>
-
+						placeholder="Enter your address"> <%=user.getAddress()%> </textarea>
 					<br> <label for="district">District:</label><input required
 						list="Districts" name="district" id="district" type="text"
-						value="<%=product.getDistrict()%>" placeholder="Select District"
-						autocomplete="off" />
+						value="<%=user.getDistrict() != null ? user.getDistrict() : ""%>"
+						placeholder="Select District" />
 					<datalist id="Districts">
 						<option value="Ariyalur">Ariyalur</option>
 						<option value="Chennai">Chennai</option>
@@ -246,11 +245,13 @@ button[type="submit"]:hover {
 					</datalist>
 					<br> <label for="phone">Phone Number:</label> <input
 						type="tel" id="phone" name="phone" required minlength="10"
-						maxlength="10" pattern="[6-9]{1}[0-9]{9}" value="9876543214"
+						maxlength="10" pattern="[6-9]{1}[0-9]{9}"
+						value="<%=user.getPhoneNumber()%>"
 						placeholder="Enter your phone number"> <br> <label
 						for="pincode">Pincode:</label><input type="tel" id="pincode"
 						name="pincode" required placeholder="Enter your 6-digit pincode"
-						value="654321" minlength="6" maxlength="6" pattern="[0-9]{6}">
+						value="<%=user.getPincode()%>" minlength="6" maxlength="6"
+						pattern="[0-9]{6}">
 				</div>
 			</div>
 			<!-- Payment Details Section -->

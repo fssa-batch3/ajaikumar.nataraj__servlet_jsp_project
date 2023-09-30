@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fssa.rishi.model.Order;
-import com.fssa.rishi.model.User;
 import com.fssa.rishi.model.ProductDetails;
+import com.fssa.rishi.model.User;
 import com.fssa.rishi.services.OrderService;
 import com.fssa.rishi.services.ProductService;
 import com.fssa.rishi.services.UserService;
@@ -38,7 +38,8 @@ public class BuyNowServlet extends HttpServlet {
 		try {
 			long userId = service.findIdByEmail(userEmail);
 			System.out.println(userId);
-			request.setAttribute("userId", userId);
+			User user = service.findUserById(userId);
+			request.setAttribute("User", user);
 			System.out.print(productId);
 			ProductDetails product = ProductService.findProductById(productId);
 			System.out.print(product);
@@ -85,7 +86,7 @@ public class BuyNowServlet extends HttpServlet {
 			System.out.println(order);
 
 			OrderService orderservice = new OrderService();
-			User user = UserService.findUserById(userId);
+			User user = service.findUserById(userId);
 			System.out.println("Check user in servlet " + user);
 
 //			List<Order> orders = null;
