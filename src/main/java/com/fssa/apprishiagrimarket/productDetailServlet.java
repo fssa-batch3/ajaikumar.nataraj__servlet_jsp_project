@@ -30,6 +30,7 @@ public class productDetailServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		PrintWriter out = response.getWriter();
 		long id = Long.parseLong(request.getParameter("id"));
+		long sellerId = Long.parseLong(request.getParameter("userId"));
 		System.out.println(id);
 		ProductService service = new ProductService();
 		UserService userService = new UserService();
@@ -42,13 +43,13 @@ public class productDetailServlet extends HttpServlet {
 			} else {
 				try {
 					ProductDetails products = service.findProductById(id);
+					long userId = userService.findIdByEmail(loggedInEmail);
 
-					// long userId = userService.findIdByEmail(loggedInEmail);
-					long userId = products.getUserId();
-					User user = userService.findUserById(userId);
+					User user = userService.findUserById(sellerId);
 					System.out.println(products);
 					request.setAttribute("products", products);
 					request.setAttribute("user", user);
+					request.setAttribute("id", userId);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/productDetail.jsp");
 					dispatcher.forward(request, response);
 				} catch (ServiceException e) {

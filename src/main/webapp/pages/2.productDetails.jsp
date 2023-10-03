@@ -114,8 +114,10 @@ h4 {
 				<p>${product.description}</p>
 				<a href="BuyNowServlet?id=${product.id}"><button>Buy
 						Now</button></a> <a href="AddToCartServlet?id=${product.id}"><button>Add
-						to Cart</button></a> <a href="productDetailServlet?id=${product.id}"><button>View
-						More</button></a>
+						to Cart</button></a> <a
+					href="productDetailServlet?id=${product.id}&userId=${product.userId}">
+					View More... </a>
+
 
 
 			</div>

@@ -9,6 +9,7 @@ User user = new User();
 ProductDetails product = new ProductDetails();
 user = (User) request.getAttribute("user");
 product = (ProductDetails) request.getAttribute("products");
+long id = (long) request.getAttribute("id");
 %>
 <!DOCTYPE html>
 <html>
@@ -111,7 +112,8 @@ body {
 }
 
 .full_div {
-	padding-left: 20px;
+	padding-left: 15px;
+	width: 40%;
 }
 
 .card_div {
@@ -144,13 +146,20 @@ a {
 	color: #2bae66ff;
 }
 
-button {
-	color: white;
-	background-color: #2bae66ff;
+.buyNow {
+	background-color: yellow;
 	border: none;
-	font-size: 25px;
-	padding: 5px;
+	padding: 10px;
 	border-radius: 5px;
+}
+
+.cart {
+	color: white;
+	background-color: blue;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: blue;
 }
 </style>
 </head>
@@ -160,23 +169,26 @@ button {
 		<p>Rishi-market@agri.com</p>
 	</div>
 	<header class="head">
-		<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
-			width="50px" />
+		<img onclick="back()"
+			src="<%=request.getContextPath()%>/assets/image/arrowback.png"
+			alt="back" width="50px" />
 		<div class="logo">
-			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
+			<img onclick="home()"
+				src="<%=request.getContextPath()%>/assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 
 		<div class="dropdown">
-			<img alt="menu" src="../assets/image/menu.png" width="30px">
+			<img alt="menu"
+				src="<%=request.getContextPath()%>/assets/image/menu.png"
+				width="30px">
 			<div class="dropdown-content">
-				<a href="<%=request.getContextPath()%>/GetAllOwnProductsServlet">
-					<img src="../assets/image/orders.png" alt="orders" width="30px" />
-				</a> <br> <a
-					href="<%=request.getContextPath()%>/GetAllProductServlet"> <img
-					src="../assets/image/cart.png" alt="cart" width="30px" />
-				</a><br> <a href="<%=request.getContextPath()%>/ProfileServlet">
-					<img src="../assets/image/profile.png" alt="profile" width="30px" />
+				<a href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
+					<img src="<%=request.getContextPath()%>/assets/image/profile.png"
+					alt="profile" width="30px" />
+				</a><br> <a href="LogoutServlet"> <img
+					src="<%=request.getContextPath()%>/assets/image/logout.png"
+					alt="logo" width="30px" />
 				</a>
 			</div>
 		</div>
@@ -187,17 +199,18 @@ button {
 			<section class="img_div">
 				<div class="full_div">
 					<img src="<%=request.getAttribute("productImageUrl")%>"
-						alt="product_img" width="200px" />
+						alt="product_img" width="300px" />
 				</div>
 				<div class="full_div">
 					<p>
 						Name :
 						<%=product.getName()%></p>
 					<p>
-						Price : ₹
+						Price: Rs.
 						<%=product.getPrice()%>
 						/ kg
 					</p>
+
 					<p>
 						Available Qty :
 						<%=product.getQuantity()%>
@@ -206,15 +219,16 @@ button {
 					<p>
 						Description :
 						<%=product.getDescription()%></p>
-					<button id="submit" value="submit"
-						onclick="addProduct(<%=request.getAttribute("productProductId")%>)">Add
-						to Cart</button>
+					<a href="BuyNowServlet?id=<%=product.getId()%>"><button
+							class="buyNow">Buy Now</button></a> <a
+						href="AddToCartServlet?id=<%=product.getId()%>"><button
+							class="cart">Add to Cart</button></a>
 				</div>
 			</section>
 			<section class="full_div">
 				<p>
 					Name :
-					<%=user.getUsername() %></p>
+					<%=user.getUsername()%></p>
 				<p>
 					Ph. no :
 					<%=user.getPhoneNumber()%></p>
