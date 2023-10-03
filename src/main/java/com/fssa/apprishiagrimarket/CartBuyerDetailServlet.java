@@ -13,18 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fssa.rishi.model.Order;
-import com.fssa.rishi.model.ProductDetails;
 import com.fssa.rishi.model.User;
 import com.fssa.rishi.services.OrderService;
-import com.fssa.rishi.services.ProductService;
 import com.fssa.rishi.services.UserService;
 import com.fssa.rishi.services.exceptions.ServiceException;
 
 /**
- * Servlet implementation class BuyNowServlet
+ * Servlet implementation class CartBuyerDetailServlet
  */
-@WebServlet("/BuyNowServlet")
-public class BuyNowServlet extends HttpServlet {
+@WebServlet("/CartBuyerDetailServlet")
+public class CartBuyerDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,17 +32,12 @@ public class BuyNowServlet extends HttpServlet {
 		UserService service = new UserService();
 
 		PrintWriter out = response.getWriter();
-		long productId = Long.parseLong(request.getParameter("id"));
 		try {
 			long userId = service.findIdByEmail(userEmail);
 			System.out.println(userId);
 			User user = service.findUserById(userId);
 			request.setAttribute("User", user);
-			System.out.print(productId);
-			ProductDetails product = ProductService.findProductById(productId);
-			System.out.print(product);
-			request.setAttribute("Product", product);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/detail.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/CartBuyerDetail.jsp");
 			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
 			// Set the error message as a request attribute
@@ -56,7 +49,6 @@ public class BuyNowServlet extends HttpServlet {
 		}
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -64,43 +56,31 @@ public class BuyNowServlet extends HttpServlet {
 		UserService service = new UserService();
 		try {
 			long userId = service.findIdByEmail(userEmail);
+			LocalDate orderDate = LocalDate.now();
 
-			long productId = Long.parseLong(request.getParameter("productId"));
-			LocalDate uploadDate = LocalDate.now();
-			long orderId = System.currentTimeMillis();
-
-			String name = request.getParameter("name");
-			int price = Integer.parseInt(request.getParameter("price"));
-			System.out.println(price);
-			int quantity = Integer.parseInt(request.getParameter("quantity"));
 			String address = request.getParameter("address");
 			String district = request.getParameter("district");
-			long phone = Long.parseLong(request.getParameter("phone"));
 			int pincode = Integer.parseInt(request.getParameter("pincode"));
+			long phone_number = Long.parseLong(request.getParameter("phone_number"));
 
-			Order order = new Order(orderId, userId, productId, name, price, quantity, phone, address, district, pincode,
-					uploadDate);
-			System.out.println(order);
+			Order order = new Order(userId, address, district, pincode, phone_number, orderDate);
+			System.out.println("cartbuyerdetailservlet : "+order);
 
 			OrderService orderservice = new OrderService();
-			User user = service.findUserById(userId);
-			System.out.println("Check user in servlet " + user);
 
-//			List<Order> orders = null;
 			try {
-				if (orderservice.createOrder(order)) {
-					request.setAttribute("user", user);
+				orderservice.updateUserDetailInOrder(order);
+				System.out.println("Register Product Successfully");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/success.jsp");
+				dispatcher.forward(request, response);
+				// response.sendRedirect(request.getContextPath() + "/pages/BuyerPayment.jsp");
 
-					System.out.println("Register Product Successfully");
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/BuyerPayment.jsp");
-					dispatcher.forward(request, response);
-					// response.sendRedirect(request.getContextPath() + "/pages/BuyerPayment.jsp");
-
-				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} catch (ServiceException e) {
+		} catch (
+
+		ServiceException e) {
 			e.printStackTrace();
 		}
 	}

@@ -207,27 +207,23 @@ datalist {
 			<img alt="menu" src="../assets/image/menu.png" width="30px">
 			<div class="dropdown-content">
 				<a href="<%=request.getContextPath()%>/GetAllOwnProductsServlet">
-					<img src="../assets/image/orders.png" alt="logo" width="30px" />
+					<img src="../assets/image/orders.png" alt="orders" width="30px" />
 				</a> <br> <a
 					href="<%=request.getContextPath()%>/GetAllProductServlet"> <img
-					src="../assets/image/cart.png" alt="logo" width="30px" />
+					src="../assets/image/cart.png" alt="cart" width="30px" />
 				</a><br> <a
 					href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
-					<img src="../assets/image/profile.png" alt="logo" width="30px" />
+					<img src="../assets/image/profile.png" alt="profile" width="30px" />
+				</a><br> <a
+					href="<%=request.getContextPath()%>/sellerNotificationServlet?id=<%=id%>">
+					<img src="../assets/image/notification.png" alt="notification" width="30px" />
 				</a>
 			</div>
 		</div>
-
-
-
 	</header>
-
-
 	<section class="output_section"></section>
-
 	<a href="../assets/image/apple.jpg"></a>
 	<section class="sec"></section>
-
 	<form action="<%=request.getContextPath()%>/RegisterProductServlet"
 		method="post" class="full-card" id="form">
 		<h3>Upload your products</h3>

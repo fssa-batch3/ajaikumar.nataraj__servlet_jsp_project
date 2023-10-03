@@ -27,13 +27,9 @@ public class PlaceOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
-		String loggedInEmail = (String) session.getAttribute("loggedInEmail");
-		UserService userService = new UserService();
+			throws ServletException, IOException {	
 		CartService cartServcice = new CartService();
 		OrderService orderService = new OrderService();
-		long id = System.currentTimeMillis();
 		long user_id = Long.parseLong(request.getParameter("id"));
 		System.out.print("place order servlet "+user_id);
 		try {
@@ -45,16 +41,12 @@ public class PlaceOrderServlet extends HttpServlet {
 			// Create OrderedDetail objects from cart items
 			List<Order> orderedDetails = new ArrayList<>();
 			for (Cart cartItem : cartItems) {
-				Order orderedDetail = new Order(id, user_id, cartItem.getProductId(), cartItem.getName(), cartItem.getPrice(), cartItem.getQuantity(), null, null, 0, orderDate);
-				orderedDetail.setId(cartItem.getId());
+				Order orderedDetail = new Order(user_id, cartItem.getProductId(), cartItem.getName(), cartItem.getPrice(), cartItem.getQuantity(), orderDate);
 				orderedDetail.setuser_id(user_id);
 				orderedDetail.setproductId(cartItem.getProductId());
 				orderedDetail.setName(cartItem.getName());
 				orderedDetail.setPrice(cartItem.getPrice());
 				orderedDetail.setQuantity(cartItem.getQuantity());
-				orderedDetail.setUser_address(null);
-				orderedDetail.setDistrict(null);
-				orderedDetail.setPincode(0);
 				orderedDetail.setordered_date(orderDate);
 
 				orderedDetails.add(orderedDetail);
@@ -66,7 +58,10 @@ public class PlaceOrderServlet extends HttpServlet {
 			if (orderPlaced) {
 				// Optionally, you can clear the user's cart here
 				// cartService.clearCart(userId);
-				response.sendRedirect("OrderSuccess.jsp");
+//				response.sendRedirect("CartBuyerDetail.jsp");
+				
+				response.sendRedirect(request.getContextPath() + "/CartBuyerDetailServlet");
+
 			} else {
 				response.sendRedirect("OrderFailure.jsp");
 			}

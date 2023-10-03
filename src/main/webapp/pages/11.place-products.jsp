@@ -82,20 +82,26 @@ p {
 	</div>
 
 	<div class="product-cards" id="productContainer">
-		<c:forEach var="product" items="${products}">
-
-			<div class="product-card">
-				<img alt="img" src="${product.url}">
-				<p>${product.name}</p>
-				<p>Rs. ${product.price} / kg</p>
-				<p>Available : ${product.quantity} Kg</p>
-				<p>${product.description}</p>
-				<a href="RegisterProductUpdate?id=${product.id}"><button>Edit</button>
-				</a> <a href="DeleteProductServlet?id=${product.id}"><button>Delete</button></a>
-
+		<c:if test="${not empty products}">
+			<c:forEach var="product" items="${products}">
+				<div class="product-card">
+					<img alt="img" src="${product.url}">
+					<p>${product.name}</p>
+					<p>Rs. ${product.price} / kg</p>
+					<p>Available: ${product.quantity} Kg</p>
+					<p>${product.description}</p>
+					<a href="RegisterProductUpdate?id=${product.id}"><button>Edit</button></a>
+					<a href="DeleteProductServlet?id=${product.id}"><button>Delete</button></a>
+				</div>
+			</c:forEach>
+		</c:if>
+		<c:if test="${empty products}">
+			<div id="noProductMessage">
+				<img alt="failure" src="./assets/image/failure.png" width="500px">
+				<p>You didn't add any products</p>
 			</div>
+		</c:if>
 
-		</c:forEach>
 		<div id="noProductMessage" style="display: none;">
 			<img alt="failure" src="./assets/image/failure.png" width="500px">
 			<p>There is no product related to your search</p>

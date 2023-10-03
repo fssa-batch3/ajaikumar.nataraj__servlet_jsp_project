@@ -46,7 +46,7 @@ long id = (long) request.getAttribute("userId");
 			<div class="list">
 				<nav>
 					<label for="url">Product's Url</label> <br /> <input type="url"
-						name="url" value=<%=product.getUrl()%> id="url" />
+						name="url" id="url" />
 				</nav>
 				<nav>
 					<label for="name">Product's Name</label> <br /> <input

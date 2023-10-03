@@ -82,7 +82,7 @@ h1 {
 	<header class="head">
 		
 		<div class="logo">
-			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
+			<img onclick="home()" src="<%=request.getContextPath()%>/assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 		
@@ -100,7 +100,7 @@ h1 {
 	<script>
         setTimeout(function() {
             // Replace the URL with the one you want to redirect to
-            window.location.href = "../GetAllProductServlet";
+            window.location.href = "<%=request.getContextPath()%>/GetAllProductServlet";
         }, 5000); // 5000 milliseconds (5 seconds)
     </script>
 </body>

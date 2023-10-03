@@ -112,6 +112,14 @@ body {
 .dropdown:hover .dropdown-content {
 	display: block;
 }
+
+#noProductMessage {
+	text-align: center;
+}
+
+p {
+	width: 100%;
+}
 /* Customize other styles as needed */
 </style>
 </head>
@@ -156,7 +164,10 @@ body {
 		<div class="order-history">
 			<c:choose>
 				<c:when test="${empty products}">
-					<p>No orders available.</p>
+					<div id="noProductMessage">
+						<img alt="failure" src="./assets/image/failure.png" width="500px">
+						<p>No orders available.</p>
+					</div>
 				</c:when>
 				<c:otherwise>
 					<h2>Your Orders</h2>
