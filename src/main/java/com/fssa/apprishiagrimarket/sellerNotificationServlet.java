@@ -29,7 +29,7 @@ public class sellerNotificationServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		PrintWriter out = response.getWriter();
 		long id = Long.parseLong(request.getParameter("id"));
-		System.out.println(id);
+		System.out.println("notification" + id);
 		List<Order> products = null;
 		OrderService service = new OrderService();
 
@@ -45,7 +45,7 @@ public class sellerNotificationServlet extends HttpServlet {
 					System.out.println(products);
 					request.setAttribute("products", products);
 					request.setAttribute("userId", id);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/11.place-products.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/SellerNotification.jsp");
 					dispatcher.forward(request, response);
 				} catch (ServiceException e) {
 					String errormsg = ("Error in getting the products: " + e.getMessage());
