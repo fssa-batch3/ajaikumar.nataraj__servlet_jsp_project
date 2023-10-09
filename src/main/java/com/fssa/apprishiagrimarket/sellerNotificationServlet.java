@@ -28,8 +28,8 @@ public class sellerNotificationServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		PrintWriter out = response.getWriter();
-		long id = Long.parseLong(request.getParameter("id"));
-		System.out.println("notification" + id);
+		long id = Long.parseLong(request.getParameter("userId"));
+		System.out.println("notification user id " + id);
 		List<Order> products = null;
 		OrderService service = new OrderService();
 
@@ -50,6 +50,7 @@ public class sellerNotificationServlet extends HttpServlet {
 				} catch (ServiceException e) {
 					String errormsg = ("Error in getting the products: " + e.getMessage());
 					out.print(errormsg);
+					e.printStackTrace();
 				}
 			}
 		}

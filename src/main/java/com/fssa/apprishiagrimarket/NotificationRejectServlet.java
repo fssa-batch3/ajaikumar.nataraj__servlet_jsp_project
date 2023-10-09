@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.fssa.rishi.services.OrderService;
 
 /**
- * Servlet implementation class NotificationAccept
+ * Servlet implementation class NotificationRejectServlet
  */
-@WebServlet("/NotificationAccept")
-public class NotificationAccept extends HttpServlet {
+@WebServlet("/NotificationReject")
+public class NotificationRejectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,7 +25,7 @@ public class NotificationAccept extends HttpServlet {
 		OrderService Service = new OrderService();
 
 		try {
-			Service.NotificationAccept(id);
+			Service.NotificationReject(id);
 			request.setAttribute("userId", userId);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/sellerNotificationServlet");
 			dispatcher.forward(request, response);

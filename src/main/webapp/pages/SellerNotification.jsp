@@ -192,7 +192,7 @@ button:active {
 				<div>
 					<p>Name: ${order.name}</p>
 					<p>Price: Rs. ${order.price}</p>
-					<p>Qty: ${order.quantity}</p>
+					<p>Quantity: ${order.quantity}</p>
 				</div>
 				<div>
 					<p>Name: ${order.name}</p>
@@ -201,9 +201,16 @@ button:active {
 					<p>District: ${order.district}</p>
 					<p>Pincode: ${order.pincode}</p>
 					<p>Ordered Date: ${order.ordered_date}</p>
+
+					System.out.println();
+
 				</div>
-				<button class="accept">Accept</button>
-				<button class="reject">Reject</button>
+				<a
+					href="<%=request.getContextPath()%>/NotificationAccept?id=${order.id}&userId=<%= id %>"><button
+						class="accept">Accept</button></a> <a
+					href="<%=request.getContextPath()%>/NotificationReject?id=${order.id}&userId=<%= id %>">
+					<button class="reject">Reject</button>
+				</a>
 			</section>
 		</c:forEach>
 	</main>

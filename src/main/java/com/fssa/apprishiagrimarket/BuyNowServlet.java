@@ -79,7 +79,7 @@ public class BuyNowServlet extends HttpServlet {
 			int pincode = Integer.parseInt(request.getParameter("pincode"));
 
 			Order order = new Order(orderId, userId, productId, name, price, quantity, phone, address, district, pincode,
-					uploadDate);
+					uploadDate, 0);
 			System.out.println(order);
 
 			OrderService orderservice = new OrderService();

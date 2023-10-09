@@ -215,7 +215,7 @@ datalist {
 					href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
 					<img src="../assets/image/profile.png" alt="profile" width="30px" />
 				</a><br> <a
-					href="<%=request.getContextPath()%>/sellerNotificationServlet?id=<%=id%>">
+					href="<%=request.getContextPath()%>/sellerNotificationServlet?userId=<%=id%>">
 					<img src="../assets/image/notification.png" alt="notification" width="30px" />
 				</a>
 			</div>

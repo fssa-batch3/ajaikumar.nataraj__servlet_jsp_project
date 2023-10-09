@@ -171,22 +171,74 @@ p {
 				</c:when>
 				<c:otherwise>
 					<h2>Your Orders</h2>
-
+					<h3>Accepted Orders</h3>
 					<div class="order-cards">
 						<c:forEach var="order" items="${products}">
-							<div class="order-card">
-								<h3>Order ID: ${order.id}</h3>
-								<p>Product Name: ${order.name}</p>
-								<p>Price (Rs.): ${order.price}</p>
-								<p>Quantity: ${order.quantity}</p>
-								<p>Address: ${order.user_address}</p>
-								<p>Order Date: ${order.ordered_date}</p>
-								<!-- Add more order details as needed -->
-								<a href="OrderedProductDeleteServlet?id=${order.id}">
-									<button class="delete-button">Cancel Order</button>
-								</a>
-							</div>
+
+							<c:choose>
+								<c:when test="${order.status == 1}">
+									<div class="order-card">
+										<h3>Order ID: ${order.id}</h3>
+										<p>Product Name: ${order.name}</p>
+										<p>Price (Rs.): ${order.price}</p>
+										<p>Quantity: ${order.quantity}</p>
+										<p>Address: ${order.user_address}</p>
+										<p>Order Date: ${order.ordered_date}</p>
+										<!-- Add more order details as needed -->
+										<a href="OrderedProductDeleteServlet?id=${order.id}">
+											<button class="delete-button">Cancel Order</button>
+										</a>
+									</div>
+								</c:when>
+							</c:choose>
 						</c:forEach>
+
+					</div>
+
+					<h3>Pending Orders</h3>
+					<div class="order-cards">
+						<c:forEach var="order" items="${products}">
+
+							<c:choose>
+								<c:when test="${order.status == 0}">
+									<div class="order-card">
+										<h3>Order ID: ${order.id}</h3>
+										<p>Product Name: ${order.name}</p>
+										<p>Price (Rs.): ${order.price}</p>
+										<p>Quantity: ${order.quantity}</p>
+										<p>Address: ${order.user_address}</p>
+										<p>Order Date: ${order.ordered_date}</p>
+										<!-- Add more order details as needed -->
+										<a href="OrderedProductDeleteServlet?id=${order.id}">
+											<button class="delete-button">Cancel Order</button>
+										</a>
+									</div>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+
+					</div>
+
+					<h3>Rejected Orders</h3>
+					<div class="order-cards">
+						<c:forEach var="order" items="${products}">
+
+							<c:choose>
+								<c:when test="${order.status == -1}">
+									<div class="order-card">
+										<h3>Order ID: ${order.id}</h3>
+										<p>Product Name: ${order.name}</p>
+										<p>Price (Rs.): ${order.price}</p>
+										<p>Quantity: ${order.quantity}</p>
+										<p>Address: ${order.user_address}</p>
+										<p>Order Date: ${order.ordered_date}</p>
+										<!-- Add more order details as needed -->
+										
+									</div>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+
 					</div>
 				</c:otherwise>
 			</c:choose>
