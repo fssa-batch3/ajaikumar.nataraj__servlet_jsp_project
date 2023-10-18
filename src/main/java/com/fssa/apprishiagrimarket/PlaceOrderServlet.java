@@ -57,7 +57,7 @@ public class PlaceOrderServlet extends HttpServlet {
 
 			if (orderPlaced) {
 				// Optionally, you can clear the user's cart here
-				// cartService.clearCart(userId);
+				cartServcice.deleteCartByUserId(user_id);
 //				response.sendRedirect("CartBuyerDetail.jsp");
 				
 				response.sendRedirect(request.getContextPath() + "/CartBuyerDetailServlet");

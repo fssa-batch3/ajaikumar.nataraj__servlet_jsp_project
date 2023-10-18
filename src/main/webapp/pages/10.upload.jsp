@@ -212,12 +212,15 @@ datalist {
 					href="<%=request.getContextPath()%>/GetAllProductServlet"> <img
 					src="../assets/image/cart.png" alt="cart" width="30px" />
 				</a><br> <a
+					href="<%=request.getContextPath()%>/sellerNotificationServlet?userId=<%=id%>">
+					<img src="../assets/image/notification.png" alt="notification"
+					width="30px" />
+				</a><br> <a
 					href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
 					<img src="../assets/image/profile.png" alt="profile" width="30px" />
-				</a><br> <a
-					href="<%=request.getContextPath()%>/sellerNotificationServlet?userId=<%=id%>">
-					<img src="../assets/image/notification.png" alt="notification" width="30px" />
-				</a>
+				</a><br>
+				<a href="<%=request.getContextPath()%>/LogoutServlet"><img
+					src="../assets/image/logout.png" alt="logo" width="30px" /></a>
 			</div>
 		</div>
 	</header>
