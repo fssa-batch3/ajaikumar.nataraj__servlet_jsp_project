@@ -182,7 +182,10 @@ button[type="submit"]:hover {
 			<div class="first-div">
 				<!-- Product Details Section -->
 				<div class="form-section product-details">
+				 <input type="hidden" id="url"
+						readonly name="url" value="<%=product.getUrl() %>">
 					<input type="hidden" name="productId" value="<%=product.getId() %>">
+					<input type="hidden" name="sellerId" value="<%=product.getUserId() %>">
 					<label for="name">Name:</label> <input type="text" id="name"
 						readonly name="name" value="<%=product.getName()%>"> <br>
 					<label for="description">Description:</label>

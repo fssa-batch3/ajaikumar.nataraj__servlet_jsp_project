@@ -128,7 +128,7 @@ label {
 }
 
 input {
-	width: 100%;
+	width: 95%;
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -218,8 +218,7 @@ datalist {
 				</a><br> <a
 					href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
 					<img src="../assets/image/profile.png" alt="profile" width="30px" />
-				</a><br>
-				<a href="<%=request.getContextPath()%>/LogoutServlet"><img
+				</a><br> <a href="<%=request.getContextPath()%>/LogoutServlet"><img
 					src="../assets/image/logout.png" alt="logo" width="30px" /></a>
 			</div>
 		</div>
@@ -228,7 +227,7 @@ datalist {
 	<a href="../assets/image/apple.jpg"></a>
 	<section class="sec"></section>
 	<form action="<%=request.getContextPath()%>/RegisterProductServlet"
-		method="post" class="full-card" id="form">
+		method="post" class="full-card" id="form" onsubmit="return valid()" >
 		<h3>Upload your products</h3>
 		<%
 		String errorMessage = request.getParameter("errorMessage");
@@ -239,7 +238,10 @@ datalist {
 		<div class="full_list">
 			<div class="list">
 				<nav>
-					<input class="image" type="file" name="url" id="url"><br>
+				 <input type="hidden" name="url" id="productImageInput" placeholder="Enter Product Image URL">
+ 
+					<button type="button" class="product-selector-button"
+						onclick="productImageSelector()">Choose Product Image</button>
 				</nav>
 				<nav>
 					<input required="required" type="text" name="name" id="name"
@@ -333,19 +335,46 @@ datalist {
 	<div class="add_detail"></div>
 
 	<script>
+	
+	function valid(){
+		let inputValue = document.getElementById("productImageInput").value.trim();
+		if(inputValue==""){
+			alert("Please Choose Product Image");
+			return false;
+		}
+		return true;
+	}
 		function back() {
 			window.history.back();
 		}
 
-		image.addEventListener("change", function(e) {
-			let file = e.target.files[0];
+		function productImageSelector() {
+		    let inputValue = document.getElementById("productImageInput");
+		    let fileInput = document.createElement("input");
+		    fileInput.type = "file";
 
-			let reader = new FileReader();
-			reader.onload = function(e) {
-				let fileContent = e.target.result;
-			};
-			reader.readAsDataURL(file);
-		});
+		    let imageElement = document.createElement("img");
+		    imageElement.setAttribute("class", "selected-image");
+
+		    fileInput.click();
+
+		    fileInput.addEventListener("change", function (e) {
+		        let file = e.target.files[0];
+
+		        if (file) {
+		            let reader = new FileReader();
+
+		            reader.onload = function (e) {
+		                imageElement.src = e.target.result;
+
+		                inputValue.value = e.target.result;
+		            };
+
+		            reader.readAsDataURL(file);
+		        }
+		    });
+		}
+
 	</script>
 
 </body>

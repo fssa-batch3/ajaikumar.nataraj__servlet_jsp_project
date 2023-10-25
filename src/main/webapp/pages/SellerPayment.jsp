@@ -63,15 +63,23 @@ button[type="submit"]:hover {
 	<div class="container">
 		<h1>Seller Payment</h1>
 		<div class="payment-form">
-			<form action="<%=request.getContextPath()%>/PaymentProcessingServlet" method="post">
+			<form action="<%=request.getContextPath()%>/PaymentProcessingServlet"
+				method="post">
 				<label for="amount">Amount:</label> <input type="number" id="amount"
 					value=<%=price%> name="amount" min="1" step="0.01"> <label
-					for="cardNumber">Card Number:</label> <input type="text"
-					id="cardNumber" name="cardNumber"> <label for="expiry">Expiry
-					Date:</label> <input type="text" id="expiry" name="expiry"
-					placeholder="MM/YY"> <label for="cvv">CVV:</label> <input
-					type="text" id="cvv" name="cvv">
-					<button type="submit">Save</button>
+					for="cardNumber">Enter Your UPI Id : </label> <input type="text"
+					id="cardNumber" name="cardNumber">
+				<hr>
+				<!-- <nav>
+					<input type="hidden" name="url" id="productImageInput"
+						placeholder="Enter Product Image URL">
+
+					<button type="button" class="product-selector-button"
+						onclick="productImageSelector()">Choose Product Image</button>
+				</nav>  -->
+				<img alt="qr" src="../assets/image/qr-code.png">
+				<hr>
+				<button type="submit">Save</button>
 			</form>
 		</div>
 	</div>

@@ -151,8 +151,7 @@ body {
 			<h2>Select Payment Method</h2>
 			<div class="payment-method">
 				<input type="radio" id="creditCard" name="paymentMethod"
-					value="creditCard" checked> <label for="creditCard">Credit
-					Card</label>
+					value="creditCard" checked> <label for="creditCard">Using UPI Id</label>
 			</div>
 			<div class="payment-method">
 				<input type="radio" id="cashOnDelivery" name="paymentMethod"

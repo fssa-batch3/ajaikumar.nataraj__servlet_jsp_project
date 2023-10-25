@@ -45,19 +45,21 @@ long id = (long) request.getAttribute("userId");
 		<div class="full_list">
 			<div class="list">
 				<nav>
-					<label for="url">Product's Url</label> <br /> <input type="url"
-						name="url" id="url" />
+					<label for="productImage">Product Image</label> <br /> <img
+						src="<%=product.getUrl()%>" alt="Product Image" width="300px"
+						id="productImage" />
 				</nav>
+
 				<nav>
 					<label for="name">Product's Name</label> <br /> <input
 						required="required" value=<%=product.getName()%> type="text"
-						name="name" id="name" />
+						name="name" id="name" readonly />
 
 				</nav>
 				<nav>
 					<label for="type">Product's Type</label><br /> <input
 						required="required" list="Types" name="type" id="type"
-						autocomplete="off" value=<%=product.getType()%> />
+						autocomplete="off" value=<%=product.getType()%> readonly />
 
 					<datalist id="Types">
 						<option value="Fruit"></option>
@@ -67,10 +69,12 @@ long id = (long) request.getAttribute("userId");
 					</datalist>
 				</nav>
 				<nav>
-					<label for="description"> Description about your product </label> <br />
-					<textarea required="required" name="description" id="description"
-						class="description"> <%=product.getDescription()%> </textarea>
+					<label for="pincode">Enter your Pincode</label><br /> <input
+						required="required" type="text" id="pincode" name="pincode"
+						value="654321" placeholder="Enter your Pincode" pattern="[0-9]{6}"
+						maxlength="6" minlength="6" value=<%=product.getPincode()%> />
 				</nav>
+
 			</div>
 			<div class="list">
 				<nav>
@@ -136,11 +140,11 @@ long id = (long) request.getAttribute("userId");
 						required="required" type="text" id="address" name="address"
 						value="10, Gandhi street, gobi." value=<%=product.getAddress()%> />
 				</nav>
+
 				<nav>
-					<label for="pincode">Enter your Pincode</label><br /> <input
-						required="required" type="text" id="pincode" name="pincode"
-						value="654321" placeholder="Enter your Pincode" pattern="[0-9]{6}"
-						maxlength="6" minlength="6" value=<%=product.getPincode()%> />
+					<label for="description"> Description about your product </label> <br />
+					<textarea required="required" name="description" id="description"
+						class="description"> <%=product.getDescription()%> </textarea>
 				</nav>
 			</div>
 		</div>

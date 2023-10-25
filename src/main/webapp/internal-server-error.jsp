@@ -54,12 +54,10 @@ a {
 		<p>Oops! Something went wrong.</p>
 		<p>The page you are looking for could not be found.</p>
 		<p>
-			Go back to the <a href="<%=request.getContextPath()%>/index.jsp">home</a>
+			Go back to the <a href="<%=request.getContextPath()%>/pages/2.buy-login.jsp">login</a>
 			page
 		</p>
-		<p>
-			Go back to the <a href="#" onclick="back()">previous</a> page
-		</p>
+		
 	</div>
 	<script type="text/javascript">
 		function back() {

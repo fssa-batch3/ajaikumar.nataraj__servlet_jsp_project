@@ -40,10 +40,11 @@ public class BuyNowServlet extends HttpServlet {
 			System.out.println(userId);
 			User user = service.findUserById(userId);
 			request.setAttribute("User", user);
-			System.out.print(productId);
+			System.out.println(productId);
 			ProductDetails product = ProductService.findProductById(productId);
-			System.out.print(product);
 			request.setAttribute("Product", product);
+			System.out.println("product details bn servlet : "+product);
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/detail.jsp");
 			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
@@ -66,19 +67,24 @@ public class BuyNowServlet extends HttpServlet {
 			long userId = service.findIdByEmail(userEmail);
 
 			long productId = Long.parseLong(request.getParameter("productId"));
+			long sellerId = Long.parseLong(request.getParameter("sellerId"));
+
 			LocalDate uploadDate = LocalDate.now();
 			long orderId = System.currentTimeMillis();
 
 			String name = request.getParameter("name");
 			int price = Integer.parseInt(request.getParameter("price"));
-			System.out.println(price);
 			int quantity = Integer.parseInt(request.getParameter("quantity"));
 			String address = request.getParameter("address");
 			String district = request.getParameter("district");
 			long phone = Long.parseLong(request.getParameter("phone"));
 			int pincode = Integer.parseInt(request.getParameter("pincode"));
+			String url = request.getParameter("url");
+			System.out.println();
+			System.out.println("buy now servlet url : "+sellerId);
 
-			Order order = new Order(orderId, userId, productId, name, price, quantity, phone, address, district, pincode,
+
+			Order order = new Order(orderId, userId, sellerId, productId, url, name, price, quantity, phone, address, district, pincode,
 					uploadDate, 0);
 			System.out.println(order);
 

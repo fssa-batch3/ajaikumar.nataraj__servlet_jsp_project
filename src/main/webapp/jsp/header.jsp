@@ -10,44 +10,50 @@
 	crossorigin="anonymous"></script>
 </head>
 
-<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary"
-	data-bs-theme="dark">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="index.jsp">Rishi Web App</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-			data-bs-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="home.jsp">Home</a></li>
 
-				<%
-				String loggedInEmail = (String) session.getAttribute("loggedInEmail");
-				if (loggedInEmail == null) {
-				%>
-				<li class="nav-item"><a class="nav-link" href="login.jsp">Login</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="register.jsp">Register</a>
-				</li>
-				<%
-				} else {
-				%>
-				<li class="nav-item"><a class="nav-link" href="#"><%=loggedInEmail%></a>
 
-				</li>
-				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
+<%
+String loggedInEmail = (String) session.getAttribute("loggedInEmail");
+String id = (String) session.getAttribute("sellerId");
 
-				</li>
+if (loggedInEmail == null) {
+%>
+<li class="nav-item"><a class="nav-link" href="login.jsp">Login</a>
+</li>
+<li class="nav-item"><a class="nav-link" href="register.jsp">Register</a>
+</li>
+<%
+} else {
+%>
+<header class="head">
+	<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
+		width="50px" />
+	<div class="logo">
+		<img onclick="home()" src="../assets/image/logo.png" alt="logo"
+			width="90px" />
+	</div>
 
-				<%
-				}
-				%>
-			</ul>
-
+	<div class="dropdown">
+		<img alt="menu" src="../assets/image/menu.png" width="30px">
+		<div class="dropdown-content">
+			<a href="<%=request.getContextPath()%>/GetAllOwnProductsServlet">
+				<img src="../assets/image/orders.png" alt="orders" width="30px" />
+			</a> <br> <a
+				href="<%=request.getContextPath()%>/GetAllProductServlet"> <img
+				src="../assets/image/cart.png" alt="cart" width="30px" />
+			</a><br> <a
+				href="<%=request.getContextPath()%>/sellerNotificationServlet?userId=<%=id%>">
+				<img src="../assets/image/notification.png" alt="notification"
+				width="30px" />
+			</a><br> <a
+				href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
+				<img src="../assets/image/profile.png" alt="profile" width="30px" />
+			</a><br> <a href="<%=request.getContextPath()%>/LogoutServlet"><img
+				src="../assets/image/logout.png" alt="logo" width="30px" /></a>
 		</div>
 	</div>
-</nav>
+</header>
+
+<%
+}
+%>

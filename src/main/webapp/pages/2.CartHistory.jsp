@@ -214,6 +214,9 @@ p {
 					</div>
 				</c:when>
 				<c:otherwise>
+					<script type="text/javascript">
+					var totalAmount = 0;
+				</script>
 					<h2>Your Cart</h2>
 					<div class="order-cards">
 						<c:forEach var="order" items="${products}">
@@ -226,17 +229,35 @@ p {
 									alt="buy Now" width="30px" />
 								</a>
 								<h3>Cart ID: ${order.id}</h3>
+								<img src="${order.url}" alt="Product Image" width="200px" />
 								<p>Product Name: ${order.name}</p>
 								<p>Price (Rs.): ${order.price}</p>
 								<!-- Add a hidden input field to store the product ID -->
 								<input type="hidden" name="productId" value="${order.id}">
 								<input type="number" id="quantity" name="quantity"
 									value="${order.quantity}"> <br>
+								<script>
+							var order = {
+								price : ${order.price},
+								quantity : ${order.quantity}
+							};
+
+							var amount = order.quantity * order.price;
+							totalAmount += amount;
+
+							document.write('<p>Total Amount: Rs. ' + amount
+									+ '</p>');
+						</script>
 								<button type="submit" class="save-button">Save</button>
 								<!-- Add more order details as needed -->
 							</form>
 						</c:forEach>
 					</div>
+
+					<script type="text/javascript">
+					document.write('<h3>Total Amount: Rs. ' + totalAmount
+							+ '</h3>');
+					</script>
 
 					<a href="PlaceOrderServlet?id=${userId}">
 						<button class="order-button">Place Orders</button>

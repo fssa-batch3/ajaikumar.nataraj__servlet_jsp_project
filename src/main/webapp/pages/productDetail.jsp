@@ -198,8 +198,8 @@ a {
 		<section class="full">
 			<section class="img_div">
 				<div class="full_div">
-					<img src="<%=request.getAttribute("productImageUrl")%>"
-						alt="product_img" width="300px" />
+					<img src="<%=product.getUrl()%>" alt="Product Image" width="250px"
+						id="productImage" />
 				</div>
 				<div class="full_div">
 					<p>
@@ -240,8 +240,10 @@ a {
 					<%=user.getAddress()%></p>
 				<p>
 					Place :
-					<%=user.getDistrict()%>,
+					<%=user.getDistrict() != null ? user.getDistrict() + "," : ""%>
 					<%=user.getPincode()%></p>
+				<p></p>
+
 			</section>
 		</section>
 	</main>

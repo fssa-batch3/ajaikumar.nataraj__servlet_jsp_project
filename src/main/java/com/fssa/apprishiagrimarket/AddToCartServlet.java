@@ -48,8 +48,10 @@ public class AddToCartServlet extends HttpServlet {
 
 			String name = products.getName();
 			int price = products.getPrice();
-
-			Cart cart = new Cart(orderId, userId, productId, name, price, 1);
+			String url = products.getUrl();
+			long sellerId = products.getUserId();
+			
+			Cart cart = new Cart(orderId, userId, sellerId, productId, url, name, price, 1);
 			System.out.println("New order");
 
 			CartService orderservice = new CartService();

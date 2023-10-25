@@ -226,12 +226,14 @@ input {
 		<div class="full_list">
 			<div class="list">
 				<nav>
-					<label for="url">Product's Url</label> <br />
-					<input type="url" name="url" value=<%=product.getUrl()%> id="url" />
+					<label for="productImage">Product Image</label> <br /> <img
+						src="<%=product.getUrl() %>" alt="Product Image"
+						id="productImage" />
 				</nav>
+
 				<nav>
-					<label for="name">Product's Name</label> <br />
-					<input required="required" value=<%=product.getName()%> type="text"
+					<label for="name">Product's Name</label> <br /> <input
+						required="required" value=<%=product.getName()%> type="text"
 						name="name" id="name" />
 
 				</nav>
@@ -255,25 +257,25 @@ input {
 			</div>
 			<div class="list">
 				<nav>
-					<label for="price">Product's Price</label> <br />
-					<input required="required" type="number" name="price" id="price"
+					<label for="price">Product's Price</label> <br /> <input
+						required="required" type="number" name="price" id="price"
 						value=<%=product.getPrice()%> />
 
 				</nav>
 				<nav>
-					<label for="qty">Product's Quantity</label> <br />
-					<input required="required" type="number" name="qty" id="qty"
+					<label for="qty">Product's Quantity</label> <br /> <input
+						required="required" type="number" name="qty" id="qty"
 						value=<%=product.getQuantity()%> />
 
 				</nav>
 				<nav>
-					<label for="city">City Name</label> <br />
-					<input required="required" type="text" id="city" name="city"
+					<label for="city">City Name</label> <br /> <input
+						required="required" type="text" id="city" name="city"
 						value=<%=product.getDistrict()%> />
 				</nav>
 				<nav>
-					<label for="address">Enter Address</label> <br />
-					<input required="required" type="text" id="address" name="address"
+					<label for="address">Enter Address</label> <br /> <input
+						required="required" type="text" id="address" name="address"
 						value="10, Gandhi street, gobi." value=<%=product.getAddress()%> />
 				</nav>
 				<nav>

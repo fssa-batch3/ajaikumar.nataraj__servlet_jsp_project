@@ -154,8 +154,8 @@ p a {
 				<img src="../assets/image/login.png" alt="profile" width="400px" />
 			</nav>
 			<input type="text" id="Email" name="email"
-				placeholder="Enter your Email" value="ajai@gmail.com" /><br /> <input
-				value="Ajai@123" placeholder="Enter your Password" name="password"
+				placeholder="Enter your Email" value="gowtham@gmail.com" /><br /> <input
+				value="Gowtham@123" placeholder="Enter your Password" name="password"
 				type="password" id="Password" /> <br />
 			<button class="btn" type="submit">Sign in</button>
 		</form>

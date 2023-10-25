@@ -183,36 +183,59 @@ button:active {
 			</div>
 		</div>
 	</header>
-	<h2>Notifications</h2>
 	<main>
+		<c:if test="${not empty products}">
+			<script type="text/javascript">var totalAmount = 0;</script>
 
-		<c:forEach var="order" items="${products}">
-			<section>
-				<img src="" alt="Product Image" />
-				<div>
-					<p>Name: ${order.name}</p>
-					<p>Price: Rs. ${order.price}</p>
-					<p>Quantity: ${order.quantity}</p>
-				</div>
-				<div>
-					<p>Name: ${order.name}</p>
-					<p>Phone No: ${order.phone_number}</p>
-					<p>Address: ${order.user_address}</p>
-					<p>District: ${order.district}</p>
-					<p>Pincode: ${order.pincode}</p>
-					<p>Ordered Date: ${order.ordered_date}</p>
+			<h2>Notifications</h2>
+			
+			<c:forEach var="order" items="${products}">
+				<section>
+					<img src="${order.url}" alt="Product Image" width="200px" />
+					<div>
+						<p>Name: ${order.name}</p>
+						<p>Price: Rs. ${order.price}</p>
+						<p>Quantity: ${order.quantity}</p>
+						<script>
+							var order = {
+								price : ${order.price},
+								quantity : ${order.quantity}
+							};
 
-					System.out.println();
+							var amount = order.quantity * order.price;
+							totalAmount += amount;
+							document.write('<p>Total Amount: Rs. ' + amount
+									+ '</p>');
+						</script>
+					</div>
 
-				</div>
-				<a
-					href="<%=request.getContextPath()%>/NotificationAccept?id=${order.id}&userId=<%= id %>"><button
-						class="accept">Accept</button></a> <a
-					href="<%=request.getContextPath()%>/NotificationReject?id=${order.id}&userId=<%= id %>">
-					<button class="reject">Reject</button>
-				</a>
-			</section>
-		</c:forEach>
+					<div>
+						<p>Name: ${order.username}</p>
+						<p>Phone No: ${order.phone_number}</p>
+						<p>Address: ${order.user_address}</p>
+						<p>District: ${order.district}</p>
+						<p>Pincode: ${order.pincode}</p>
+						<p>Ordered Date: ${order.ordered_date}</p>
+					</div>
+					<a
+						href="<%=request.getContextPath()%>/NotificationAccept?id=${order.id}&userId=<%= id %>">
+						<button class="accept">Accept</button>
+					</a> <a
+						href="<%=request.getContextPath()%>/NotificationReject?id=${order.id}&userId=<%= id %>">
+						<button class="reject">Reject</button>
+					</a>
+				</section>
+			</c:forEach>
+			<script type="text/javascript">
+			document.write('<h3>Total Amount: Rs. ' + totalAmount
+					+ '</h3>');
+			</script>
+		</c:if>
+		<c:if test="${empty products}">
+			<img alt="failure" src="./assets/image/failure.png" width="500px">
+			<h4>There is no Notifications</h4>
+		</c:if>
+
 	</main>
 </body>
 </html>

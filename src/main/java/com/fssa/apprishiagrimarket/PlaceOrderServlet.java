@@ -41,13 +41,16 @@ public class PlaceOrderServlet extends HttpServlet {
 			// Create OrderedDetail objects from cart items
 			List<Order> orderedDetails = new ArrayList<>();
 			for (Cart cartItem : cartItems) {
-				Order orderedDetail = new Order(user_id, cartItem.getProductId(), cartItem.getName(), cartItem.getPrice(), cartItem.getQuantity(), orderDate);
+				Order orderedDetail = new Order(user_id, cartItem.getSellerId() , cartItem.getProductId(), cartItem.getUrl(), cartItem.getName(), cartItem.getPrice(), cartItem.getQuantity(), orderDate);
 				orderedDetail.setuser_id(user_id);
+				orderedDetail.setproductId(cartItem.getSellerId());
 				orderedDetail.setproductId(cartItem.getProductId());
+				orderedDetail.setUrl(cartItem.getUrl());
 				orderedDetail.setName(cartItem.getName());
 				orderedDetail.setPrice(cartItem.getPrice());
 				orderedDetail.setQuantity(cartItem.getQuantity());
 				orderedDetail.setordered_date(orderDate);
+				System.out.println("place order servlet "+cartItem.getUrl());
 
 				orderedDetails.add(orderedDetail);
 			}

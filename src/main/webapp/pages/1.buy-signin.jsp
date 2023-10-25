@@ -160,7 +160,7 @@ small {
 					cols="45" rows="5"></textarea>
 				<input id="pincode" name="pincode" type="tel" pattern="[0-9]{6}"
 					value="638236" placeholder="Enter your pincode" maxlength="6"
-					minlength="6" /> <br />
+					minlength="6" /> <br /> <br>
 
 
 				<button class="sub" type="submit" value="submit" onclick="sign()">

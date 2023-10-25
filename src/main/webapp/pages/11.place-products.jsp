@@ -36,6 +36,30 @@
 p {
 	width: 500px;
 }
+
+/* Edit Button */
+.edit-button {
+	text-decoration: none; /* Remove underline for the link */
+	display: inline-block; /* Ensure the link is inline with the button */
+}
+
+.edit-button button {
+	background-color: blue; /* Change the background color */
+	color: #fff; /* Change the text color */
+	padding: 5px 10px; /* Add some padding for better appearance */
+	border: none; /* Remove button border */
+}
+
+/* Delete Button */
+.delete-button {
+	background-color: red; /* Change the background color on hover */
+	color: #fff; /* Change the text color */
+	border: none; /* Remove button border */
+	padding: 5px 10px; /* Add some padding for better appearance */
+	cursor: pointer; /* Change cursor to indicate it's clickable */
+}
+
+
 </style>
 <title>Product List</title>
 </head>
@@ -90,8 +114,13 @@ p {
 					<p>Rs. ${product.price} / kg</p>
 					<p>Available: ${product.quantity} Kg</p>
 					<p>${product.description}</p>
-					<a href="RegisterProductUpdate?id=${product.id}"><button>Edit</button></a>
-					<a href="DeleteProductServlet?id=${product.id}"><button>Delete</button></a>
+					<a href="RegisterProductUpdate?id=${product.id}"
+						class="edit-button"><button>Edit</button></a>
+					<button type="button"
+						onclick="valid('<%=request.getContextPath()%>', ${product.id})"
+						class="delete-button">Delete</button>
+
+
 				</div>
 			</c:forEach>
 		</c:if>
@@ -109,6 +138,17 @@ p {
 	</div>
 
 	<script>
+	function valid(contextPath, productId) {
+		  const result = confirm("Are you sure you want to delete?");
+		  if (result) {
+		    // Construct the URL using the provided parameters
+		    window.location.href = contextPath + "/DeleteProductServlet?id=" + productId;
+		  }
+		  return false;
+		}
+
+
+
 		// Get the input element
 		const searchInput = document.getElementById("searchInput");
 		const productCards = document.querySelectorAll(".product-card");
