@@ -30,7 +30,9 @@ public class sellerNotificationServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		long id = Long.parseLong(request.getParameter("userId"));
 		System.out.println("notification user id " + id);
-		List<Order> products = null;
+		List<Order> pendingOrder = null;
+		List<Order> acceptedOrder = null;
+		List<Order> rejectedOrder = null;
 		OrderService service = new OrderService();
 
 		if (session != null) {
@@ -41,9 +43,13 @@ public class sellerNotificationServlet extends HttpServlet {
 			} else {
 				try {
 
-				    products = service.getOrdersByUserIdForNotification(id);
-					System.out.println(products);
-					request.setAttribute("products", products);
+					pendingOrder = service.getOrdersByUserIdForPendingOrderNotification(id);
+					acceptedOrder = service.getOrdersByUserIdForAcceptedOrderNotification(id);
+					rejectedOrder = service.getOrdersByUserIdForRejectedOrderNotification(id);
+					System.out.println(pendingOrder);
+					request.setAttribute("pendingProducts", pendingOrder);
+					request.setAttribute("acceptedProducts", acceptedOrder);
+					request.setAttribute("rejectedProducts", rejectedOrder);
 					request.setAttribute("userId", id);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/SellerNotification.jsp");
 					dispatcher.forward(request, response);

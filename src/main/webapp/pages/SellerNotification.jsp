@@ -3,10 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.fssa.rishi.model.Order"%>
 <%@ page import="com.fssa.rishi.model.User"%>
+<%@ page import="java.util.List"%>
 
 
 <%
 long id = (long) request.getAttribute("userId");
+List<Order> pendingProducts = (List<Order>) request.getAttribute("pendingProducts");
+List<Order> acceptedProducts = (List<Order>) request.getAttribute("acceptedProducts");
+List<Order> rejectedProducts = (List<Order>) request.getAttribute("rejectedProducts");
 %>
 <!DOCTYPE html>
 <html>
@@ -86,8 +90,10 @@ h2 {
 
 main {
 	width: 100%;
-	display: block;
+	display: flex;
 	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 /* Style for the whole section */
 section {
@@ -184,58 +190,195 @@ button:active {
 		</div>
 	</header>
 	<main>
-		<c:if test="${not empty products}">
-			<script type="text/javascript">var totalAmount = 0;</script>
 
+
+		<c:if test="<%=!pendingProducts.isEmpty()%>">
+			<%
+			int totalAmount = 0;
+			%>
 			<h2>Notifications</h2>
-			
-			<c:forEach var="order" items="${products}">
-				<section>
-					<img src="${order.url}" alt="Product Image" width="200px" />
-					<div>
-						<p>Name: ${order.name}</p>
-						<p>Price: Rs. ${order.price}</p>
-						<p>Quantity: ${order.quantity}</p>
-						<script>
-							var order = {
-								price : ${order.price},
-								quantity : ${order.quantity}
-							};
+			<%
+			for (Order order : pendingProducts) {
+			%>
 
-							var amount = order.quantity * order.price;
-							totalAmount += amount;
-							document.write('<p>Total Amount: Rs. ' + amount
-									+ '</p>');
-						</script>
-					</div>
 
-					<div>
-						<p>Name: ${order.username}</p>
-						<p>Phone No: ${order.phone_number}</p>
-						<p>Address: ${order.user_address}</p>
-						<p>District: ${order.district}</p>
-						<p>Pincode: ${order.pincode}</p>
-						<p>Ordered Date: ${order.ordered_date}</p>
-					</div>
-					<a
-						href="<%=request.getContextPath()%>/NotificationAccept?id=${order.id}&userId=<%= id %>">
-						<button class="accept">Accept</button>
-					</a> <a
-						href="<%=request.getContextPath()%>/NotificationReject?id=${order.id}&userId=<%= id %>">
-						<button class="reject">Reject</button>
-					</a>
-				</section>
-			</c:forEach>
-			<script type="text/javascript">
-			document.write('<h3>Total Amount: Rs. ' + totalAmount
-					+ '</h3>');
+			<section>
+				<img src="<%=order.getUrl()%>" alt="Product Image" width="600px" />
+				<div>
+					<p>
+						Name:
+						<%=order.getName()%></p>
+					<p>
+						Price: Rs.
+						<%=order.getPrice()%></p>
+					<p>
+						Quantity:
+						<%=order.getQuantity()%></p>
+					<%
+					int price = order.getPrice();
+					int quantity = order.getQuantity();
+					int amount = price * quantity;
+					totalAmount += amount;
+					%>
+					<script>
+						document.write('<p>Total Amount: Rs. ' +
+					<%=amount%>
+						+ '</p>');
+					</script>
+				</div>
+
+				<div>
+					<p>
+						Name:
+						<%=order.getusername()%></p>
+					<p>
+						Phone No:
+						<%=order.getPhone_number()%></p>
+					<p>
+						Address:
+						<%=order.getUser_address()%></p>
+					<p>
+						District:
+						<%=order.getDistrict()%></p>
+					<p>
+						Pincode:
+						<%=order.getPincode()%></p>
+					<p>
+						Ordered Date:
+						<%=order.getordered_date()%></p>
+				</div>
+				<a
+					href="<%=request.getContextPath()%>/NotificationAccept?id=<%=order.getId()%>&userId=<%=id%>">
+					<button class="accept">Accept</button>
+				</a> <a
+					href="<%=request.getContextPath()%>/NotificationReject?id=<%=order.getId()%>&userId=<%=id%>">
+					<button class="reject">Reject</button>
+				</a>
+			</section>
+			<%
+			}
+			%>
+			<script>
+				document.write('<h3>Total Amount: Rs. ' +
+			<%=totalAmount%>
+				+ '</h3>');
 			</script>
 		</c:if>
-		<c:if test="${empty products}">
-			<img alt="failure" src="./assets/image/failure.png" width="500px">
-			<h4>There is no Notifications</h4>
-		</c:if>
+		<c:if test="<%=!acceptedProducts.isEmpty()%>">
 
+
+			<h2>Accepted Orders</h2>
+
+			<%
+			for (Order order : acceptedProducts) {
+			%>
+
+			<c:if test="<%=order.getStatus() == 1%>">
+
+				<section>
+					<img src="<%=order.getUrl()%>" alt="Product Image" width="200px" />
+					<div>
+						<p>
+							Name:
+							<%=order.getName()%></p>
+						<p>
+							Price: Rs.
+							<%=order.getPrice()%></p>
+						<p>
+							Quantity:
+							<%=order.getQuantity()%></p>
+
+					</div>
+
+					<div>
+						<p>
+							Name:
+							<%=order.getusername()%></p>
+						<p>
+							Phone No:
+							<%=order.getPhone_number()%></p>
+						<p>
+							Address:
+							<%=order.getUser_address()%></p>
+						<p>
+							District:
+							<%=order.getDistrict()%></p>
+						<p>
+							Pincode:
+							<%=order.getPincode()%></p>
+						<p>
+							Ordered Date:
+							<%=order.getordered_date()%></p>
+					</div>
+
+					<button class="accept">Accepted</button>
+
+				</section>
+			</c:if>
+			<%
+			}
+			%>
+
+		</c:if>
+		<c:if test="<%=!rejectedProducts.isEmpty()%>">
+			<h2>Rejected Orders</h2>
+
+			<%
+			for (Order order : rejectedProducts) {
+			%>
+
+			<c:if test="<%=order.getStatus() == -1%>">
+
+				<section>
+					<img src="<%=order.getUrl()%>" alt="Product Image" width="200px" />
+					<div>
+						<p>
+							Name:
+							<%=order.getName()%></p>
+						<p>
+							Price: Rs.
+							<%=order.getPrice()%></p>
+						<p>
+							Quantity:
+							<%=order.getQuantity()%></p>
+					</div>
+
+					<div>
+						<p>
+							Name:
+							<%=order.getusername()%></p>
+						<p>
+							Phone No:
+							<%=order.getPhone_number()%></p>
+						<p>
+							Address:
+							<%=order.getUser_address()%></p>
+						<p>
+							District:
+							<%=order.getDistrict()%></p>
+						<p>
+							Pincode:
+							<%=order.getPincode()%></p>
+						<p>
+							Ordered Date:
+							<%=order.getordered_date()%></p>
+					</div>
+
+					<button class="reject">Rejected</button>
+
+				</section>
+			</c:if>
+			<%
+			}
+			%>
+
+		</c:if>
+		<c:if test="<%=pendingProducts.isEmpty()%>">
+			<img alt="failure" src="./assets/image/failure.png" width="500px"
+				style="margin-top: 15%;">
+			<h4>There are no Notifications</h4>
+		</c:if>
 	</main>
+
 </body>
 </html>

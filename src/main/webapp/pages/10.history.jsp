@@ -47,7 +47,8 @@ long id = (long) request.getAttribute("userId");
 				<nav>
 					<label for="productImage">Product Image</label> <br /> <img
 						src="<%=product.getUrl()%>" alt="Product Image" width="300px"
-						id="productImage" />
+						id="productImage" /> <input type="hidden" name="url"
+						value=<%=product.getUrl()%>>
 				</nav>
 
 				<nav>
