@@ -32,6 +32,9 @@ public class BuyerHistoryServlet extends HttpServlet {
 		List<Order> products = null;
 		OrderService Service = new OrderService();
 		UserService service = new UserService();
+		int status = Integer.parseInt(request.getParameter("statusFilter"));
+		System.out.println(status);
+
 
 		if (session != null) {
 			String loggedInEmail = (String) session.getAttribute("loggedInEmail");
@@ -43,10 +46,11 @@ public class BuyerHistoryServlet extends HttpServlet {
 					long id = service.findIdByEmail(loggedInEmail);
 					System.out.println(id);
 
-				    products = Service.getOrdersByUserId(id);
+				    products = Service.getOrdersByUserId(id, status);
 					System.out.println(products);
 					request.setAttribute("products", products);
 					request.setAttribute("userId", id);
+					request.setAttribute("status", status);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/2.BuyerHistory.jsp");
 					dispatcher.forward(request, response);
 				} catch (ServiceException e) {

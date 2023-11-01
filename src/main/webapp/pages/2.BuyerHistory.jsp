@@ -80,6 +80,7 @@ body {
 	background-color: #fff;
 	transition: transform 0.2s ease-in-out;
 	text-align: start;
+	border-radius: 3px;
 }
 
 .delete-button {
@@ -161,6 +162,8 @@ p {
 		</div>  -->
 	</header>
 	<main>
+
+
 		<div class="order-history">
 			<c:choose>
 				<c:when test="${empty products}">
@@ -170,76 +173,136 @@ p {
 					</div>
 				</c:when>
 				<c:otherwise>
-					<h2>Your Orders</h2>
-					<h3>Accepted Orders</h3>
+					<%
+					int value = 0;
+					%>
+					<form action="BuyerHistoryServlet" method="GET">
+						<c:choose>
+							<c:when test="${status == 0}">
+								<label for="filterAccepted"> <input type="radio"
+									id="filterAccepted" name="statusFilter" value="1"
+									onclick="updateValue()"> Accepted
+								</label>
+								<label for="filterRejected"> <input type="radio"
+									id="filterRejected" name="statusFilter" value="-1"
+									onclick="updateValue()"> Rejected
+								</label>
+							</c:when>
+							<c:when test="${status == 1}">
+								<label for="filterPending"> <input type="radio"
+									id="filterPending" name="statusFilter" value="0"
+									onclick="updateValue()"> Pending
+								</label>
+								<label for="filterRejected"> <input type="radio"
+									id="filterRejected" name="statusFilter" value="-1"
+									onclick="updateValue()"> Rejected
+								</label>
+							</c:when>
+							<c:when test="${status == -1}">
+								<label for="filterAccepted"> <input type="radio"
+									id="filterAccepted" name="statusFilter" value="1"
+									onclick="updateValue()"> Accepted
+								</label>
+								<label for="filterPending"> <input type="radio"
+									id="filterPending" name="statusFilter" value="0"
+									onclick="updateValue()"> Pending
+								</label>
+							</c:when>
+						</c:choose>
+					</form>
+
+
+					<c:choose>
+						<c:when test="${status == 0}">
+							<h2>Pending Orders</h2>
+
+						</c:when>
+						<c:when test="${status == 1}">
+							<h2>Accepted Orders</h2>
+
+						</c:when>
+						<c:when test="${status == -1}">
+							<h2>Rejected Orders</h2>
+						</c:when>
+					</c:choose>
 					<div class="order-cards">
+
 						<c:forEach var="order" items="${products}">
 
-							<c:choose>
-								<c:when test="${order.status == 1}">
-									<div class="order-card">
-										<h3>Order ID: ${order.id}</h3>
-										<p>Product Name: ${order.name}</p>
-										<p>Price (Rs.): ${order.price}</p>
-										<p>Quantity: ${order.quantity}</p>
-										<p>Address: ${order.user_address}</p>
-										<p>Order Date: ${order.ordered_date}</p>
-										<!-- Add more order details as needed -->
+							<div class="order-card">
+								<h2>Order ID: ${order.id}</h2>
+								<img alt="img" src="${order.url}" width="250px">
+								<p>Product Name: ${order.name}</p>
+								<p>Price (Rs.): ${order.price}</p>
+								<p>Quantity: ${order.quantity}</p>
+								<p>Address: ${order.user_address}</p>
+								<p>Order Date: ${order.ordered_date}</p>
+								<!-- Add more order details as needed -->
+								<c:choose>
+									<c:when test="${order.status == 0 || order.status == 1}">
 										<a href="OrderedProductDeleteServlet?id=${order.id}">
 											<button class="delete-button">Cancel Order</button>
 										</a>
-									</div>
-								</c:when>
-							</c:choose>
+									</c:when>
+									<c:otherwise>
+										<button class="delete-button">Order Rejected</button>
+									</c:otherwise>
+								</c:choose>
+							</div>
 						</c:forEach>
 
-					</div>
 
-					<h3>Pending Orders</h3>
+					</div>
+					<!-- 	<h2>Pending Orders</h2>
+
 					<div class="order-cards">
+
 						<c:forEach var="order" items="${products}">
 
 							<c:choose>
 								<c:when test="${order.status == 0}">
+
 									<div class="order-card">
-										<h3>Order ID: ${order.id}</h3>
+										<h2>Order ID: ${order.id}</h2>
 										<p>Product Name: ${order.name}</p>
 										<p>Price (Rs.): ${order.price}</p>
 										<p>Quantity: ${order.quantity}</p>
 										<p>Address: ${order.user_address}</p>
 										<p>Order Date: ${order.ordered_date}</p>
-										<!-- Add more order details as needed -->
-										<a href="OrderedProductDeleteServlet?id=${order.id}">
-											<button class="delete-button">Cancel Order</button>
-										</a>
-									</div>
-								</c:when>
-							</c:choose>
-						</c:forEach>
+					<a href="OrderedProductDeleteServlet?id=${order.id}">
+						<button class="delete-button">Cancel Order</button>
+					</a>
+		</div>
+		</c:when>
+		</c:choose>
+		</c:forEach>
 
-					</div>
+		</div>
+		<h2>Rejected Orders</h2>
 
-					<h3>Rejected Orders</h3>
-					<div class="order-cards">
-						<c:forEach var="order" items="${products}">
+		<div class="order-cards">
 
-							<c:choose>
-								<c:when test="${order.status == -1}">
-									<div class="order-card">
-										<h3>Order ID: ${order.id}</h3>
-										<p>Product Name: ${order.name}</p>
-										<p>Price (Rs.): ${order.price}</p>
-										<p>Quantity: ${order.quantity}</p>
-										<p>Address: ${order.user_address}</p>
-										<p>Order Date: ${order.ordered_date}</p>
-										<!-- Add more order details as needed -->
-										
-									</div>
-								</c:when>
-							</c:choose>
-						</c:forEach>
+			<c:forEach var="order" items="${products}">
 
-					</div>
+				<c:choose>
+					<c:when test="${order.status == -1}">
+
+						<div class="order-card">
+							<h2>Order ID: ${order.id}</h2>
+							<p>Product Name: ${order.name}</p>
+							<p>Price (Rs.): ${order.price}</p>
+							<p>Quantity: ${order.quantity}</p>
+							<p>Address: ${order.user_address}</p>
+							<p>Order Date: ${order.ordered_date}</p>
+
+						</div>
+					</c:when>
+				</c:choose>
+			</c:forEach>
+
+		</div>
+		-->
+
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -248,6 +311,21 @@ p {
 	<script>
 		function back() {
 			window.history.back();
+		}
+
+		function updateValue() {
+			var radioButtons = document
+					.querySelectorAll('input[name="statusFilter"]');
+
+			for (var i = 0; i < radioButtons.length; i++) {
+				if (radioButtons[i].checked) {
+					value = parseInt(radioButtons[i].value);
+					break; // Exit the loop as soon as one radio button is selected
+				}
+			}
+
+			// Submit the form
+			document.querySelector('form').submit();
 		}
 	</script>
 </body>

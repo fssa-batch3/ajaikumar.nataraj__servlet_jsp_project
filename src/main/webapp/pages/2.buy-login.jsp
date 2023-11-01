@@ -19,15 +19,8 @@ body, h1, h2, p {
 	background-color: #ffffff; /* Background color */
 	font-family: Arial, sans-serif;
 	text-align: center;
-	padding: 20px;
 }
 
-/* Header styles */
-h1 {
-	font-size: 36px;
-	color: #333; /* Header text color */
-	margin-top: 20px;
-}
 
 /* Error message styles */
 .error-message {
@@ -38,10 +31,10 @@ h1 {
 /* Form container styles */
 .form {
 	background-color: #fff; /* Form background color */
-	padding: 20px;
+	padding: 10px;
 	border-radius: 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
-	max-width: 450px;
+	max-width: 40%;
 	margin: 20px auto;
 }
 
@@ -67,7 +60,7 @@ input[type="text"], input[type="password"] {
 
 /* Sign-in button styles */
 .btn {
-	background-color: #007bff; /* Button background color */
+	background-color: #2bae66ff;
 	color: #fff;
 	padding: 10px 20px;
 	border: none;
@@ -137,8 +130,6 @@ p a {
 		<div class="dropdown"></div>
 
 	</header>
-	<h1>Hi! User...</h1>
-
 	<%
 	String errorMessage = request.getParameter("errorMessage");
 	if (errorMessage != null) {
@@ -150,9 +141,7 @@ p a {
 	<div class="form">
 		<form action="<%=request.getContextPath()%>/LoginServlet"
 			method="post" class="center" id="form">
-			<nav>
-				<img src="../assets/image/login.png" alt="profile" width="400px" />
-			</nav>
+				<img src="../assets/image/login.png" alt="profile" width="80%" />
 			<input type="text" id="Email" name="email"
 				placeholder="Enter your Email" value="gowtham@gmail.com" /><br /> <input
 				value="Gowtham@123" placeholder="Enter your Password" name="password"

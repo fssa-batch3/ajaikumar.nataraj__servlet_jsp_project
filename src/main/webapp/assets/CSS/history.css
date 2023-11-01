@@ -76,11 +76,9 @@ h1 {
 
 .product-cards {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr); /* Display 5 cards in one row */
-	gap: 20px;
+	grid-template-columns: repeat(4, 1fr); /* Display 5 cards in one row */
 	justify-content: center;
 	align-items: stretch;
-	padding: 20px;
 }
 
 .product-card {
@@ -88,8 +86,9 @@ h1 {
 	border: 1px solid #ddd;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 	padding: 20px;
-	max-width: 300px;
+	max-width: 260px;
 	margin: 10px;
+	border-radius: 10px;
 }
 
 .product-card img {
@@ -97,11 +96,13 @@ h1 {
 	height: auto;
 	margin-bottom: 10px;
 	text-decoration: none;
+	border-radius: 10px;
 }
 
 .product-card p {
 	margin: 5px 0;
 	text-decoration: none;
+	font-size: 90%;
 }
 
 .product-card a {
@@ -109,10 +110,8 @@ h1 {
 }
 
 .product-card button {
-	background-color: green;
-	color: #fff;
 	border: none;
-	padding: 5px 10px;
+	padding: 5px 20px;
 	cursor: pointer;
 }
 /* Style for the profile section */
@@ -151,5 +150,10 @@ h1 {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
 		margin-left: 70px;
+	}
+	.product-card p {
+		margin: 5px 0;
+		text-decoration: none;
+		font-size: 50%;
 	}
 }

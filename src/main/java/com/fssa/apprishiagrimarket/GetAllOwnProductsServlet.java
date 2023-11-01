@@ -29,7 +29,8 @@ public class GetAllOwnProductsServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 		PrintWriter out = response.getWriter();
-		List<ProductDetails> products = null;
+		List<ProductDetails> currentProducts = null;
+		List<ProductDetails> DeletedProducts = null;
 		ProductService productService = new ProductService();
 		UserService service = new UserService();
 
@@ -42,9 +43,11 @@ public class GetAllOwnProductsServlet extends HttpServlet {
 				try {
 					long id = service.findIdByEmail(loggedInEmail);
 
-				    products = productService.readOwnProductDetails(id);
-					System.out.println(products);
-					request.setAttribute("products", products);
+				    currentProducts = productService.readCurrentOwnProductDetails(id);
+				    DeletedProducts = productService.readDeletedOwnProductDetails(id);
+					System.out.println(currentProducts);
+					request.setAttribute("currentProducts", currentProducts);
+					request.setAttribute("deletedProducts", DeletedProducts);
 					request.setAttribute("userId", id);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/11.place-products.jsp");
 					dispatcher.forward(request, response);

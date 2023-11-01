@@ -146,20 +146,29 @@ a {
 	color: #2bae66ff;
 }
 
-.buyNow {
-	background-color: yellow;
+.buy-now {
+	color: white;
+	background-color: green;
+	padding: 15px 25px;
+	font-size: 16px;
+	border-radius: 50px;
 	border: none;
-	padding: 10px;
-	border-radius: 5px;
 }
 
-.cart {
-	color: white;
-	background-color: blue;
+.cart-btn {
+	color: black;
+	background-color: yellow;
+	padding: 15px 25px;
+	font-size: 16px;
+	border-radius: 50px;
 	border: none;
-	padding: 10px;
-	border-radius: 5px;
-	background-color: blue;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-evenly;
+	text-align: center;
+	width: 100%;
 }
 </style>
 </head>
@@ -219,10 +228,18 @@ a {
 					<p>
 						Description :
 						<%=product.getDescription()%></p>
-					<a href="BuyNowServlet?id=<%=product.getId()%>"><button
-							class="buyNow">Buy Now</button></a> <a
-						href="AddToCartServlet?id=<%=product.getId()%>"><button
-							class="cart">Add to Cart</button></a>
+
+
+
+					<div class="buttons">
+						<a href="BuyNowServlet?id=<%=product.getId()%>"><button
+								class="buy-now">Buy Now</button></a> <a
+							href="AddToCartServlet?id=<%=product.getId()%>"><button
+								class="cart-btn">Add to Cart</button></a>
+					</div>
+
+
+
 				</div>
 			</section>
 			<section class="full_div">

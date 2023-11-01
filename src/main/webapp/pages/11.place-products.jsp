@@ -29,37 +29,29 @@
 }
 
 #noProductMessage {
-	margin-left: 80%;
 	text-align: center;
 }
 
-p {
-	width: 500px;
-}
-
-/* Edit Button */
-.edit-button {
-	text-decoration: none; /* Remove underline for the link */
-	display: inline-block; /* Ensure the link is inline with the button */
+.button {
+	display: flex;
+	justify-content: space-evenly;
 }
 
 .edit-button button {
-	background-color: blue; /* Change the background color */
-	color: #fff; /* Change the text color */
-	padding: 5px 10px; /* Add some padding for better appearance */
-	border: none; /* Remove button border */
+	color: black;
+	background-color: yellow;
+	padding: 10px 25px;
+	font-size: 16px;
+	border-radius: 3px;
 }
 
-/* Delete Button */
 .delete-button {
-	background-color: red; /* Change the background color on hover */
-	color: #fff; /* Change the text color */
-	border: none; /* Remove button border */
-	padding: 5px 10px; /* Add some padding for better appearance */
-	cursor: pointer; /* Change cursor to indicate it's clickable */
+	color: white;
+	background-color: red;
+	padding: 15px 65px;
+	font-size: 16px;
+	border-radius: 3px;
 }
-
-
 </style>
 <title>Product List</title>
 </head>
@@ -105,26 +97,51 @@ p {
 			placeholder="Search products...">
 	</div>
 
-	<div class="product-cards" id="productContainer">
-		<c:if test="${not empty products}">
-			<c:forEach var="product" items="${products}">
-				<div class="product-card">
-					<img alt="img" src="${product.url}">
-					<p>${product.name}</p>
-					<p>Rs. ${product.price} / kg</p>
-					<p>Available: ${product.quantity} Kg</p>
-					<p>${product.description}</p>
-					<a href="RegisterProductUpdate?id=${product.id}"
-						class="edit-button"><button>Edit</button></a>
-					<button type="button"
-						onclick="valid('<%=request.getContextPath()%>', ${product.id})"
-						class="delete-button">Delete</button>
+	<div id="productContainer">
+		<h1>Products</h1>
+
+		<div class="product-cards">
+
+			<c:if test="${not empty currentProducts}">
+
+				<c:forEach var="product" items="${currentProducts}">
+					<div class="product-card">
+						<img alt="img" src="${product.url}">
+						<p>${product.name}</p>
+						<p>Rs. ${product.price} / kg</p>
+						<p>Available: ${product.quantity} Kg</p>
+						<p>${product.description}</p>
+						<div class="button">
+							<a href="RegisterProductUpdate?id=${product.id}"
+								class="edit-button"><button>Edit</button></a>
+							<button type="button"
+								onclick="valid('<%=request.getContextPath()%>', ${product.id})"
+								class="delete-button">Delete</button>
+						</div>
+					</div>
+				</c:forEach>
+			</c:if>
+		</div>
+		<div>
 
 
-				</div>
-			</c:forEach>
-		</c:if>
-		<c:if test="${empty products}">
+			<c:if test="${not empty deletedProducts}">
+				<h1>Deleted Products</h1>
+
+				<c:forEach var="product" items="${deletedProducts}">
+					<div class="product-card">
+						<img alt="img" src="${product.url}">
+						<p>${product.name}</p>
+						<p>Rs. ${product.price} / kg</p>
+						<p>Available: ${product.quantity} Kg</p>
+						<p>${product.description}</p>
+						<button type="button" class="delete-button">Deleted</button>
+					</div>
+				</c:forEach>
+			</c:if>
+		</div>
+
+		<c:if test="${empty currentProducts && empty deletedProducts}">
 			<div id="noProductMessage">
 				<img alt="failure" src="./assets/image/failure.png" width="500px">
 				<p>You didn't add any products</p>

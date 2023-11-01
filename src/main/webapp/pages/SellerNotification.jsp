@@ -84,16 +84,13 @@ body {
 	display: block;
 }
 
-h2 {
-	margin-top: 10%;
-}
-
 main {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	margin-top: 140px;
 }
 /* Style for the whole section */
 section {
@@ -156,6 +153,12 @@ button:hover {
 /* Optional: Style for button click (active) state */
 button:active {
 	opacity: 1; /* Restore opacity on click */
+}
+
+@media screen and (max-width: 600px) {
+	main {
+		margin-top: 150px;
+	}
 }
 </style>
 </head>
@@ -381,4 +384,11 @@ button:active {
 	</main>
 
 </body>
+<script type="text/javascript">
+	function back() {
+		window.history.back();
+	}
+</script>
+
+
 </html>

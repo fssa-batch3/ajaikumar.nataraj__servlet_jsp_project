@@ -34,7 +34,38 @@
 }
 
 h4 {
-	width: 600px;
+	width: 500px;
+}
+
+.buy-now {
+	color: white;
+	background-color: green;
+	font-size: 16px;
+	border-radius: 3px;
+}
+
+.cart-btn {
+	color: black;
+	background-color: yellow;
+	padding: 15px 25px;
+	font-size: 16px;
+	border-radius: 3px;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-evenly;
+	text-align: center;
+	width: 100%;
+}
+
+.view-more {
+	color: black;
+	background-color: light-grey;
+	font-size: 16px;
+	border-radius: 3px;
+	width: 100%;
+	margin-top: 10px;
 }
 </style>
 <title>Insert title here</title>
@@ -61,7 +92,7 @@ h4 {
 					src="./assets/image/profile.png" alt="logo" width="30px" />
 				</a> <br> <a href="CartServlet?id=${userId}"> <img
 					src="./assets/image/cart.png" alt="logo" width="30px" />
-				</a> <br> <a href="BuyerHistoryServlet?id=${userId}"> <img
+				</a> <br><a href="BuyerHistoryServlet?id=${userId}&statusFilter=0"><img
 					src="./assets/image/orders.png" alt="logo" width="30px" />
 				</a>
 			</div>
@@ -112,13 +143,18 @@ h4 {
 				<p>Rs. ${product.price} / kg</p>
 				<p>Available : ${product.quantity} Kg</p>
 				<p>${product.description}</p>
-				<a href="BuyNowServlet?id=${product.id}"><button>Buy
-						Now</button></a> <a href="AddToCartServlet?id=${product.id}"><button>Add
-						to Cart</button></a> <a
-					href="productDetailServlet?id=${product.id}&userId=${product.userId}">
-					View More... </a>
-
-
+				<div class="buttons">
+					<a href="BuyNowServlet?id=${product.id}"><button
+							class="buy-now">Buy Now</button></a> <a
+						href="AddToCartServlet?id=${product.id}"><button
+							class="cart-btn">Add to Cart</button></a>
+				</div>
+				<div class="buttons">
+					<a
+						href="productDetailServlet?id=${product.id}&userId=${product.userId}">
+						<button class="view-more">View More...</button>
+					</a>
+				</div>
 
 			</div>
 		</c:forEach>

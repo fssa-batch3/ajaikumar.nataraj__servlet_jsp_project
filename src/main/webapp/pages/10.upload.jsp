@@ -104,14 +104,14 @@ body {
 	background-color: #ffffff;
 	border-radius: 5px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-	margin-top: 30px;
+	margin-top: 2%;
 }
 
 /* Form heading */
 .full-card h3 {
 	text-align: center;
 	font-size: 24px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	color: #333;
 }
 
