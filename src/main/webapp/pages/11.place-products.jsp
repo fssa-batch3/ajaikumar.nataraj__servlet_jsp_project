@@ -18,7 +18,7 @@
 .dropdown-content {
 	display: none;
 	position: absolute;
-	min-width: 160px;
+	min-width: 20%;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	padding: 12px 16px;
 	z-index: 1;
@@ -98,11 +98,12 @@
 	</div>
 
 	<div id="productContainer">
-		<h1>Products</h1>
+		<c:if test="${not empty currentProducts}">
 
-		<div class="product-cards">
+			<h1>Products</h1>
 
-			<c:if test="${not empty currentProducts}">
+			<div class="product-cards">
+
 
 				<c:forEach var="product" items="${currentProducts}">
 					<div class="product-card">
@@ -120,13 +121,17 @@
 						</div>
 					</div>
 				</c:forEach>
-			</c:if>
-		</div>
-		<div>
+			</div>
+		</c:if>
 
 
-			<c:if test="${not empty deletedProducts}">
-				<h1>Deleted Products</h1>
+
+
+
+		<c:if test="${not empty deletedProducts}">
+			<h1>Deleted Products</h1>
+
+			<div class="product-cards">
 
 				<c:forEach var="product" items="${deletedProducts}">
 					<div class="product-card">
@@ -138,8 +143,9 @@
 						<button type="button" class="delete-button">Deleted</button>
 					</div>
 				</c:forEach>
-			</c:if>
-		</div>
+			</div>
+		</c:if>
+
 
 		<c:if test="${empty currentProducts && empty deletedProducts}">
 			<div id="noProductMessage">

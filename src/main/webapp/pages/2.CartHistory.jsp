@@ -80,6 +80,7 @@ body {
 	background-color: #fff;
 	transition: transform 0.2s ease-in-out;
 	text-align: start;
+	border-radius: 10px;
 }
 
 /* Styles for the "Buy Now" button */
