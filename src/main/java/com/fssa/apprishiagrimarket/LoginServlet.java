@@ -32,10 +32,10 @@ public class LoginServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		SellerService sellerService = new SellerService();
+		//SellerService sellerService = new SellerService();
 		UserService userService = new UserService();
 		try {
-			if (sellerService.logInUser(user)) {
+			if (userService.logInUser(user)) {
 				out.println("Login Successfull...");
 				HttpSession session = request.getSession();
 				

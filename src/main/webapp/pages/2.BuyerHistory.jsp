@@ -167,6 +167,40 @@ p {
 		<div class="order-history">
 			<c:choose>
 				<c:when test="${empty products}">
+					<form action="BuyerHistoryServlet" method="GET">
+						<c:choose>
+							<c:when test="${status == 0}">
+								<label for="filterAccepted"> <input type="radio"
+									id="filterAccepted" name="statusFilter" value="1"
+									onclick="updateValue()"> Accepted
+								</label>
+								<label for="filterRejected"> <input type="radio"
+									id="filterRejected" name="statusFilter" value="-1"
+									onclick="updateValue()"> Rejected
+								</label>
+							</c:when>
+							<c:when test="${status == 1}">
+								<label for="filterPending"> <input type="radio"
+									id="filterPending" name="statusFilter" value="0"
+									onclick="updateValue()"> Pending
+								</label>
+								<label for="filterRejected"> <input type="radio"
+									id="filterRejected" name="statusFilter" value="-1"
+									onclick="updateValue()"> Rejected
+								</label>
+							</c:when>
+							<c:when test="${status == -1}">
+								<label for="filterAccepted"> <input type="radio"
+									id="filterAccepted" name="statusFilter" value="1"
+									onclick="updateValue()"> Accepted
+								</label>
+								<label for="filterPending"> <input type="radio"
+									id="filterPending" name="statusFilter" value="0"
+									onclick="updateValue()"> Pending
+								</label>
+							</c:when>
+						</c:choose>
+					</form>
 					<div id="noProductMessage">
 						<img alt="failure" src="./assets/image/failure.png" width="500px">
 						<p>No orders available.</p>
