@@ -100,6 +100,7 @@ section {
 	padding: 10px;
 	margin-bottom: 10px;
 	width: 80%;
+	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
 
@@ -107,6 +108,7 @@ section {
 section img {
 	width: 20%;
 	height: auto;
+	border-radius: 5px;
 	margin-right: 20px;
 }
 

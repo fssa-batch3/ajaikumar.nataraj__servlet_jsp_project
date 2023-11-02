@@ -56,7 +56,6 @@ h2 {
 body {
 	font-family: Arial, sans-serif;
 	text-align: center;
-	padding: 20px;
 }
 
 /* Profile container styles */
@@ -116,6 +115,7 @@ button {
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 18px;
+	margin: 20px auto;
 }
 
 .delete-button {
@@ -125,6 +125,7 @@ button {
 .dropdown {
 	position: relative;
 	display: inline-block;
+	margin-right: 20px;
 }
 
 .dropdown-content {
@@ -219,6 +220,51 @@ button {
 							id="home_address" name="address" value="<%=user1.getAddress()%>"
 							class="input" placeholder="Home Address" required>
 					</div>
+					<div class="form-group">
+						<label for="district">District</label> <input required
+							class="input" list="Districts" name="district" id="district"
+							type="text"
+							value="<%=user1.getDistrict() != null ? user1.getDistrict() : ""%>"
+							placeholder="Select an Option" autocomplete="off">
+						<datalist id="Districts">
+							<option value="Ariyalur">Ariyalur</option>
+							<option value="Chennai">Chennai</option>
+							<option value="Coimbatore">Coimbatore</option>
+							<option value="Cuddalore">Cuddalore</option>
+							<option value="Dharmapuri">Dharmapuri</option>
+							<option value="Dindigul">Dindigul</option>
+							<option value="Erode">Erode</option>
+							<option value="Kallakurichi">Kallakurichi</option>
+							<option value="Kanchipuram">Kanchipuram</option>
+							<option value="Kanyakumari">Kanyakumari</option>
+							<option value="Karur">Karur</option>
+							<option value="Krishnagiri">Krishnagiri</option>
+							<option value="Madurai">Madurai</option>
+							<option value="Nagapattinam">Nagapattinam</option>
+							<option value="Namakkal">Namakkal</option>
+							<option value="Nilgiris">Nilgiris</option>
+							<option value="Perambalur">Perambalur</option>
+							<option value="Pudukkottai">Pudukkottai</option>
+							<option value="Ramanathapuram">Ramanathapuram</option>
+							<option value="Salem">Salem</option>
+							<option value="Sivaganga">Sivaganga</option>
+							<option value="Tenkasi">Tenkasi</option>
+							<option value="Thanjavur">Thanjavur</option>
+							<option value="Theni">Theni</option>
+							<option value="Thoothukudi (Tuticorin)">Thoothukudi
+								(Tuticorin)</option>
+							<option value="Tiruchirapalli">Tiruchirapalli</option>
+							<option value="Tirunelveli">Tirunelveli</option>
+							<option value="Tirupathur">Tirupathur</option>
+							<option value="Tiruppur">Tiruppur</option>
+							<option value="Tiruvallur">Tiruvallur</option>
+							<option value="Tiruvannamalai">Tiruvannamalai</option>
+							<option value="Tiruvarur">Tiruvarur</option>
+							<option value="Vellore">Vellore</option>
+							<option value="Viluppuram">Viluppuram</option>
+							<option value="Virudhunagar">Virudhunagar</option>
+						</datalist>
+					</div>
 				</div>
 			</div>
 			<div class="profile-right">
@@ -246,55 +292,12 @@ button {
 						value="<%=user1.getPincode()%>" required pattern="[0-9]{6}"
 						maxlength="6" />
 				</div>
-				<div class="form-group">
-					<label for="district">District</label> <input required
-						class="input" list="Districts" name="district" id="district"
-						type="text"
-						value="<%=user1.getDistrict() != null ? user1.getDistrict() : ""%>"
-						placeholder="Select an Option" autocomplete="off">
-					<datalist id="Districts">
-						<option value="Ariyalur">Ariyalur</option>
-						<option value="Chennai">Chennai</option>
-						<option value="Coimbatore">Coimbatore</option>
-						<option value="Cuddalore">Cuddalore</option>
-						<option value="Dharmapuri">Dharmapuri</option>
-						<option value="Dindigul">Dindigul</option>
-						<option value="Erode">Erode</option>
-						<option value="Kallakurichi">Kallakurichi</option>
-						<option value="Kanchipuram">Kanchipuram</option>
-						<option value="Kanyakumari">Kanyakumari</option>
-						<option value="Karur">Karur</option>
-						<option value="Krishnagiri">Krishnagiri</option>
-						<option value="Madurai">Madurai</option>
-						<option value="Nagapattinam">Nagapattinam</option>
-						<option value="Namakkal">Namakkal</option>
-						<option value="Nilgiris">Nilgiris</option>
-						<option value="Perambalur">Perambalur</option>
-						<option value="Pudukkottai">Pudukkottai</option>
-						<option value="Ramanathapuram">Ramanathapuram</option>
-						<option value="Salem">Salem</option>
-						<option value="Sivaganga">Sivaganga</option>
-						<option value="Tenkasi">Tenkasi</option>
-						<option value="Thanjavur">Thanjavur</option>
-						<option value="Theni">Theni</option>
-						<option value="Thoothukudi (Tuticorin)">Thoothukudi
-							(Tuticorin)</option>
-						<option value="Tiruchirapalli">Tiruchirapalli</option>
-						<option value="Tirunelveli">Tirunelveli</option>
-						<option value="Tirupathur">Tirupathur</option>
-						<option value="Tiruppur">Tiruppur</option>
-						<option value="Tiruvallur">Tiruvallur</option>
-						<option value="Tiruvannamalai">Tiruvannamalai</option>
-						<option value="Tiruvarur">Tiruvarur</option>
-						<option value="Vellore">Vellore</option>
-						<option value="Viluppuram">Viluppuram</option>
-						<option value="Virudhunagar">Virudhunagar</option>
-					</datalist>
-				</div>
-				<button type="submit" onclick="showUpdateAlert()">Update</button>
+
 
 			</div>
 		</div>
+
+		<button type="submit" onclick="showUpdateAlert()">Update</button>
 
 	</form>
 
@@ -315,7 +318,7 @@ button {
 			if (confirmation) {
 				// If the user confirms, redirect to the DeleteUserServlet
 				window.location.href = "DeleteUserServlet?email=" + email;
-			} 
+			}
 		}
 	</script>
 </body>

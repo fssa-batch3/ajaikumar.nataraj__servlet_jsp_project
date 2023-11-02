@@ -98,12 +98,10 @@ body {
 /* Styles for the "Delete" button */
 .delete-img {
 	color: #fff; /* White text color */
-	padding: 5px 10px;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
 	font-size: 16px;
-	margin-top: 10px;
 	margin-right: 10px;
 }
 
@@ -156,6 +154,10 @@ p {
 	width: 100%;
 }
 
+.card-head {
+	display: flex;
+	justify-content: space-between;
+}
 /* Customize other styles as needed */
 </style>
 </head>
@@ -222,15 +224,19 @@ p {
 					<div class="order-cards">
 						<c:forEach var="order" items="${products}">
 							<form action="CartUpdateServlet" method="post" class="order-card">
-								<a href="CartDeleteServlet?id=${order.id}" class="delete-img">
-									<img src="<%=request.getContextPath()%>/assets/image/wrong.png"
-									alt="delet" width="30px" />
-								</a> <a href="BuyNowServlet?id=${order.productId}"> <img
-									src="<%=request.getContextPath()%>/assets/image/cart.png"
-									alt="buy Now" width="30px" />
-								</a>
+								<div class="card-head">
+									<a href="CartDeleteServlet?id=${order.id}" class="delete-img">
+										<img
+										src="<%=request.getContextPath()%>/assets/image/wrong.png"
+										alt="delet" width="30px" />
+									</a> <a href="BuyNowServlet?id=${order.productId}"> <img
+										src="<%=request.getContextPath()%>/assets/image/cart.png"
+										alt="buy Now" width="30px" />
+									</a>
+								</div>
 								<h3>Cart ID: ${order.id}</h3>
-								<img src="${order.url}" alt="Product Image" width="200px" />
+								<img src="${order.url}" alt="Product Image" width="200px"
+									style="border-radius: 5px;" />
 								<p>Product Name: ${order.name}</p>
 								<p>Price (Rs.): ${order.price}</p>
 								<!-- Add a hidden input field to store the product ID -->

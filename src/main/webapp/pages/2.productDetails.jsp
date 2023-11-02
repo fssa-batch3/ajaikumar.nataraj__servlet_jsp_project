@@ -33,6 +33,10 @@
 	text-align: center;
 }
 
+.product-card {
+	height: 410px;
+}
+
 h4 {
 	width: 500px;
 }
@@ -92,9 +96,8 @@ h4 {
 					src="./assets/image/profile.png" alt="logo" width="30px" />
 				</a> <br> <a href="CartServlet?id=${userId}"> <img
 					src="./assets/image/cart.png" alt="logo" width="30px" />
-				</a> <br><a href="BuyerHistoryServlet?id=${userId}&statusFilter=0"><img
-					src="./assets/image/orders.png" alt="logo" width="30px" />
-				</a>
+				</a> <br> <a href="BuyerHistoryServlet?id=${userId}&statusFilter=0"><img
+					src="./assets/image/orders.png" alt="logo" width="30px" /> </a>
 			</div>
 		</div>
 
