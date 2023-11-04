@@ -25,34 +25,24 @@ if (loggedInEmail == null) {
 <%
 } else {
 %>
-<header class="head">
-	<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
-		width="50px" />
-	<div class="logo">
-		<img onclick="home()" src="../assets/image/logo.png" alt="logo"
-			width="90px" />
+<div class="contact">
+		<p>+91 9876543210</p>
+		<p>Rishi-market@agri.com</p>
 	</div>
-
-	<div class="dropdown">
-		<img alt="menu" src="../assets/image/menu.png" width="30px">
-		<div class="dropdown-content">
-			<a href="<%=request.getContextPath()%>/GetAllOwnProductsServlet">
-				<img src="../assets/image/orders.png" alt="orders" width="30px" />
-			</a> <br> <a
-				href="<%=request.getContextPath()%>/GetAllProductServlet"> <img
-				src="../assets/image/cart.png" alt="cart" width="30px" />
-			</a><br> <a
-				href="<%=request.getContextPath()%>/sellerNotificationServlet?userId=<%=id%>">
-				<img src="../assets/image/notification.png" alt="notification"
-				width="30px" />
-			</a><br> <a
-				href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
-				<img src="../assets/image/profile.png" alt="profile" width="30px" />
-			</a><br> <a href="<%=request.getContextPath()%>/LogoutServlet"><img
-				src="../assets/image/logout.png" alt="logo" width="30px" /></a>
+	<header class="head">
+		<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
+			width="40px" />
+		<div class="logo">
+			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
+				width="90px" />
 		</div>
-	</div>
-</header>
+
+		<div>
+			<a href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
+				<img src="../assets/image/profile.png" alt="profile" width="40px" />
+			</a>
+		</div>
+	</header>
 
 <%
 }

@@ -10,7 +10,7 @@
 <title>Order Details</title>
 <style type="text/css">
 body {
-	font-family: Arial, sans-serif;
+	font-family: verdana;
 	background-color: #f5f5f5;
 	color: #2bae66ff;
 }
@@ -58,11 +58,11 @@ body {
 }
 
 .contact p {
-	margin-top: 2px;
+	margin-top: 0px;
 }
 
 .order-history {
-	margin-top: 150px;
+	margin-top: 8%;
 	text-align: center;
 }
 /* CSS for order cards */
@@ -75,12 +75,19 @@ body {
 	border: 1px solid #ccc;
 	padding: 15px;
 	margin: 10px;
-	max-width: 300px;
+	max-width: 190px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	background-color: #fff;
 	transition: transform 0.2s ease-in-out;
 	text-align: start;
 	border-radius: 3px;
+	border-radius: 10px;
+}
+
+.order-card img {
+	width: 100%;
+	height: 30%;
+	border-radius: 10px;
 }
 
 .delete-button {
@@ -118,7 +125,7 @@ body {
 	text-align: center;
 }
 
-p {
+#noProductMessage p {
 	width: 100%;
 }
 /* Customize other styles as needed */
@@ -131,22 +138,16 @@ p {
 	</div>
 	<header class="head">
 		<img onclick="back()" src="./assets/image/arrowback.png" alt="back"
-			width="50px" />
+			width="40px" />
 		<div class="logo">
 			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 
-		<div class="dropdown">
-			<img alt="menu" src="./assets/image/menu.png" width="30px">
-			<div class="dropdown-content">
-				<a href="LogoutServlet"> <img src="./assets/image/logout.png"
-					alt="logo" width="30px" />
-				</a> <br> <a href="ProfileServlet?id=${userId}"> <img
-					src="./assets/image/profile.png" alt="logo" width="30px" />
-				</a>
-			</div>
-		</div>
+		<a href="ProfileServlet?id=${userId}"> <img
+			src="./assets/image/profile.png" alt="logo" width="40px" />
+		</a>
+
 
 		<!-- 	<div class="profile">
 			<div>
@@ -264,13 +265,13 @@ p {
 						<c:forEach var="order" items="${products}">
 
 							<div class="order-card">
-								<h2>Order ID: ${order.id}</h2>
-								<img alt="img" src="${order.url}" width="250px">
+								<p>ID: ${order.id}</p>
+								<img alt="img" src="${order.url}">
 								<p>Product Name: ${order.name}</p>
 								<p>Price (Rs.): ${order.price}</p>
 								<p>Quantity: ${order.quantity}</p>
 								<p>Address: ${order.user_address}</p>
-								<p>Order Date: ${order.ordered_date}</p>
+								<p>Date: ${order.ordered_date}</p>
 								<!-- Add more order details as needed -->
 								<c:choose>
 									<c:when test="${order.status == 0 || order.status == 1}">

@@ -10,7 +10,7 @@
 <title>Cart Details</title>
 <style type="text/css">
 body {
-	font-family: Arial, sans-serif;
+	font-family: verdana;
 	background-color: #f5f5f5;
 	color: #2bae66ff;
 }
@@ -62,7 +62,7 @@ body {
 }
 
 .order-history {
-	margin-top: 150px;
+	margin-top: 120px;
 	text-align: center;
 }
 /* CSS for order cards */
@@ -150,7 +150,7 @@ body {
 	text-align: center;
 }
 
-p {
+#noProductMessage p {
 	width: 100%;
 }
 
@@ -169,30 +169,17 @@ p {
 	<header class="head">
 		<img onclick="back()"
 			src="<%=request.getContextPath()%>/assets/image/arrowback.png"
-			alt="back" width="50px" />
+			alt="back" width="40px" />
 		<div class="logo">
 			<img onclick="home()"
 				src="<%=request.getContextPath()%>/assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
+		<a href="ProfileServlet?id=${userId}"> <img
+			src="<%=request.getContextPath()%>/assets/image/profile.png"
+			alt="profile" width="40px" />
+		</a>
 
-
-		<div class="dropdown">
-			<img alt="menu"
-				src="<%=request.getContextPath()%>/assets/image/menu.png"
-				width="30px">
-			<div class="dropdown-content">
-				<a href="LogoutServlet"> <img
-					src="<%=request.getContextPath()%>/assets/image/logout.png"
-					alt="logo" width="30px" />
-				</a> <br> <a
-					href="<%=request.getContextPath()%>ProfileServlet?id=${userId}">
-					<img src="<%=request.getContextPath()%>/assets/image/profile.png"
-					alt="profile" width="30px" />
-				</a>
-
-			</div>
-		</div>
 
 		<!-- 	<div class="profile">
 			<div>
@@ -234,7 +221,7 @@ p {
 										alt="buy Now" width="30px" />
 									</a>
 								</div>
-								<h3>Cart ID: ${order.id}</h3>
+								<p>Cart ID: ${order.id}</p>
 								<img src="${order.url}" alt="Product Image" width="200px"
 									style="border-radius: 5px;" />
 								<p>Product Name: ${order.name}</p>
@@ -266,7 +253,7 @@ p {
 							+ '</h3>');
 					</script>
 
-					<a href="PlaceOrderServlet?id=${userId}">
+					<a href="#" onclick="confirmOrder('${userId}');">
 						<button class="order-button">Place Orders</button>
 					</a>
 
@@ -279,6 +266,15 @@ p {
 	<script>
 		function back() {
 			window.history.back();
+		}
+		
+		function confirmOrder(id) {
+			var confirmation = confirm("Are you sure you want to order all the products ?");
+
+			if (confirmation) {
+				// If the user confirms, redirect to the DeleteUserServlet
+				window.location.href = "PlaceOrderServlet?id=" + id;
+			}
 		}
 	</script>
 </body>

@@ -164,7 +164,7 @@ button {
 	</div>
 	<header class="head">
 		<img onclick="back()" src="./assets/image/arrowback.png" alt="back"
-			width="50px" />
+			width="40px" />
 		<div class="logo">
 			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
 				width="90px" />
@@ -172,7 +172,7 @@ button {
 		<div class="dropdown">
 			<img alt="menu" src="./assets/image/menu.png" width="30px">
 			<div class="dropdown-content">
-				<a href="LogoutServlet"><img src="./assets/image/logout.png"
+				<a href="#" onclick="logout();"><img src="./assets/image/logout.png"
 					alt="logo" width="30px" /></a> <br> <a href="#"
 					onclick="confirmDelete('<%=user1.getEmail()%>');"> <img
 					src="./assets/image/delete.png" alt="deleteLogo" width="30px" />
@@ -318,6 +318,15 @@ button {
 			if (confirmation) {
 				// If the user confirms, redirect to the DeleteUserServlet
 				window.location.href = "DeleteUserServlet?email=" + email;
+			}
+		}
+		
+		function logout() {
+			var confirmation = confirm("Are you sure you want to Logout ?");
+
+			if (confirmation) {
+				// If the user confirms, redirect to the DeleteUserServlet
+				window.location.href = "<%=request.getContextPath()%>/LogoutServlet";
 			}
 		}
 	</script>

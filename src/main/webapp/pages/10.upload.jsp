@@ -13,10 +13,11 @@ long id = (long) session.getAttribute("sellerId");
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>Document</title>
 <style type="text/css">
 body {
-	font-family: Arial, sans-serif;
+	font-family: verdana;
 }
 
 .head {
@@ -26,7 +27,7 @@ body {
 	box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px
 		2px, rgba(0, 0, 0, 0.09) 0px 8px 4px;
 	color: white;
-	height: 60px;
+	height: 5%;
 }
 
 .contact {
@@ -39,7 +40,7 @@ body {
 }
 
 .contact p {
-	margin-top: 2px;
+	margin-top: 0px;
 }
 
 .name {
@@ -53,15 +54,7 @@ body {
 	height: 50px;
 	background-color: #2bae66ff;
 }
-/* Header container */
-.head {
-	color: #fff; /* Text color */
-	padding: 10px 20px; /* Padding around the header */
-	display: flex; /* Make the header contents display in a row */
-	justify-content: space-between;
-	/* Distribute elements evenly horizontally */
-	align-items: center; /* Center elements vertically */
-}
+
 
 /* Style for the back button */
 .head img[alt="back"] {
@@ -186,6 +179,10 @@ datalist {
 	display: block;
 }
 
+.w3-sidebar a {
+	font-family: verdana;
+}
+
 /* Additional styling for responsive design can be added as needed */
 </style>
 <!--  <link rel="stylesheet" href="../assets/CSS/10-upload.css" /> -->
@@ -197,37 +194,41 @@ datalist {
 	</div>
 	<header class="head">
 		<img onclick="back()" src="../assets/image/arrowback.png" alt="back"
-			width="50px" />
+			width="40px" />
 		<div class="logo">
 			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 
-		<div class="dropdown">
-			<img alt="menu" src="../assets/image/menu.png" width="30px">
-			<div class="dropdown-content">
-				<a href="<%=request.getContextPath()%>/GetAllOwnProductsServlet">
-					<img src="../assets/image/orders.png" alt="orders" width="30px" />
-				</a> <br> <a
-					href="<%=request.getContextPath()%>/GetAllProductServlet"> <img
-					src="../assets/image/cart.png" alt="cart" width="30px" />
-				</a><br> <a
-					href="<%=request.getContextPath()%>/sellerNotificationServlet?userId=<%=id%>">
-					<img src="../assets/image/notification.png" alt="notification"
-					width="30px" />
-				</a><br> <a
-					href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
-					<img src="../assets/image/profile.png" alt="profile" width="30px" />
-				</a><br> <a href="<%=request.getContextPath()%>/LogoutServlet"><img
-					src="../assets/image/logout.png" alt="logo" width="30px" /></a>
-			</div>
+		<div>
+			<a href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
+				<img src="../assets/image/profile.png" alt="profile" width="40px" />
+			</a>
 		</div>
 	</header>
-	<section class="output_section"></section>
-	<a href="../assets/image/apple.jpg"></a>
-	<section class="sec"></section>
+
+	<div class="w3-sidebar w3-bar-block w3-card w3-animate-left"
+		style="display: none" id="leftMenu">
+		<button onclick="closeLeftMenu()"
+			class="w3-bar-item w3-button w3-large">Close &times;</button>
+		<a class="w3-bar-item w3-button"
+			href="<%=request.getContextPath()%>/GetAllOwnProductsServlet"> <img
+			src="../assets/image/orders.png" alt="orders" width="30px" /> History
+		</a>  <br> <a class="w3-bar-item w3-button"
+			href="<%=request.getContextPath()%>/GetAllProductServlet"> <img
+			src="../assets/image/cart.png" alt="cart" width="30px" /> Go to Buy
+		</a><br> <a class="w3-bar-item w3-button"
+			href="<%=request.getContextPath()%>/sellerNotificationServlet?userId=<%=id%>">
+			<img src="../assets/image/notification.png" alt="notification"
+			width="30px" /> Notification
+		</a>
+	</div>
+	<div class="w3-teal">
+		<button class="w3-button w3-teal w3-xlarge w3-left"
+			onclick="openLeftMenu()">&#9776;</button>
+	</div>
 	<form action="<%=request.getContextPath()%>/RegisterProductServlet"
-		method="post" class="full-card" id="form" onsubmit="return valid()" >
+		method="post" class="full-card" id="form" onsubmit="return valid()">
 		<h3>Upload your products</h3>
 		<%
 		String errorMessage = request.getParameter("errorMessage");
@@ -238,8 +239,9 @@ datalist {
 		<div class="full_list">
 			<div class="list">
 				<nav>
-				 <input type="hidden" name="url" id="productImageInput" placeholder="Enter Product Image URL">
- 
+					<input type="hidden" name="url" id="productImageInput"
+						placeholder="Enter Product Image URL">
+
 					<button type="button" class="product-selector-button"
 						onclick="productImageSelector()">Choose Product Image</button>
 				</nav>
@@ -335,46 +337,53 @@ datalist {
 	<div class="add_detail"></div>
 
 	<script>
-	
-	function valid(){
-		let inputValue = document.getElementById("productImageInput").value.trim();
-		if(inputValue==""){
-			alert("Please Choose Product Image");
-			return false;
+		function valid() {
+			let inputValue = document.getElementById("productImageInput").value
+					.trim();
+			if (inputValue == "") {
+				alert("Please Choose Product Image");
+				return false;
+			}
+			return true;
 		}
-		return true;
-	}
 		function back() {
 			window.history.back();
 		}
 
 		function productImageSelector() {
-		    let inputValue = document.getElementById("productImageInput");
-		    let fileInput = document.createElement("input");
-		    fileInput.type = "file";
+			let inputValue = document.getElementById("productImageInput");
+			let fileInput = document.createElement("input");
+			fileInput.type = "file";
 
-		    let imageElement = document.createElement("img");
-		    imageElement.setAttribute("class", "selected-image");
+			let imageElement = document.createElement("img");
+			imageElement.setAttribute("class", "selected-image");
 
-		    fileInput.click();
+			fileInput.click();
 
-		    fileInput.addEventListener("change", function (e) {
-		        let file = e.target.files[0];
+			fileInput.addEventListener("change", function(e) {
+				let file = e.target.files[0];
 
-		        if (file) {
-		            let reader = new FileReader();
+				if (file) {
+					let reader = new FileReader();
 
-		            reader.onload = function (e) {
-		                imageElement.src = e.target.result;
+					reader.onload = function(e) {
+						imageElement.src = e.target.result;
 
-		                inputValue.value = e.target.result;
-		            };
+						inputValue.value = e.target.result;
+					};
 
-		            reader.readAsDataURL(file);
-		        }
-		    });
+					reader.readAsDataURL(file);
+				}
+			});
 		}
 
+		function openLeftMenu() {
+			document.getElementById("leftMenu").style.display = "block";
+		}
+
+		function closeLeftMenu() {
+			document.getElementById("leftMenu").style.display = "none";
+		}
 	</script>
 
 </body>

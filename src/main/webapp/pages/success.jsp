@@ -4,10 +4,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta http-equiv="refresh" content="5;url=<%=request.getContextPath()%>/GetAllProductServlet">
+
 <!-- Redirect to another page after 5 seconds -->
 
 <title>Insert title here</title>
 <style type="text/css">
+* {
+	font-family: verdana;
+}
+
 .head {
 	display: flex;
 	align-items: center;
@@ -80,12 +86,13 @@ h1 {
 		<p>Rishi-market@agri.com</p>
 	</div>
 	<header class="head">
-		
+		<nav></nav>
 		<div class="logo">
-			<img onclick="home()" src="<%=request.getContextPath()%>/assets/image/logo.png" alt="logo"
+			<img onclick="home()"
+				src="<%=request.getContextPath()%>/assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
-		
+		<nav></nav>
 	</header>
 	<div class="container">
 		<img src="<%=request.getContextPath()%>/assets/image/tick_green.jpg"
@@ -97,11 +104,6 @@ h1 {
 			<p>You will be redirected to home page in 5 seconds...</p>
 		</div>
 	</div>
-	<script>
-        setTimeout(function() {
-            // Replace the URL with the one you want to redirect to
-            window.location.href = "<%=request.getContextPath()%>/GetAllProductServlet";
-        }, 5000); // 5000 milliseconds (5 seconds)
-    </script>
+	
 </body>
 </html>

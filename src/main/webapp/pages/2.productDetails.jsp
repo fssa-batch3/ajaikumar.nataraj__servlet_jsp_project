@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="./assets/CSS/history.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style type="text/css">
 .dropdown {
 	position: relative;
@@ -33,10 +34,6 @@
 	text-align: center;
 }
 
-.product-card {
-	height: 410px;
-}
-
 h4 {
 	width: 500px;
 }
@@ -44,7 +41,7 @@ h4 {
 .buy-now {
 	color: white;
 	background-color: green;
-	font-size: 16px;
+	font-size: 10px;
 	border-radius: 3px;
 }
 
@@ -52,7 +49,7 @@ h4 {
 	color: black;
 	background-color: yellow;
 	padding: 15px 25px;
-	font-size: 16px;
+	font-size: 10px;
 	border-radius: 3px;
 }
 
@@ -66,7 +63,7 @@ h4 {
 .view-more {
 	color: black;
 	background-color: light-grey;
-	font-size: 16px;
+	font-size: 10px;
 	border-radius: 3px;
 	width: 100%;
 	margin-top: 10px;
@@ -81,25 +78,15 @@ h4 {
 	</div>
 	<header class="head">
 		<img onclick="back()" src="./assets/image/arrowback.png" alt="back"
-			width="50px" />
+			width="40px" />
 		<div class="logo">
 			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 
-		<div class="dropdown">
-			<img alt="menu" src="./assets/image/menu.png" width="30px">
-			<div class="dropdown-content">
-				<a href="LogoutServlet"> <img src="./assets/image/logout.png"
-					alt="logo" width="30px" />
-				</a> <br> <a href="ProfileServlet?id=${userId}"> <img
-					src="./assets/image/profile.png" alt="logo" width="30px" />
-				</a> <br> <a href="CartServlet?id=${userId}"> <img
-					src="./assets/image/cart.png" alt="logo" width="30px" />
-				</a> <br> <a href="BuyerHistoryServlet?id=${userId}&statusFilter=0"><img
-					src="./assets/image/orders.png" alt="logo" width="30px" /> </a>
-			</div>
-		</div>
+		<a href="ProfileServlet?id=${userId}"> <img
+			src="./assets/image/profile.png" alt="logo" width="40px" />
+		</a>
 
 		<!-- <div class="profile">
 			<div>
@@ -124,12 +111,27 @@ h4 {
 			</div>
 		</div> -->
 	</header>
-
 	<h1>All Products List</h1>
 	<div class="search-bar">
 		<input class="search-bar" type="text" id="searchInput"
 			placeholder="Search products...">
 	</div>
+	<div class="w3-sidebar w3-bar-block w3-card w3-animate-left"
+		style="display: none" id="leftMenu">
+		<button onclick="closeLeftMenu()"
+			class="w3-bar-item w3-button w3-large">Close &times;</button>
+		<a class="w3-bar-item w3-button" href="CartServlet?id=${userId}">
+			<img src="./assets/image/cart.png" alt="logo" width="30px" /> Go to
+			Cart
+		</a> <br> <a class="w3-bar-item w3-button"
+			href="BuyerHistoryServlet?id=${userId}&statusFilter=0"><img
+			src="./assets/image/orders.png" alt="logo" width="30px" /> History</a>
+	</div>
+	<div class="w3-teal">
+		<button class="w3-button w3-teal w3-xlarge w3-left"
+			onclick="openLeftMenu()">&#9776;</button>
+	</div>
+
 
 	<%
 	String errorMessage = request.getParameter("errorMessage");
@@ -147,10 +149,10 @@ h4 {
 				<p>Available : ${product.quantity} Kg</p>
 				<p>${product.description}</p>
 				<div class="buttons">
-					<a href="BuyNowServlet?id=${product.id}"><button
-							class="buy-now">Buy Now</button></a> <a
-						href="AddToCartServlet?id=${product.id}"><button
-							class="cart-btn">Add to Cart</button></a>
+					<a href="#" onclick="BuyNow('${product.id}');"><button
+							class="buy-now">Buy Now</button></a> <a href="#"
+						onclick="Cart('${product.id}');"><button class="cart-btn">Add
+							to Cart</button></a>
 				</div>
 				<div class="buttons">
 					<a
@@ -195,8 +197,36 @@ h4 {
 			}
 		});
 
+		
+		
+		
+		function BuyNow(id) {
+			var confirmation = confirm("Are you sure you want to buy this product imediately ?");
+
+			if (confirmation) {
+				// If the user confirms, redirect to the DeleteUserServlet
+				window.location.href = "BuyNowServlet?id=" + id;
+			}
+		}
+		
+		function Cart(id) {
+			var confirmation = confirm("Are you sure you want to add this product to your cart ?");
+
+			if (confirmation) {
+				// If the user confirms, redirect to the DeleteUserServlet
+				window.location.href = "AddToCartServlet?id=" + id;
+			}
+		}
 		function back() {
 			window.history.back();
+		}
+
+		function openLeftMenu() {
+			document.getElementById("leftMenu").style.display = "block";
+		}
+
+		function closeLeftMenu() {
+			document.getElementById("leftMenu").style.display = "none";
 		}
 	</script>
 	<!--       <script src="../assets/JavaScript/seller_place_order.js"></script>  -->

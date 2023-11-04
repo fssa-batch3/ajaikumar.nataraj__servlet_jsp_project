@@ -21,14 +21,14 @@ long id = (long) request.getAttribute("userId");
 	</div>
 	<header class="head">
 		<img onclick="back()" src="./assets/image/arrowback.png" alt="back"
-			width="50px" />
+			width="40px" />
 		<div class="logo">
 			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 		<div class="name">
 			<a href="ProfileServlet?id=<%=id%>"> <img onclick="home()"
-				src="./assets/image/profile.png" alt="logo" width="50px" />
+				src="./assets/image/profile.png" alt="logo" width="40px" />
 			</a>
 		</div>
 	</header>
@@ -46,7 +46,7 @@ long id = (long) request.getAttribute("userId");
 			<div class="list">
 				<nav>
 					<label for="productImage">Product Image</label> <br /> <img
-						src="<%=product.getUrl()%>" alt="Product Image" width="300px"
+						src="<%=product.getUrl()%>" alt="Product Image" width="300px" style="border-radius: 10px;"
 						id="productImage" /> <input type="hidden" name="url"
 						value=<%=product.getUrl()%>>
 				</nav>
@@ -57,27 +57,6 @@ long id = (long) request.getAttribute("userId");
 						name="name" id="name" readonly />
 
 				</nav>
-				<nav>
-					<label for="type">Product's Type</label><br /> <input
-						required="required" list="Types" name="type" id="type"
-						autocomplete="off" value=<%=product.getType()%> readonly />
-
-					<datalist id="Types">
-						<option value="Fruit"></option>
-						<option value="Vegetable"></option>
-						<option value="Coffee & Tea"></option>
-						<option value="Cereals & Grains"></option>
-					</datalist>
-				</nav>
-				<nav>
-					<label for="pincode">Enter your Pincode</label><br /> <input
-						required="required" type="text" id="pincode" name="pincode"
-						value="654321" placeholder="Enter your Pincode" pattern="[0-9]{6}"
-						maxlength="6" minlength="6" value=<%=product.getPincode()%> />
-				</nav>
-
-			</div>
-			<div class="list">
 				<nav>
 					<label for="price">Product's Price</label> <br /> <input
 						required="required" type="number" name="price" id="price"
@@ -91,6 +70,23 @@ long id = (long) request.getAttribute("userId");
 						pattern="[0-9]{6}" maxlength="6" minlength="6"
 						value=<%=product.getQuantity()%> />
 
+				</nav>
+
+
+
+			</div>
+			<div class="list">
+				<nav>
+					<label for="type">Product's Type</label><br /> <input
+						required="required" list="Types" name="type" id="type"
+						autocomplete="off" value=<%=product.getType()%> readonly />
+
+					<datalist id="Types">
+						<option value="Fruit"></option>
+						<option value="Vegetable"></option>
+						<option value="Coffee & Tea"></option>
+						<option value="Cereals & Grains"></option>
+					</datalist>
 				</nav>
 				<nav>
 					<label for="district">District</label> <br> <input required
@@ -141,7 +137,12 @@ long id = (long) request.getAttribute("userId");
 						required="required" type="text" id="address" name="address"
 						value="10, Gandhi street, gobi." value=<%=product.getAddress()%> />
 				</nav>
-
+				<nav>
+					<label for="pincode">Enter your Pincode</label><br /> <input
+						required="required" type="text" id="pincode" name="pincode"
+						value="654321" placeholder="Enter your Pincode" pattern="[0-9]{6}"
+						maxlength="6" minlength="6" value=<%=product.getPincode()%> />
+				</nav>
 				<nav>
 					<label for="description"> Description about your product </label> <br />
 					<textarea required="required" name="description" id="description"

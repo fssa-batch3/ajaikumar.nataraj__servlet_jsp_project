@@ -17,8 +17,7 @@ User user = (User) request.getAttribute("User");
 <title>Insert title here</title>
 <style>
 body {
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-		sans-serif;
+	font-family: verdana;
 	background-color: #f5f5f5;
 }
 
@@ -160,21 +159,15 @@ button[type="submit"]:hover {
 	</div>
 	<header class="head">
 		<img onclick="back()" src="./assets/image/arrowback.png" alt="back"
-			width="50px" />
+			width="40px" />
 		<div class="logo">
 			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
-		<div class="dropdown">
-			<img alt="menu" src="./assets/image/menu.png" width="30px">
-			<div class="dropdown-content">
-				<a href="ProfileServlet?id=<%=user.getId()%>"> <img
-					src="./assets/image/profile.png" alt="logo" width="30px" />
-				</a><br> <a href="LogoutServlet"> <img
-					src="./assets/image/logout.png" alt="logo" width="30px" />
-				</a>
-			</div>
-		</div>
+
+		<a href="ProfileServlet?id=<%=user.getId()%>"> <img
+			src="./assets/image/profile.png" alt="logo" width="40px" />
+		</a>
 
 	</header>
 	<div class="container">
@@ -182,10 +175,10 @@ button[type="submit"]:hover {
 			<div class="first-div">
 				<!-- Product Details Section -->
 				<div class="form-section product-details">
-				 <input type="hidden" id="url"
-						readonly name="url" value="<%=product.getUrl() %>">
-					<input type="hidden" name="productId" value="<%=product.getId() %>">
-					<input type="hidden" name="sellerId" value="<%=product.getUserId() %>">
+					<input type="hidden" id="url" readonly name="url"
+						value="<%=product.getUrl()%>"> <input type="hidden"
+						name="productId" value="<%=product.getId()%>"> <input
+						type="hidden" name="sellerId" value="<%=product.getUserId()%>">
 					<label for="name">Name:</label> <input type="text" id="name"
 						readonly name="name" value="<%=product.getName()%>"> <br>
 					<label for="description">Description:</label>

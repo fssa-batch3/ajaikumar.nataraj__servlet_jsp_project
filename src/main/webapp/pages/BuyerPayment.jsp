@@ -54,13 +54,13 @@
 }
 
 body {
-	font-family: Arial, sans-serif;
+	font-family: verdana;
+	margin: 0px auto;
 }
 
 .container {
 	max-width: 800px;
 	margin: 0 auto;
-	padding: 20px;
 }
 
 .payment-form {

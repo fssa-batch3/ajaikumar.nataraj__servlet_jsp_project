@@ -172,27 +172,18 @@ button:active {
 	<header class="head">
 		<img onclick="back()"
 			src="<%=request.getContextPath()%>/assets/image/arrowback.png"
-			alt="back" width="50px" />
+			alt="back" width="40px" />
 		<div class="logo">
 			<img onclick="home()"
 				src="<%=request.getContextPath()%>/assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 
-		<div class="dropdown">
-			<img alt="menu"
-				src="<%=request.getContextPath()%>/assets/image/menu.png"
-				width="30px">
-			<div class="dropdown-content">
-				<a href="ProfileServlet?id=<%=id%>"> <img
-					src="<%=request.getContextPath()%>/assets/image/profile.png"
-					alt="logo" width="30px" />
-				</a><br> <a href="LogoutServlet"> <img
-					src="<%=request.getContextPath()%>/assets/image/logout.png"
-					alt="logo" width="30px" />
-				</a>
-			</div>
-		</div>
+
+		<a href="ProfileServlet?id=<%=id%>"> <img
+			src="<%=request.getContextPath()%>/assets/image/profile.png"
+			alt="logo" width="40px" />
+		</a>
 	</header>
 	<main>
 

@@ -4,11 +4,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-  <meta http-equiv="refresh" content="5;url=10.upload.jsp">
+<meta http-equiv="refresh" content="5;url=10.upload.jsp">
 <!-- Redirect to another page after 5 seconds -->
 
 <title>Insert title here</title>
 <style type="text/css">
+* {
+	font-family: verdana;
+}
+
 .head {
 	display: flex;
 	align-items: center;
@@ -25,6 +29,7 @@
 	left: 0px;
 	z-index: 1;
 }
+
 .contact {
 	background-color: #2bae66ff;
 	height: 20px;
@@ -80,12 +85,12 @@ h1 {
 		<p>Rishi-market@agri.com</p>
 	</div>
 	<header class="head">
-		
+		<nav></nav>
 		<div class="logo">
 			<img onclick="home()" src="../assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
-		
+		<nav></nav>
 	</header>
 	<div class="container">
 		<img src="<%=request.getContextPath()%>/assets/image/tick_green.jpg"

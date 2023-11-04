@@ -62,21 +62,14 @@
 	</div>
 	<header class="head">
 		<img onclick="back()" src="./assets/image/arrowback.png" alt="back"
-			width="50px" />
+			width="40px" />
 		<div class="logo">
 			<img onclick="home()" src="./assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
-		<div class="dropdown">
-			<img alt="menu" src="./assets/image/menu.png" width="30px">
-			<div class="dropdown-content">
-				<a href="LogoutServlet"> <img src="./assets/image/logout.png"
-					alt="logo" width="30px" />
-				</a> <br> <a href="ProfileServlet?id=${userId}"> <img
-					src="./assets/image/profile.png" alt="logo" width="30px" />
-				</a>
-			</div>
-		</div>
+		<a href="ProfileServlet?id=${userId}"> <img
+			src="./assets/image/profile.png" alt="logo" width="40px" />
+		</a>
 		<!-- 	<div class="profile">
 			<div>
 				<a href="LogoutServlet"> <img onclick="home()"
