@@ -32,7 +32,11 @@ public class BuyerHistoryServlet extends HttpServlet {
 		List<Order> products = null;
 		OrderService Service = new OrderService();
 		UserService service = new UserService();
-		int status = Integer.parseInt(request.getParameter("statusFilter"));
+		String filter = request.getParameter("statusFilter");
+		System.out.println("filter : "+filter);
+
+		int status = Integer.parseInt(filter);
+		
 		System.out.println(status);
 
 

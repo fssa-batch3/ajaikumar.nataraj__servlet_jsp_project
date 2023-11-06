@@ -18,7 +18,7 @@ long id = (long) request.getAttribute("id");
 <title>Insert title here</title>
 <style type="text/css">
 body {
-	font-family: Arial, sans-serif;
+	font-family: Verdana;
 	background-color: #f5f5f5;
 	color: #2bae66ff;
 }
@@ -180,27 +180,18 @@ a {
 	<header class="head">
 		<img onclick="back()"
 			src="<%=request.getContextPath()%>/assets/image/arrowback.png"
-			alt="back" width="50px" />
+			alt="back" width="40px" />
 		<div class="logo">
 			<img onclick="home()"
 				src="<%=request.getContextPath()%>/assets/image/logo.png" alt="logo"
 				width="90px" />
 		</div>
 
-		<div class="dropdown">
-			<img alt="menu"
-				src="<%=request.getContextPath()%>/assets/image/menu.png"
-				width="30px">
-			<div class="dropdown-content">
-				<a href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
-					<img src="<%=request.getContextPath()%>/assets/image/profile.png"
-					alt="profile" width="30px" />
-				</a><br> <a href="LogoutServlet"> <img
-					src="<%=request.getContextPath()%>/assets/image/logout.png"
-					alt="logo" width="30px" />
-				</a>
-			</div>
-		</div>
+
+		<a href="<%=request.getContextPath()%>/ProfileServlet?id=<%=id%>">
+			<img src="<%=request.getContextPath()%>/assets/image/profile.png"
+			alt="profile" width="40px" />
+		</a>
 	</header>
 
 	<main>

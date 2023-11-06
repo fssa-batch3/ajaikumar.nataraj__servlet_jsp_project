@@ -73,9 +73,9 @@ body {
 
 .order-card {
 	border: 1px solid #ccc;
-	padding: 15px;
+	padding: 10px;
 	margin: 10px;
-	max-width: 300px;
+	max-width: 280px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	background-color: #fff;
 	transition: transform 0.2s ease-in-out;
@@ -223,7 +223,7 @@ body {
 								</div>
 								<p>Cart ID: ${order.id}</p>
 								<img src="${order.url}" alt="Product Image" width="200px"
-									style="border-radius: 5px;" />
+									style="border-radius: 5px; height: 130px;" />
 								<p>Product Name: ${order.name}</p>
 								<p>Price (Rs.): ${order.price}</p>
 								<!-- Add a hidden input field to store the product ID -->

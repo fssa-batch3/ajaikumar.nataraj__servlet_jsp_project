@@ -275,7 +275,8 @@ body {
 								<!-- Add more order details as needed -->
 								<c:choose>
 									<c:when test="${order.status == 0 || order.status == 1}">
-										<a href="OrderedProductDeleteServlet?id=${order.id}">
+										<a
+											href="OrderedProductDeleteServlet?id=${order.id}&status=${order.status}">
 											<button class="delete-button">Cancel Order</button>
 										</a>
 									</c:when>
