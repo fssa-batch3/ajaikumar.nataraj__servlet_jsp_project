@@ -356,11 +356,10 @@ body {
 			for (var i = 0; i < radioButtons.length; i++) {
 				if (radioButtons[i].checked) {
 					value = parseInt(radioButtons[i].value);
-					break; // Exit the loop as soon as one radio button is selected
+					break; 
 				}
 			}
 
-			// Submit the form
 			document.querySelector('form').submit();
 		}
 	</script>

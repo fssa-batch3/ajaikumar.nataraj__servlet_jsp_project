@@ -25,7 +25,7 @@ public class NotificationAccept extends HttpServlet {
 		OrderService Service = new OrderService();
 
 		try {
-			Service.NotificationAccept(id);
+			Service.notificationAccept(id);
 			request.setAttribute("userId", userId);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/sellerNotificationServlet");
 			dispatcher.forward(request, response);

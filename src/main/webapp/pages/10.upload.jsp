@@ -55,7 +55,6 @@ body {
 	background-color: #2bae66ff;
 }
 
-
 /* Style for the back button */
 .head img[alt="back"] {
 	cursor: pointer; /* Add a pointer cursor on hover */
@@ -213,8 +212,9 @@ datalist {
 			class="w3-bar-item w3-button w3-large">Close &times;</button>
 		<a class="w3-bar-item w3-button"
 			href="<%=request.getContextPath()%>/GetAllOwnProductsServlet"> <img
-			src="../assets/image/orders.png" alt="orders" width="30px" /> History
-		</a>  <br> <a class="w3-bar-item w3-button"
+			src="../assets/image/orders.png" alt="orders" width="30px" />
+			History
+		</a> <br> <a class="w3-bar-item w3-button"
 			href="<%=request.getContextPath()%>/GetAllProductServlet"> <img
 			src="../assets/image/cart.png" alt="cart" width="30px" /> Go to Buy
 		</a><br> <a class="w3-bar-item w3-button"
@@ -355,9 +355,6 @@ datalist {
 			let fileInput = document.createElement("input");
 			fileInput.type = "file";
 
-			let imageElement = document.createElement("img");
-			imageElement.setAttribute("class", "selected-image");
-
 			fileInput.click();
 
 			fileInput.addEventListener("change", function(e) {
@@ -367,7 +364,6 @@ datalist {
 					let reader = new FileReader();
 
 					reader.onload = function(e) {
-						imageElement.src = e.target.result;
 
 						inputValue.value = e.target.result;
 					};

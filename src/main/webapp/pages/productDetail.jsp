@@ -198,7 +198,7 @@ a {
 		<section class="full">
 			<section class="img_div">
 				<div class="full_div">
-					<img src="<%=product.getUrl()%>" alt="Product Image" width="250px"
+					<img src="<%=product.getUrl()%>" alt="Product Image" width="250px" "style: height="40%""
 						id="productImage" />
 				</div>
 				<div class="full_div">

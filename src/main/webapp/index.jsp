@@ -11,10 +11,10 @@
 <link rel="stylesheet" href="./assets/CSS/head.css" />
 </head>
 <body>
-		<div class="contact">
+	<div class="contact">
 		<p>+91 9876543210</p>
 		<p>Rishi-market@agri.com</p>
-	</div>  
+	</div>
 	<header>
 		<div>
 			<img src="./assets/image/logo.png" alt="profile" width="100px" />

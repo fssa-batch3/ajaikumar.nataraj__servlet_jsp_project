@@ -25,7 +25,7 @@ public class NotificationRejectServlet extends HttpServlet {
 		OrderService Service = new OrderService();
 
 		try {
-			Service.NotificationReject(id);
+			Service.notificationReject(id);
 			request.setAttribute("userId", userId);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/sellerNotificationServlet");
 			dispatcher.forward(request, response);
