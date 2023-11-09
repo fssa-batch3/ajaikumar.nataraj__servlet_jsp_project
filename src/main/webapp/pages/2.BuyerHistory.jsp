@@ -271,7 +271,7 @@ body {
 								<p>Price (Rs.): ${order.price}</p>
 								<p>Quantity: ${order.quantity}</p>
 								<p>Address: ${order.user_address}</p>
-								<p>Date: ${order.ordered_date}</p>
+								<p>Date: ${order.orderedDate}</p>
 								<!-- Add more order details as needed -->
 								<c:choose>
 									<c:when test="${order.status == 0 || order.status == 1}">
@@ -304,7 +304,7 @@ body {
 										<p>Price (Rs.): ${order.price}</p>
 										<p>Quantity: ${order.quantity}</p>
 										<p>Address: ${order.user_address}</p>
-										<p>Order Date: ${order.ordered_date}</p>
+										<p>Order Date: ${order.orderedDate}</p>
 					<a href="OrderedProductDeleteServlet?id=${order.id}">
 						<button class="delete-button">Cancel Order</button>
 					</a>
@@ -329,7 +329,7 @@ body {
 							<p>Price (Rs.): ${order.price}</p>
 							<p>Quantity: ${order.quantity}</p>
 							<p>Address: ${order.user_address}</p>
-							<p>Order Date: ${order.ordered_date}</p>
+							<p>Order Date: ${order.orderedDate}</p>
 
 						</div>
 					</c:when>
