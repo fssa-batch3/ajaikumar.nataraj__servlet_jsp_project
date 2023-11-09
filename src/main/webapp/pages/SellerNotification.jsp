@@ -241,7 +241,7 @@ button:active {
 						<%=order.getPincode()%></p>
 					<p>
 						Ordered Date:
-						<%=order.getordered_date()%></p>
+						<%=order.getorderedDate()%></p>
 				</div>
 				<a
 					href="<%=request.getContextPath()%>/NotificationAccept?id=<%=order.getId()%>&userId=<%=id%>">
@@ -304,7 +304,7 @@ button:active {
 							<%=order.getPincode()%></p>
 						<p>
 							Ordered Date:
-							<%=order.getordered_date()%></p>
+							<%=order.getorderedDate()%></p>
 					</div>
 
 					<button class="accept">Accepted</button>
@@ -357,7 +357,7 @@ button:active {
 							<%=order.getPincode()%></p>
 						<p>
 							Ordered Date:
-							<%=order.getordered_date()%></p>
+							<%=order.getorderedDate()%></p>
 					</div>
 
 					<button class="reject">Rejected</button>

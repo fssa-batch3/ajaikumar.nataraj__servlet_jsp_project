@@ -220,7 +220,7 @@ button[type="submit"]:hover {
 
 			<input id="pincode" name="pincode" type="tel" pattern="[0-9]{6}"
 				value="<%=user.getPincode()%>" placeholder="Enter your pincode"
-				maxlength="6" minlength="6" /> <label for="userDistrict">District:</label>
+				maxlength="6" min="6" /> <label for="userDistrict">District:</label>
 			<input type="tel" id="phone_number" name="phone_number"
 				value="<%=user.getPhoneNumber()%>" pattern="[6-9]{1}[0-9]{9}"
 				placeholder="Enter your phone number" autocomplete="hgfgtyfygh"
