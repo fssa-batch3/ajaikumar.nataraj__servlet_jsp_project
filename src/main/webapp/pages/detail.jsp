@@ -91,7 +91,8 @@ h2 {
 }
 
 /* Input and textarea styles */
-input[type="text"], input[type="number"], input[type="tel"], textarea {
+input[type="text"], input[type="number"], input[type="tel"], input[type="password"],
+	textarea {
 	width: 95%;
 	padding: 10px;
 	margin-bottom: 10px;
@@ -124,6 +125,11 @@ button[type="submit"]:hover {
 
 .first-div {
 	display: flex;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
 }
 
 .delivery-details {
@@ -250,18 +256,21 @@ button[type="submit"]:hover {
 						pattern="[0-9]{6}">
 				</div>
 			</div>
-			<!-- Payment Details Section -->
+			<!-- Payment Details Section
 			<div class="form-section payment-details">
 				<label for="cardNumber">Card Number:</label> <input type="text"
 					id="cardNumber" name="cardNumber" placeholder="Enter card number">
 				<br> <label for="expiryDate">Expiry Date:</label> <input
 					type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
-				<br> <label for="cvv">CVV:</label> <input type="text" id="cvv"
+				<br> <label for="cvv">CVV:</label> <input type="password" id="cvv"
 					name="cvv" placeholder="Enter CVV"> <br>
+			</div>  -->
+			<div class="btn">
+				<a href="BuyNowServlet?=<%=product.getId()%>">
+					<button type="submit">Order</button>
+				</a>
 			</div>
-			<a href="BuyNowServlet?=<%=product.getId()%>">
-				<button type="submit">Order</button>
-			</a>
+
 		</form>
 	</div>
 	<script>

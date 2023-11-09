@@ -99,7 +99,8 @@ h1 {
 		<h1>Order Successful</h1>
 		<div class="success-message">
 			<p>Your Product has been placed successfully.</p>
-			<p>You will be redirected to home page in 5 seconds...</p>
+			<p>You will be redirected to home page in 5 seconds..</p>
+			<p>You will be notify when your products will be order...</p>
 		</div>
 	</div>
 </body>

@@ -60,7 +60,7 @@ body {
 
 .container {
 	max-width: 800px;
-	margin: 0 auto;
+	margin: 20px auto;
 }
 
 .payment-form {
@@ -92,29 +92,34 @@ body {
 	font-weight: bold;
 }
 
- /* Style the anchor (link) */
-    a {
-        text-decoration: none; /* Remove underline from the link */
-        display: inline-block; /* Make the link a block-level element */
-        background-color: #007bff; /* Button background color */
-        color: #fff; /* Button text color */
-        padding: 10px 20px; /* Add padding to the button */
-        border-radius: 5px; /* Rounded corners */
-        transition: background-color 0.3s ease; /* Smooth background color transition */
-    }
+/* Style the anchor (link) */
+a {
+	text-decoration: none; /* Remove underline from the link */
+	display: inline-block; /* Make the link a block-level element */
+	background-color: #007bff; /* Button background color */
+	color: #fff; /* Button text color */
+	padding: 10px 20px; /* Add padding to the button */
+	border-radius: 5px; /* Rounded corners */
+	transition: background-color 0.3s ease;
+	/* Smooth background color transition */
+}
 
-    /* Style the anchor on hover */
-    a:hover {
-        background-color: #0056b3; /* Button background color on hover */
-    }
+/* Style the anchor on hover */
+a:hover {
+	background-color: #0056b3; /* Button background color on hover */
+}
 
-    /* Style the button text */
-    button {
-        border: none; /* Remove button border */
-        background: transparent; /* Transparent button background */
-        color: inherit; /* Inherit text color from parent (anchor) */
-        cursor: pointer; /* Change cursor to pointer on hover */
-    }
+.btn {
+	display: flex;
+	justify-content: center;
+}
+/* Style the button text */
+button {
+	border: none; /* Remove button border */
+	background: transparent; /* Transparent button background */
+	color: inherit; /* Inherit text color from parent (anchor) */
+	cursor: pointer; /* Change cursor to pointer on hover */
+}
 </style>
 </head>
 <body>
@@ -146,12 +151,12 @@ body {
 
 	</header>
 	<div class="container">
-		<h1>Payment</h1>
 		<div class="payment-form">
 			<h2>Select Payment Method</h2>
 			<div class="payment-method">
 				<input type="radio" id="creditCard" name="paymentMethod"
-					value="creditCard" checked> <label for="creditCard">Using UPI Id</label>
+					value="creditCard" checked> <label for="creditCard">Using
+					UPI Id</label>
 			</div>
 			<div class="payment-method">
 				<input type="radio" id="cashOnDelivery" name="paymentMethod"
@@ -170,11 +175,16 @@ body {
 				<h2>Cash on Delivery Instructions</h2>
 				<p>Please have the exact amount in cash ready when the delivery
 					arrives.</p>
+				<p>Your product will be delivered within 2 days...</p>
+			</div>
+			<div class="btn">
+				<a href="<%=request.getContextPath()%>/pages/success.jsp">
+					<button>SUBMIT</button>
+				</a>
 			</div>
 		</div>
+
 	</div>
-	<a href="<%=request.getContextPath()%>/pages/success.jsp">
-		<button>SUBMIT</button>
-	</a>
+
 </body>
 </html>

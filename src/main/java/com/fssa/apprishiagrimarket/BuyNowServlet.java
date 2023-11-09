@@ -80,27 +80,20 @@ public class BuyNowServlet extends HttpServlet {
 			long phone = Long.parseLong(request.getParameter("phone"));
 			int pincode = Integer.parseInt(request.getParameter("pincode"));
 			String url = request.getParameter("url");
-			System.out.println();
-			System.out.println("buy now servlet url : "+sellerId);
 
 
 			Order order = new Order(orderId, userId, sellerId, productId, url, name, price, quantity, phone, address, district, pincode,
 					uploadDate, 0);
-			System.out.println(order);
 
 			OrderService orderservice = new OrderService();
 			User user = service.findUserById(userId);
-			System.out.println("Check user in servlet " + user);
 
-//			List<Order> orders = null;
 			try {
 				if (orderservice.createOrder(order)) {
 					request.setAttribute("user", user);
 
-					System.out.println("Register Product Successfully");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/BuyerPayment.jsp");
 					dispatcher.forward(request, response);
-					// response.sendRedirect(request.getContextPath() + "/pages/BuyerPayment.jsp");
 
 				}
 			} catch (Exception e) {
